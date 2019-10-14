@@ -1,8 +1,8 @@
 #!/bin/bash
 set -e
 
-#config=$1
-config="config content"
+config=$1
+$config="config content"
 
 if [ -z "${config}" ]; then
     echo No config provided
