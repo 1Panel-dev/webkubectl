@@ -5,7 +5,9 @@ config=$1
 #config="config content"
 
 if [ -z "${config}" ]; then
-    echo No config provided
+    echo No kube-config file provided
+    echo Terminal will exit.
+    sleep 10
     exit 1
 fi
 
