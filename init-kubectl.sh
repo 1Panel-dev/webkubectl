@@ -4,7 +4,7 @@ set -e
 config=$1
 
 mkdir -p /nonexistent
-mount -t tmpfs tmpfs /nonexistent
+#mount -t tmpfs tmpfs /nonexistent
 cd /nonexistent
 
 mkdir -p .kube
