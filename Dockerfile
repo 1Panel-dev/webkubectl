@@ -10,6 +10,9 @@ RUN wget https://dl.k8s.io/v1.13.3/kubernetes-client-linux-amd64.tar.gz && \
     rm -rf kubernetes-client-linux-amd64.tar.gz kubernetes
 
 COPY start-webkubectl.sh /
+RUN chmod +x /start-webkubectl.sh
 COPY start-session.sh /
+RUN chmod +x /start-session.sh
 COPY init-kubectl.sh /
+RUN chmod +x /init-kubectl.sh
 CMD ["sh","/start-webkubectl.sh"]
