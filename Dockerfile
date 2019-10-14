@@ -1,4 +1,7 @@
 FROM ubuntu:18.04
+
+USER root
+
 ARG ARCH=amd64
 
 RUN rm -f /bin/sh && ln -s /bin/bash /bin/sh
