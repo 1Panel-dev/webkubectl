@@ -1,6 +1,6 @@
 FROM centos:7
 RUN yum install -y wget &&  \
-    wget https://github.com/tsl0922/ttyd/releases/download/1.4.2/ttyd_linux.x86_64 && \
+    wget https://github.com/tsl0922/ttyd/releases/download/1.5.2/ttyd_linux.x86_64 && \
     chmod +x ttyd_linux.x86_64 && \
     mv ttyd_linux.x86_64 /usr/bin/ttyd
 
