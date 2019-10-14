@@ -1,2 +1,2 @@
 # ttyd -p 8080 bash
-ttyd -p 8080 -a start-session.sh
+ttyd -p 8080 -a /start-session.sh

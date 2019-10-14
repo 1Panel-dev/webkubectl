@@ -8,6 +8,4 @@ if [ -z "${config}" ]; then
     exit 1
 fi
 
-export TERM=screen-256color
-
-unshare --fork --pid --mount-proc --mount init-kubectl.sh ${config}
+unshare --fork --pid --mount-proc --mount /init-kubectl.sh ${config}
