@@ -8,7 +8,7 @@ RUN apk add --update git && \
   mkdir -p /tmp/gotty && \
   export GOPATH=/tmp/gotty && go get -d github.com/webkubectl/gotty && \
   cd $GOPATH/src/github.com && mv webkubectl yudai && cd yudai/gotty && go build && \
-  cp gotty && /
+  cp gotty && \
   ls /gotty
 
 
