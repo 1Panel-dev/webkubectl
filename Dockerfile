@@ -1,3 +1,15 @@
+FROM golang:1.12-alpine as gotty-build
+
+EXPOSE 8080
+
+RUN apk add --update git && \
+  mkdir -p /tmp/gotty && \
+  export GOPATH=/tmp/gotty && go get -d github.com/webkubectl/gotty && \
+  cd $GOPATH/src/github.com && mv webkubectl yudai && cd yudai/gotty && go install &&\
+  ls /tmp/gotty/bin/gotty
+
+
+
 FROM ubuntu:18.04
 
 USER root
@@ -6,15 +18,16 @@ ARG ARCH=amd64
 
 RUN rm -f /bin/sh && ln -s /bin/bash /bin/sh
 ENV KUBECTL_VERSION v1.16.1
+COPY --from=gotty-build /tmp/gotty/bin/gotty /usr/bin/
 RUN apt-get update && \
     apt-get install -y --no-install-recommends curl ca-certificates jq iproute2 vim-tiny less bash-completion unzip sysstat acl && \
     curl -sLf https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/${ARCH}/kubectl > /usr/bin/kubectl && \
     chmod +x /usr/bin/kubectl && \
-    curl -sLf https://github.com/tsl0922/ttyd/releases/download/1.5.2/ttyd_linux.x86_64 > /usr/bin/ttyd && \
-    chmod +x /usr/bin/ttyd && \
+    chmod +x /usr/bin/gotty && \
     DEBIAN_FRONTEND=noninteractive apt-get autoremove -y && \
     DEBIAN_FRONTEND=noninteractive apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-ENV LOGLEVEL_VERSION v0.1.2
+
+
 
 COPY start-webkubectl.sh /
 RUN chmod +x /start-webkubectl.sh
