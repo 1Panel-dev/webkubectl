@@ -1,6 +1,8 @@
 FROM golang:1.12-alpine as gotty-build
 
-EXPOSE 8080
+ENV CGO_ENABLED=0
+ENV GOOS=linux
+ENV GOARCH=amd64
 
 RUN apk add --update git && \
   mkdir -p /tmp/gotty && \
