@@ -4,7 +4,7 @@ ENV CGO_ENABLED=0
 ENV GOOS=linux
 ENV GOARCH=amd64
 
-RUN apk add --update git && \
+RUN apk add --update git make && \
   mkdir -p /tmp/gotty && \
   export GOPATH=/tmp/gotty && go get -d github.com/webkubectl/gotty && \
   cd $GOPATH/src/github.com/webkubectl/gotty && make asset && go build && \
