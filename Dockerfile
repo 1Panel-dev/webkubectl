@@ -7,8 +7,9 @@ ENV GOARCH=amd64
 RUN apk add --update git && \
   mkdir -p /tmp/gotty && \
   export GOPATH=/tmp/gotty && go get -d github.com/webkubectl/gotty && \
-  cd $GOPATH/src/github.com && mv webkubectl yudai && cd yudai/gotty && go install &&\
-  ls /tmp/gotty/bin/gotty
+  cd $GOPATH/src/github.com && mv webkubectl yudai && cd yudai/gotty && go build && \
+  cp gotty /
+  ls /gotty
 
 
 
@@ -20,7 +21,7 @@ ARG ARCH=amd64
 
 RUN rm -f /bin/sh && ln -s /bin/bash /bin/sh
 ENV KUBECTL_VERSION v1.16.1
-COPY --from=gotty-build /tmp/gotty/bin/gotty /usr/bin/
+COPY --from=gotty-build /gotty /usr/bin/
 RUN apt-get update && \
     apt-get install -y --no-install-recommends curl ca-certificates jq iproute2 vim-tiny less bash-completion unzip sysstat acl && \
     curl -sLf https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/${ARCH}/kubectl > /usr/bin/kubectl && \
