@@ -1,4 +1,4 @@
 #!/bin/bash
 
 # ttyd -p 8080 bash
-gotty -p 8080 -w -a /start-session.sh
+gotty --port 8080 --permit-write --permit-arguments /start-session.sh
