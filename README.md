@@ -41,7 +41,7 @@ Open below url in web browser.
 ```sh
 http://<webkubectl-address>:<port>
 ```
-In the opened page you can manage kubernetes config files or tokens which are stored in local storage, then choose a session and click connect to use kubectl command in web terminal.
+In the opened page you can manage your own kubernetes config files or tokens which are stored in local storage, then choose a session and click connect to use kubectl command in web terminal.
 
 ![index](https://raw.githubusercontent.com/webkubectl/web-resources/master/index.png)
 
@@ -72,7 +72,7 @@ Response body <br>
 #### Get token by Kubernetes config file
 
 ```sh
-$ curl http://<webkubectl-address>:<port>/api/kube-token -X POST -d '{"name":"k8s-cluster-bj1","kubeConfig":"<Kubernetes config file content base64 encoded>"}'
+$ curl http://<webkubectl-address>:<port>/api/kube-config -X POST -d '{"name":"k8s-cluster-bj1","kubeConfig":"<Kubernetes config file content base64 encoded>"}'
 #response
 $ {"success":true,"token":"mkolj4hgbutfgy1thgp1","message":""}
 ```
@@ -93,16 +93,16 @@ Response body <br>
 
 #### Open web terminal with token
 
-You can get a token from above API, with which we can open web terminal in browser through below url.
+You can get a token from above API, with which we can open web terminal in browser.
 
 ```sh
 http://<webkubectl-address>:<port>/terminal/?token=<token fetched from api>
 ```
 
 # Security 
--  **Token validation**：Each token fetched from api expires after 5 mins, and the token will be invalid immediately after it's used once.
+-  **Token validation**：The token fetched from api will be invalid immediately after it's used once, and it expires after 5 minutes if not used. 
 -  **Authentication**：By default all resources can be accessed without any authentication, to restrict anonymous access, you can enable the  basic authentication of gotty, see [how to](https://github.com/yudai/gotty#options).
--  **SSL/TLS**：By default all traffic between the server and clients are NOT encrypted, we recommend you enable SSL/TLS option of gotty, see [how to](https://github.com/yudai/gotty#options). Alternatively you can deploy Web Kubectl behind a proxy and enable SSL/TLS for proxy, please note that the proxy should support WebSocket protocol.
+-  **SSL/TLS**：By default all traffic between the server and clients are NOT encrypted, we recommend you enable SSL/TLS option of gotty, see [how to](https://github.com/yudai/gotty#options). Alternatively you can deploy Web Kubectl behind a proxy and enable SSL/TLS for the proxy, please note that the proxy should support WebSocket protocol.
 
 # License
 
