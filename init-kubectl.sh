@@ -11,7 +11,7 @@ cp /root/.bashrc ./
 mkdir -p .kube
 
 if [ -z "${arg2}" ]; then
-    echo $(printf "%s" $arg1| base64 -d) > .kube/config
+    echo $arg1| base64 -d > .kube/config
 else
     export HOME=/nonexistent
     echo `kubectl config set-credentials webkubectl-user --token=${arg2}` > /dev/null 2>&1
