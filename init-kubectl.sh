@@ -5,7 +5,7 @@ arg1=$1
 arg2=$2
 
 mkdir -p /nonexistent
-mount -t tmpfs tmpfs /nonexistent
+mount -t tmpfs -o size=100M ${SESSION_STORAGE_SIZE} /nonexistent
 cd /nonexistent
 
 mkdir -p .kube
@@ -14,10 +14,10 @@ if [ -z "${arg2}" ]; then
     echo $(printf "%s" $arg1| base64 -d) > .kube/config
 else
     export HOME=/nonexistent
-    kubectl config set-credentials webkubectl-user --token=${arg2}
-    kubectl config set-cluster kubernetes --server=${arg1} --insecure-skip-tls-verify=true
-    kubectl config set-context kubernetes --cluster=kubernetes --user=webkubectl-user
-    kubectl config use-context kubernetes
+    echo `kubectl config set-credentials webkubectl-user --token=${arg2}` > /dev/null 2>&1
+    echo `kubectl config set-cluster kubernetes --server=${arg1} --insecure-skip-tls-verify=true` > /dev/null 2>&1
+    echo `kubectl config set-context kubernetes --cluster=kubernetes --user=webkubectl-user` > /dev/null 2>&1
+    echo `kubectl config use-context kubernetes` > /dev/null 2>&1
 fi
 
 

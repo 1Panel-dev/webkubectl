@@ -23,14 +23,14 @@ RUN rm -f /bin/sh && ln -s /bin/bash /bin/sh
 ENV KUBECTL_VERSION v1.16.1
 COPY --from=gotty-build /gotty /usr/bin/
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends curl ca-certificates jq iproute2 vim-tiny less bash-completion unzip sysstat acl net-tools lrzsz iputils-ping telnet dnsutils && \
+    apt-get install -y --no-install-recommends curl ca-certificates jq iproute2 vim-tiny less bash-completion unzip sysstat acl net-tools lrzsz iputils-ping telnet dnsutils wget && \
     curl -sLf https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/${ARCH}/kubectl > /usr/bin/kubectl && \
     chmod +x /usr/bin/kubectl && \
     chmod +x /usr/bin/gotty && \
     DEBIAN_FRONTEND=noninteractive apt-get autoremove -y && \
     DEBIAN_FRONTEND=noninteractive apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
-
+ENV SESSION_STORAGE_SIZE=10M
 
 COPY start-webkubectl.sh /
 RUN chmod +x /start-webkubectl.sh
