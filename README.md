@@ -11,13 +11,13 @@
 
 # Advantage
 -  **Support multiple user and multiple Kubernetes clusters**：A deployment of Web Kubectl can be used for a team, all of the team members can use Web Kubectl simultaneously although they are connecting different Kubernetes clusters.
--  **Isolation**：All of the online sessions are isolated, each session has its own namespace and storage which is invisible to the others.
+-  **Session isolation**：All of the online sessions are isolated, each session has its own namespace and storage which is invisible to the others.
 -  **Support Kubernetes config file and token**：You can provide Kubernetes config file or token to connect Kubernetes cluster via Web Kubectl.
 -  **Easy to use and integrate**：You can simply use the index page for a quick start, or integrate with your application using api.
 
 # Architecture
 Web Kubectl use [webkubectl/gotty](https://github.com/webkubectl/gotty) to run a JavaScript based terminal on web browsers.<br>
-When opens a new connection , a new Linux namespace will be created for the session, this make sure all sessions are isolated, each session has its own namespace and storage, after the connection closed, the namespace and storage is deleted.
+When opens a new connection, a new Linux namespace will be created for the session, this make sure all sessions are isolated, each session has its own namespace and storage, after the connection closed, the namespace and storage is deleted.
 
 
 # Installation
