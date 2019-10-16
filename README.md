@@ -40,13 +40,13 @@ In this page you can manage kubernetes config files or tokens which are stored i
 
 ## integration with api
 
-##Security 
+# Security 
 -  Token validation：Each token fetched from api will expires after 5 mins, and the token will be invalid immediately after it's used once.
 -  Authentication：By default all resources can be accessed without any authentication, to restrict anonymous access, you can enable the  basic authentication of gotty.
 -  SSL/TLS：By default all traffic between the server and clients are NOT encrypted, we recommend you enable SSL/TLS option of gotty, or you can deploy Web Kubectl behind a proxy and enable SSL/TLS for proxy, please note that the proxy should support WebSocket protocol.
 
-## License
+# License
 
-Copyright (c) 2014-2019 FIT2CLOUD 飞致云
-
+Copyright (c) 2014-2019 FIT2CLOUD 飞致云<br>
+[https://www.fit2cloud.com](https://www.fit2cloud.com)<br>
 KubeOperator is licensed under the Apache License, Version 2.0.
