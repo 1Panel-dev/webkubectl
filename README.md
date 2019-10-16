@@ -5,6 +5,16 @@
 ![Total visitor](https://visitor-count-badge.herokuapp.com/total.svg?repo_id=webkubectl-webkubectl)
 ![Visitors in today](https://visitor-count-badge.herokuapp.com/today.svg?repo_id=webkubectl-webkubectl)
 
+# Advantage
+-  Support multiple user and multiple sessions：A deployment of Web Kubectl can be used for a team, all of the team members can use Web Kubectl simultaneously, although they have different sessions.
+-  Isolation：All of the online sessions are isolated, each session has its own namespace and storage which is invisible to the others.
+-  Easy to use：It's easy to use Web Kubectl in two ways, embedded page and api.
+
+# Architecture
+Web Kubectl use [webkubectl/gotty](https://github.com/webkubectl/gotty) to run a JavaScript based terminal on web browsers.
+When opens a new connection , a new Linux namespace will be created for the session, this make sure all sessions are isolated, each session has its own namespace and storage, after the connection closed, the namespace and storage is deleted.
+
+
 # Installation
 
 ```sh
@@ -13,11 +23,17 @@ $ docker run --name="webkubectl" -p 8080:8080 -d --privileged webkubectl/webkube
 # Usage
 
   ## Use embedded page
-Open this in web browser.
+Open below url in web browser.
 ```sh
 http://<webkubectl-address>:<port>
 ```
-You can manage kubernetes config files or tokens which are stored in local storage, then chose a session and click connect to use kubectl command in web terminal.
+In this page you can manage kubernetes config files or tokens which are stored in local storage, then chose a session and click connect to use kubectl command in web terminal.
 
 ## integration with api
 
+
+## License
+
+Copyright (c) 2014-2019 FIT2CLOUD 飞致云
+
+KubeOperator is licensed under the Apache License, Version 2.0.
