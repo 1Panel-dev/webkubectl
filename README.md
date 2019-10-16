@@ -101,8 +101,8 @@ http://<webkubectl-address>:<port>/terminal/?token=<token fetched from api>
 
 # Security 
 -  **Token validation**：Each token fetched from api expires after 5 mins, and the token will be invalid immediately after it's used once.
--  **Authentication**：By default all resources can be accessed without any authentication, to restrict anonymous access, you can enable the  basic authentication of gotty.
--  **SSL/TLS**：By default all traffic between the server and clients are NOT encrypted, we recommend you enable SSL/TLS option of gotty, or you can deploy Web Kubectl behind a proxy and enable SSL/TLS for proxy, please note that the proxy should support WebSocket protocol.
+-  **Authentication**：By default all resources can be accessed without any authentication, to restrict anonymous access, you can enable the  basic authentication of gotty, see [how to](https://github.com/yudai/gotty#options).
+-  **SSL/TLS**：By default all traffic between the server and clients are NOT encrypted, we recommend you enable SSL/TLS option of gotty, see [how to](https://github.com/yudai/gotty#options). Alternatively you can deploy Web Kubectl behind a proxy and enable SSL/TLS for proxy, please note that the proxy should support WebSocket protocol.
 
 # License
 
