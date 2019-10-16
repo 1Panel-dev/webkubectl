@@ -1,5 +1,6 @@
 # ![](https://raw.githubusercontent.com/webkubectl/gotty/master/resources/favicon.png) Web Kubectl - Run kubectl command in web browser
 
+![Powered By](https://img.shields.io/badge/Powered%20By-FIT2CLOUD-blueviolet)
 ![License](https://img.shields.io/badge/License-Apache%202.0-red)
 ![Dockerized](https://img.shields.io/badge/Dockerized-yes-brightgreen)
 ![Version](https://img.shields.io/badge/Version-Beta-yellow)
@@ -11,7 +12,7 @@
 # Advantage
 -  **Support multiple user and multiple Kubernetes clusters**：A deployment of Web Kubectl can be used for a team, all of the team members can use Web Kubectl simultaneously although they are connecting different Kubernetes clusters.
 -  **Isolation**：All of the online sessions are isolated, each session has its own namespace and storage which is invisible to the others.
--  **Support Kube config file and token**：You can provide Kube Config file or Token to connect Kubernetes cluster via Web Kubectl.
+-  **Support Kubernetes config file and token**：You can provide Kubernetes config file or token to connect Kubernetes cluster via Web Kubectl.
 -  **Easy to use and integrate**：You can simply use the index page for a quick start, or integrate with your application using api.
 
 # Architecture
@@ -25,7 +26,7 @@ When opens a new connection , a new Linux namespace will be created for the sess
 $ docker run --name="webkubectl" -p 8080:8080 -d --privileged webkubectl/webkubectl
 ```
 
-Advance env variables
+Advanced environment variables
 
 | ENV | Type | Default Value | Description|
 | :--- | :---  | :---| :---|
@@ -92,7 +93,7 @@ Response body <br>
 
 #### Open web terminal with token
 
-You can get a token from above API, then open below url in web browser
+You can get a token from above API, with which we can open web terminal in browser through below url.
 
 ```sh
 http://<webkubectl-address>:<port>/terminal/?token=<token fetched from api>
