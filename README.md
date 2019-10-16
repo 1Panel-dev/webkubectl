@@ -52,7 +52,7 @@ $ curl http://<webkubectl-address>:<port>/api/kube-token -X POST -d '{"name":"gk
 #response
 $ {"success":true,"token":"mkolj4hgbutfgy1thgp1","message":""}
 ```
-Request body parameters <br>
+Request Json <br>
 
 | key | Type | Description|
 | :--- | :--- | :---|
@@ -60,7 +60,7 @@ Request body parameters <br>
 | apiServer | string | API server address |
 | token | string | Kubernetes token |
 
-Response body <br>
+Response Json <br>
 
 | key | Type | Description|
 | :--- | :--- | :---|
@@ -75,14 +75,14 @@ $ curl http://<webkubectl-address>:<port>/api/kube-config -X POST -d '{"name":"k
 #response
 $ {"success":true,"token":"mkolj4hgbutfgy1thgp1","message":""}
 ```
-Request body parameters <br>
+Request Json <br>
 
 | key | Type | Description|
 | :--- | :--- | :---|
 | name | string | connection name |
 | kubeConfig | string | Kubernetes config file content base64 encoded |
 
-Response body <br>
+Response Json <br>
 
 | key | Type | Description|
 | :--- | :--- | :---|
