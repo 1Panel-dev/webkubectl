@@ -1,7 +1,7 @@
 # ![](https://raw.githubusercontent.com/webkubectl/gotty/master/resources/favicon.png) Web Kubectl - Run kubectl command in web browser
 
-![Powered By](https://img.shields.io/badge/Powered%20By-FIT2CLOUD-blueviolet)
 ![License](https://img.shields.io/badge/License-Apache%202.0-red)
+![Copyright](https://img.shields.io/badge/Copyright-FIT2CLOUD-blueviolet)
 ![Dockerized](https://img.shields.io/badge/Dockerized-yes-brightgreen)
 ![Version](https://img.shields.io/badge/Version-Beta-yellow)
 ![Total visitor](https://visitor-count-badge.herokuapp.com/total.svg?repo_id=webkubectl-webkubectl)
