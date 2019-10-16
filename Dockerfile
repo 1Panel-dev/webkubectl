@@ -33,6 +33,7 @@ RUN apt-get update && \
 
 ENV SESSION_STORAGE_SIZE=10M
 ENV WELCOME_BANNER="Welcome to Web Kubectl, try kubectl --help."
+ENV KUBECTL_INSECURE_SKIP_TLS_VERIFY=true
 
 COPY start-webkubectl.sh /
 RUN chmod +x /start-webkubectl.sh
