@@ -1,7 +1,8 @@
 #!/bin/bash
 set -e
 
-config=$1
+arg1=$1
+arg2=$1
 
 mkdir -p /nonexistent
 mount -t tmpfs tmpfs /nonexistent
@@ -9,7 +10,15 @@ cd /nonexistent
 
 mkdir -p .kube
 
-echo ${config} > .kube/config
+if [ -z "${arg2}" ]; then
+    echo $(printf "%s" $arg1| base64 -d) > .kube/config
+else
+    kubectl config set-credentials webkubectl-user --token=${arg2}
+    kubectl config set-cluster kubernetes --server=${arg1} --insecure-skip-tls-verify=true
+    kubectl config set-context kubernetes --cluster=kubernetes --user=webkubectl-user
+    kubectl config use-context kubernetes
+fi
+
 
 chmod 666 .kube/config
 

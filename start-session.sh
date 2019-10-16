@@ -1,14 +1,13 @@
 #!/bin/bash
 set -e
 
-config=$1
-#config="config content"
+arg=$1
 
-if [ -z "${config}" ]; then
-    echo No kube-config file provided
+if [ -z "${arg}" ]; then
+    echo No Args provided
     echo Terminal will exit.
     sleep 10
     exit 1
 fi
 
-unshare --fork --pid --mount-proc --mount /init-kubectl.sh ${config}
+unshare --fork --pid --mount-proc --mount /init-kubectl.sh ${arg}
