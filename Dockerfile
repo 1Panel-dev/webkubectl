@@ -28,7 +28,8 @@ RUN apt-get update && \
     chmod +x /usr/bin/kubectl && \
     chmod +x /usr/bin/gotty && \
     DEBIAN_FRONTEND=noninteractive apt-get autoremove -y && \
-    DEBIAN_FRONTEND=noninteractive apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+    DEBIAN_FRONTEND=noninteractive apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
+    chmod 755 /tmp
 
 ENV SESSION_STORAGE_SIZE=10M
 
