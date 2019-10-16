@@ -38,12 +38,12 @@ Open below url in web browser.
 ```sh
 http://<webkubectl-address>:<port>
 ```
-In this page you can manage kubernetes config files or tokens which are stored in local storage, then chose a session and click connect to use kubectl command in web terminal.
+In the opened page you can manage kubernetes config files or tokens which are stored in local storage, then choose a session and click connect to use kubectl command in web terminal.
 
-## integration with api
+## Integration with api
 
 # Security 
--  Token validation：Each token fetched from api will expires after 5 mins, and the token will be invalid immediately after it's used once.
+-  Token validation：Each token fetched from api expires after 5 mins, and the token will be invalid immediately after it's used once.
 -  Authentication：By default all resources can be accessed without any authentication, to restrict anonymous access, you can enable the  basic authentication of gotty.
 -  SSL/TLS：By default all traffic between the server and clients are NOT encrypted, we recommend you enable SSL/TLS option of gotty, or you can deploy Web Kubectl behind a proxy and enable SSL/TLS for proxy, please note that the proxy should support WebSocket protocol.
 
