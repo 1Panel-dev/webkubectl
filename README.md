@@ -92,7 +92,7 @@ Response Json <br>
 
 #### Open web terminal with token
 
-You can get a token from above API, with which we can open web terminal in browser.
+You can get a token from above API response, with which we can open web terminal in browser.
 
 ```sh
 http://<webkubectl-address>:<port>/terminal/?token=<token fetched from api>
