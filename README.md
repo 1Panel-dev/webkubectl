@@ -35,17 +35,36 @@ Advance env variables
 
 # Usage
 
-- ## Use index page
->Open below url in web browser.
+## Use index page
+Open below url in web browser.
 ```sh
 http://<webkubectl-address>:<port>
 ```
->In the opened page you can manage kubernetes config files or tokens which are stored in local storage, then choose a session and click connect to use kubectl command in web terminal.
+In the opened page you can manage kubernetes config files or tokens which are stored in local storage, then choose a session and click connect to use kubectl command in web terminal.
 
->![index](https://raw.githubusercontent.com/webkubectl/web-resources/master/index.png)
+![index](https://raw.githubusercontent.com/webkubectl/web-resources/master/index.png)
 
-- ## Use API
+## Use API
+####Get token by Kubernetes API server address and token
 
+```sh
+$ curl http://<webkubectl-address>:<port>/api/kube-token -X POST -d '{"name":"gks-hk-dev","apiServer":"https://k8s-cluster:6443","token":"token-content"}'
+#response
+$ {"success":true,"token":"mkolj4hgbutfgy1thgp1","message":""}
+```
+Request body parameters
+| key | Type | Description|
+| :--- | :--- | :---|
+| name | string | connection name |
+| apiServer | string | API server address |
+| token | string | Kubernetes token |
+
+Response body 
+| key | Type | Description|
+| :--- | :--- | :---|
+| success | bool | the request is proceeded successfully or not |
+| token | string | token used to open terminal |
+| message | string | error messages if success is false |
 
 
 # Security 
