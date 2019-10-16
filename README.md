@@ -1,16 +1,17 @@
 # ![](https://raw.githubusercontent.com/webkubectl/gotty/master/resources/favicon.png) Web Kubectl - Run kubectl command in web browser
 
-
 ![License](https://img.shields.io/badge/License-Apache%202.0-red)
 ![Dockerized](https://img.shields.io/badge/Dockerized-yes-brightgreen)
 ![Version](https://img.shields.io/badge/Version-Beta-yellow)
 ![Total visitor](https://visitor-count-badge.herokuapp.com/total.svg?repo_id=webkubectl-webkubectl)
 ![Visitors in today](https://visitor-count-badge.herokuapp.com/today.svg?repo_id=webkubectl-webkubectl)
 
+![terminal](https://raw.githubusercontent.com/webkubectl/web-resources/master/terminal.png)
+
 # Advantage
 -  **Support multiple user and multiple Kubernetes clusters**：A deployment of Web Kubectl can be used for a team, all of the team members can use Web Kubectl simultaneously although they are connecting different Kubernetes clusters.
 -  **Isolation**：All of the online sessions are isolated, each session has its own namespace and storage which is invisible to the others.
--  **Easy to use and integrate**：You can simply use the embedded page for a quick start, or integrate with your application using api.
+-  **Easy to use and integrate**：You can simply use the index page for a quick start, or integrate with your application using api.
 
 # Architecture
 Web Kubectl use [webkubectl/gotty](https://github.com/webkubectl/gotty) to run a JavaScript based terminal on web browsers.<br>
@@ -33,14 +34,16 @@ Advance env variables
 
 # Usage
 
-## Use embedded page
+## Use index page
 Open below url in web browser.
 ```sh
 http://<webkubectl-address>:<port>
 ```
 In the opened page you can manage kubernetes config files or tokens which are stored in local storage, then choose a session and click connect to use kubectl command in web terminal.
 
-## Integration with api
+![index](https://raw.githubusercontent.com/webkubectl/web-resources/master/index.png)
+
+## Use API
 
 # Security 
 -  **Token validation**：Each token fetched from api expires after 5 mins, and the token will be invalid immediately after it's used once.
