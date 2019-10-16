@@ -12,9 +12,12 @@ $ docker run --name="webkubectl" -p 8080:8080 -d --privileged webkubectl/webkube
 ```
 # Usage
 
-## User embedded page
+  ## Use embedded page
 Open this in web browser.
 ```sh
 http://<webkubectl-address>:<port>
 ```
-You can add/delete kubernetes config file or token, then chose a session and click connect to use kubectl command in web terminal.
+You can manage kubernetes config files or tokens which are stored in local storage, then chose a session and click connect to use kubectl command in web terminal.
+
+## integration with api
+
