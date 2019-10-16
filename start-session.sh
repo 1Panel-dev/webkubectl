@@ -1,18 +1,17 @@
 #!/bin/bash
 set -e
 
-arg=$1
 all=$*
 
-if [ -z "${arg}" ]; then
+if [ -z "${all}" ]; then
     echo No Args provided
     echo Terminal will exit.
     exit 1
 fi
 
 if [[ $all == ERROR:* ]]; then
-    echo ${all#*ERROR:}
+    echo ${all}
     exit 1
 fi
 
-unshare --fork --pid --mount-proc --mount /init-kubectl.sh ${arg}
+unshare --fork --pid --mount-proc --mount /init-kubectl.sh ${all}
