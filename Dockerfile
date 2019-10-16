@@ -32,7 +32,7 @@ RUN apt-get update && \
     chmod 755 /tmp
 
 ENV SESSION_STORAGE_SIZE=10M
-ENV WELCOME_BANNER=Welcome to Web Kubectl, try kubectl --help.
+ENV WELCOME_BANNER="Welcome to Web Kubectl, try kubectl --help."
 
 COPY start-webkubectl.sh /
 RUN chmod +x /start-webkubectl.sh
