@@ -1,7 +1,9 @@
 # ![](https://raw.githubusercontent.com/webkubectl/gotty/master/resources/favicon.png) Web Kubectl - Use kubectl command in web browser
 
 
-
+![License](https://img.shields.io/badge/License-Apache%202.0-red)
+![Dockerized](https://img.shields.io/badge/Dockerized-yes-brightgreen)
+![Version](https://img.shields.io/badge/Version-Beta-yellow)
 ![Total visitor](https://visitor-count-badge.herokuapp.com/total.svg?repo_id=webkubectl-webkubectl)
 ![Visitors in today](https://visitor-count-badge.herokuapp.com/today.svg?repo_id=webkubectl-webkubectl)
 
@@ -51,4 +53,4 @@ Copyright (c) 2014-2019 FIT2CLOUD 飞致云<br>
 
 [https://www.fit2cloud.com](https://www.fit2cloud.com)<br>
 
-KubeOperator is licensed under the Apache License, Version 2.0.
+Web Kubectl is licensed under the Apache License, Version 2.0.
