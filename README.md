@@ -8,7 +8,7 @@
 ![Visitors in today](https://visitor-count-badge.herokuapp.com/today.svg?repo_id=webkubectl-webkubectl)
 
 # Advantage
--  **Support multiple user and multiple sessions**：A deployment of Web Kubectl can be used for a team, all of the team members can use Web Kubectl simultaneously, although they have different sessions.
+-  **Support multiple user and multiple Kubernetes clusters**：A deployment of Web Kubectl can be used for a team, all of the team members can use Web Kubectl simultaneously although they are connecting different Kubernetes clusters.
 -  **Isolation**：All of the online sessions are isolated, each session has its own namespace and storage which is invisible to the others.
 -  **Easy to use and integrate**：You can simply use the embedded page for a quick start, or integrate with your application using api.
 
