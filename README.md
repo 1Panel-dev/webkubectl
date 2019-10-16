@@ -11,7 +11,7 @@
 -  Easy to use：It's easy to use Web Kubectl in two ways, embedded page and api.
 
 # Architecture
-Web Kubectl use [webkubectl/gotty](https://github.com/webkubectl/gotty) to run a JavaScript based terminal on web browsers.
+Web Kubectl use [webkubectl/gotty](https://github.com/webkubectl/gotty) to run a JavaScript based terminal on web browsers.<br>
 When opens a new connection , a new Linux namespace will be created for the session, this make sure all sessions are isolated, each session has its own namespace and storage, after the connection closed, the namespace and storage is deleted.
 
 
@@ -20,6 +20,15 @@ When opens a new connection , a new Linux namespace will be created for the sess
 ```sh
 $ docker run --name="webkubectl" -p 8080:8080 -d --privileged webkubectl/webkubectl
 ```
+
+Advance env variables
+
+| env | type | defaults | Description|
+| :--- | :---  | :---| :---|
+| SESSION_STORAGE_SIZE | string | 10M |  the storage limit size for single connection |
+| WELCOME_BANNER | string | Welcome to Web Kubectl, try kubectl --help. |   the welcome banner after web terminal opened |
+| KUBECTL_INSECURE_SKIP_TLS_VERIFY | bool | true | ignore certification errors for kubectl |
+
 # Usage
 
   ## Use embedded page
