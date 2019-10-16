@@ -8,9 +8,9 @@
 ![Visitors in today](https://visitor-count-badge.herokuapp.com/today.svg?repo_id=webkubectl-webkubectl)
 
 # Advantage
--  Support multiple user and multiple sessions：A deployment of Web Kubectl can be used for a team, all of the team members can use Web Kubectl simultaneously, although they have different sessions.
--  Isolation：All of the online sessions are isolated, each session has its own namespace and storage which is invisible to the others.
--  Easy to use：It's easy to use Web Kubectl in two ways, embedded page and api.
+-  **Support multiple user and multiple sessions**：A deployment of Web Kubectl can be used for a team, all of the team members can use Web Kubectl simultaneously, although they have different sessions.
+-  **Isolation**：All of the online sessions are isolated, each session has its own namespace and storage which is invisible to the others.
+-  **Easy to use**：It's easy to use Web Kubectl in two ways, embedded page and api.
 
 # Architecture
 Web Kubectl use [webkubectl/gotty](https://github.com/webkubectl/gotty) to run a JavaScript based terminal on web browsers.<br>
@@ -43,9 +43,9 @@ In the opened page you can manage kubernetes config files or tokens which are st
 ## Integration with api
 
 # Security 
--  Token validation：Each token fetched from api expires after 5 mins, and the token will be invalid immediately after it's used once.
--  Authentication：By default all resources can be accessed without any authentication, to restrict anonymous access, you can enable the  basic authentication of gotty.
--  SSL/TLS：By default all traffic between the server and clients are NOT encrypted, we recommend you enable SSL/TLS option of gotty, or you can deploy Web Kubectl behind a proxy and enable SSL/TLS for proxy, please note that the proxy should support WebSocket protocol.
+-  **Token validation**：Each token fetched from api expires after 5 mins, and the token will be invalid immediately after it's used once.
+-  **Authentication**：By default all resources can be accessed without any authentication, to restrict anonymous access, you can enable the  basic authentication of gotty.
+-  **SSL/TLS**：By default all traffic between the server and clients are NOT encrypted, we recommend you enable SSL/TLS option of gotty, or you can deploy Web Kubectl behind a proxy and enable SSL/TLS for proxy, please note that the proxy should support WebSocket protocol.
 
 # License
 
