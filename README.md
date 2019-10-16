@@ -67,7 +67,7 @@ Response body <br>
 | :--- | :--- | :---|
 | success | bool | the request is proceeded successfully or not |
 | token | string | token used to open terminal |
-| message | string | error messages if success is false |
+| message | string | error message if success is false |
 
 #### Get token by Kubernetes config file
 
@@ -89,7 +89,7 @@ Response body <br>
 | :--- | :--- | :---|
 | success | bool | the request is proceeded successfully or not |
 | token | string | token used to open terminal |
-| message | string | error messages if success is false |
+| message | string | error message if success is false |
 
 #### Open web terminal with token
 
