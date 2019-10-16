@@ -23,4 +23,8 @@ fi
 
 chmod 666 .kube/config
 
+if [ "${WELCOME_BANNER}" ]; then
+    echo ${WELCOME_BANNER}
+fi
+
 exec su -s /bin/bash nobody
