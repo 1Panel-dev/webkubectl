@@ -3,7 +3,6 @@ set -e
 
 arg=$1
 
-error=$5
 
 if [ -z "${arg}" ]; then
     echo No Args provided
@@ -11,8 +10,8 @@ if [ -z "${arg}" ]; then
     exit 1
 fi
 
-if [ -n "${error}" ]; then
-    echo ${error}
+if [[ $arg == ERROR:* ]]; then
+    echo ${arg#*ERROR:}
     exit 1
 fi
 
