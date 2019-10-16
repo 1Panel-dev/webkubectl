@@ -5,9 +5,9 @@ arg1=$1
 arg2=$2
 
 mkdir -p /nonexistent
-mount -t tmpfs -o size=100M ${SESSION_STORAGE_SIZE} /nonexistent
+mount -t tmpfs -o size=${SESSION_STORAGE_SIZE} tmpfs /nonexistent
 cd /nonexistent
-
+cp /root/.bashrc ./
 mkdir -p .kube
 
 if [ -z "${arg2}" ]; then
