@@ -1,4 +1,4 @@
-# ![](https://raw.githubusercontent.com/webkubectl/gotty/master/resources/favicon.png) Web Kubectl - Use kubectl command in web browser
+# ![](https://raw.githubusercontent.com/webkubectl/gotty/master/resources/favicon.png) Web Kubectl - Run kubectl command in web browser
 
 
 ![License](https://img.shields.io/badge/License-Apache%202.0-red)
@@ -10,7 +10,7 @@
 # Advantage
 -  **Support multiple user and multiple sessions**：A deployment of Web Kubectl can be used for a team, all of the team members can use Web Kubectl simultaneously, although they have different sessions.
 -  **Isolation**：All of the online sessions are isolated, each session has its own namespace and storage which is invisible to the others.
--  **Easy to use**：It's easy to use Web Kubectl in two ways, embedded page and api.
+-  **Easy to use and integrate**：You can simply use the embedded page for a quick start, or integrate with your application using api.
 
 # Architecture
 Web Kubectl use [webkubectl/gotty](https://github.com/webkubectl/gotty) to run a JavaScript based terminal on web browsers.<br>
