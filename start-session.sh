@@ -2,7 +2,7 @@
 set -e
 
 arg=$1
-
+all=$*
 
 if [ -z "${arg}" ]; then
     echo No Args provided
@@ -10,8 +10,8 @@ if [ -z "${arg}" ]; then
     exit 1
 fi
 
-if [[ $arg == ERROR:* ]]; then
-    echo ${arg#*ERROR:}
+if [[ $all == ERROR:* ]]; then
+    echo ${all#*ERROR:}
     exit 1
 fi
 
