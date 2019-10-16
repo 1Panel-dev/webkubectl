@@ -23,15 +23,15 @@ $ docker run --name="webkubectl" -p 8080:8080 -d --privileged webkubectl/webkube
 
 Advance env variables
 
-| env | type | defaults | Description|
+| ENV | Type | Default Value | Description|
 | :--- | :---  | :---| :---|
-| SESSION_STORAGE_SIZE | string | 10M |  the storage limit size for single connection |
-| WELCOME_BANNER | string | Welcome to Web Kubectl, try kubectl --help. |   the welcome banner after web terminal opened |
+| SESSION_STORAGE_SIZE | string | 10M |  the storage size limit for single connection |
 | KUBECTL_INSECURE_SKIP_TLS_VERIFY | bool | true | ignore certification errors for kubectl |
+| WELCOME_BANNER | string | Welcome to Web Kubectl, try kubectl --help. |   the welcome banner after web terminal opened |
 
 # Usage
 
-  ## Use embedded page
+## Use embedded page
 Open below url in web browser.
 ```sh
 http://<webkubectl-address>:<port>
@@ -40,6 +40,10 @@ In this page you can manage kubernetes config files or tokens which are stored i
 
 ## integration with api
 
+##Security 
+-  Token validation：Each token fetched from api will expires after 5 mins, and the token will be invalid immediately after it's used once.
+-  Authentication：By default all resources can be accessed without any authentication, to restrict anonymous access, you can enable the  basic authentication of gotty.
+-  SSL/TLS：By default all traffic between the server and clients are NOT encrypted, we recommend you enable SSL/TLS option of gotty, or you can deploy Web Kubectl behind a proxy and enable SSL/TLS for proxy, please note that the proxy should support WebSocket protocol.
 
 ## License
 
