@@ -30,7 +30,7 @@ Advanced environment variables
 | ENV | Type | Default Value | Description|
 | :--- | :---  | :---| :---|
 | SESSION_STORAGE_SIZE | string | 10M |  the storage size limit for single connection |
-| KUBECTL_INSECURE_SKIP_TLS_VERIFY | bool | true | ignore certification errors for kubectl |
+| KUBECTL_INSECURE_SKIP_TLS_VERIFY | bool | true | whether to skip tls verify |
 | WELCOME_BANNER | string | Welcome to Web Kubectl, try kubectl --help. |   the welcome banner after web terminal opened |
 
 # Usage
