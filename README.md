@@ -45,27 +45,58 @@ In the opened page you can manage kubernetes config files or tokens which are st
 ![index](https://raw.githubusercontent.com/webkubectl/web-resources/master/index.png)
 
 ## Use API
-####Get token by Kubernetes API server address and token
+#### Get token by Kubernetes API server address and token
 
 ```sh
 $ curl http://<webkubectl-address>:<port>/api/kube-token -X POST -d '{"name":"gks-hk-dev","apiServer":"https://k8s-cluster:6443","token":"token-content"}'
 #response
 $ {"success":true,"token":"mkolj4hgbutfgy1thgp1","message":""}
 ```
-Request body parameters
+Request body parameters <br>
+
 | key | Type | Description|
 | :--- | :--- | :---|
 | name | string | connection name |
 | apiServer | string | API server address |
 | token | string | Kubernetes token |
 
-Response body 
+Response body <br>
+
 | key | Type | Description|
 | :--- | :--- | :---|
 | success | bool | the request is proceeded successfully or not |
 | token | string | token used to open terminal |
 | message | string | error messages if success is false |
 
+#### Get token by Kubernetes config file
+
+```sh
+$ curl http://<webkubectl-address>:<port>/api/kube-token -X POST -d '{"name":"k8s-cluster-bj1","kubeConfig":"<Kubernetes config file content base64 encoded>"}'
+#response
+$ {"success":true,"token":"mkolj4hgbutfgy1thgp1","message":""}
+```
+Request body parameters <br>
+
+| key | Type | Description|
+| :--- | :--- | :---|
+| name | string | connection name |
+| kubeConfig | string | Kubernetes config file content base64 encoded |
+
+Response body <br>
+
+| key | Type | Description|
+| :--- | :--- | :---|
+| success | bool | the request is proceeded successfully or not |
+| token | string | token used to open terminal |
+| message | string | error messages if success is false |
+
+#### Open web terminal with token
+
+You can get a token from above API, then open below url in web browser
+
+```sh
+http://<webkubectl-address>:<port>/terminal/?token=<token fetched from api>
+```
 
 # Security 
 -  **Token validation**：Each token fetched from api expires after 5 mins, and the token will be invalid immediately after it's used once.
