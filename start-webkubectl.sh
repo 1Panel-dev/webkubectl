@@ -2,6 +2,7 @@
 
 echo KUBECTL_INSECURE_SKIP_TLS_VERIFY=${KUBECTL_INSECURE_SKIP_TLS_VERIFY}
 
+echo "export TERM=dumb" >> /root/.bashrc
 echo "source /usr/share/bash-completion/bash_completion" >> /root/.bashrc
 echo 'source <(kubectl completion bash)' >> /root/.bashrc
 
