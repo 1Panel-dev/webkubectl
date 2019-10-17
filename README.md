@@ -20,8 +20,8 @@ Web Kubectl enables you to manage kubernetes credentials and run kubectl command
 
 # Architecture
 Web Kubectl use [webkubectl/gotty](https://github.com/webkubectl/gotty) to run a JavaScript based terminal on web browsers.<br>
-When opens a new connection, a temporary Linux namespace will be created for the session, this make sure all sessions are isolated, each session has its own namespace and storage, meanwhile .kube/config file is generated for current session.<br>
-When connection terminated, the provisioned namespace and storage are deleted.
+When opens a new session, a temporary Linux namespace will be created for the session, this make sure all sessions are isolated, each session has its own namespace and storage, meanwhile .kube/config file is generated for current session.<br>
+When session terminated, the provisioned namespace and storage are deleted.
 
 # Installation
 
