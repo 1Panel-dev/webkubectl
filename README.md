@@ -8,7 +8,7 @@
 
 ![webkubectl](https://raw.githubusercontent.com/webkubectl/web-resources/master/webkubectl.gif)
 
-# Benifit
+# Benefit
 
 Web Kubectl enables you to manage kubernetes credentials and run kubectl command in web browser, so that you don't have to install kubectl on your local PC or some other servers, furthermore Web Kubectl can be used for a team.
 
