@@ -8,16 +8,20 @@
 
 ![webkubectl](https://raw.githubusercontent.com/webkubectl/web-resources/master/webkubectl.gif)
 
+# Benifit
+
+Web Kubectl enables you to manage kubernetes credentials and run kubectl command in web browser, so that you don't have to install kubectl on your local PC or some other servers, furthermore Web Kubectl can be used for a team.
+
 # Advantage
--  **Support multiple user and multiple Kubernetes clusters**：A deployment of Web Kubectl can be used for a team, all of the team members can use Web Kubectl simultaneously although they are connecting different Kubernetes clusters.
+-  **Support multiple user and multiple Kubernetes clusters**：A deployment of Web Kubectl can be used for a team, all of the team members can use Web Kubectl simultaneously although they are connecting different Kubernetes clusters or different privileges.
 -  **Session isolation**：All of the online sessions are isolated, each session has its own namespace and storage which is invisible to the others.
 -  **Support Kubernetes config file and token**：You can provide Kubernetes config file or token to connect Kubernetes cluster via Web Kubectl.
 -  **Easy to use and integrate**：You can simply use the index page for a quick start, or integrate with your application using api.
 
 # Architecture
 Web Kubectl use [webkubectl/gotty](https://github.com/webkubectl/gotty) to run a JavaScript based terminal on web browsers.<br>
-When opens a new connection, a new Linux namespace will be created for the session, this make sure all sessions are isolated, each session has its own namespace and storage, after the connection closed, the namespace and storage is deleted.
-
+When opens a new connection, a temporary Linux namespace will be created for the session, this make sure all sessions are isolated, each session has its own namespace and storage, meanwhile .kube/config file is generated for current session.<br>
+When connection terminated, the provisioned namespace and storage are deleted.
 
 # Installation
 
@@ -29,9 +33,9 @@ Advanced environment variables
 
 | ENV | Type | Default Value | Description|
 | :--- | :---  | :---| :---|
-| SESSION_STORAGE_SIZE | string | 10M |  the storage size limit for single connection |
+| SESSION_STORAGE_SIZE | string | 10M |  Storage size limit for single connection |
 | KUBECTL_INSECURE_SKIP_TLS_VERIFY | bool | true | whether to skip tls verify |
-| WELCOME_BANNER | string | Welcome to Web Kubectl, try kubectl --help. |   the welcome banner after web terminal opened |
+| WELCOME_BANNER | string | Welcome to Web Kubectl, try kubectl --help. |   Welcome banner after web terminal opened |
 
 # Usage
 
@@ -42,7 +46,7 @@ http://<webkubectl-address>:<port>
 ```
 In the opened page you can manage your own kubernetes config files or tokens which are stored in local storage, then choose a session and click connect to use kubectl command in web terminal.
 
-![index](https://raw.githubusercontent.com/webkubectl/web-resources/master/index.png)
+![index](https://raw.githubusercontent.com/webkubectl/web-resources/master/index.jpg)
 
 ![terminal](https://raw.githubusercontent.com/webkubectl/web-resources/master/terminal.jpg)
 
@@ -92,13 +96,12 @@ Response Json <br>
 | token | string | token used to open terminal |
 | message | string | error message if success is false |
 
-#### Open web terminal with token
-
-You can get a token from above API response, with which we can open web terminal in browser.
+#### Open web terminal with token fetched from API
 
 ```sh
 http://<webkubectl-address>:<port>/terminal/?token=<token fetched from api>
 ```
+
 # Security 
 -  **Token validation**：The token fetched from api will be invalid immediately after it's used once, and it expires after 5 minutes if not used. 
 -  **Authentication**：By default all resources can be accessed without any authentication, to restrict anonymous access, you can enable the  basic authentication of gotty, see [how to](https://github.com/yudai/gotty#options).
