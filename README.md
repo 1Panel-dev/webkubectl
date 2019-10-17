@@ -62,7 +62,7 @@ Request Json <br>
 
 | key | Type | Description|
 | :--- | :--- | :---|
-| name | string | connection name |
+| name | string | session name |
 | apiServer | string | API server address |
 | token | string | Kubernetes token |
 
@@ -85,7 +85,7 @@ Request Json <br>
 
 | key | Type | Description|
 | :--- | :--- | :---|
-| name | string | connection name |
+| name | string | session name |
 | kubeConfig | string | Kubernetes config file content base64 encoded |
 
 Response Json <br>
