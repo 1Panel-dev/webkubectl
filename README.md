@@ -6,7 +6,7 @@
 ![Total visitor](https://visitor-count-badge.herokuapp.com/total.svg?repo_id=webkubectl-webkubectl)
 ![Visitors in today](https://visitor-count-badge.herokuapp.com/today.svg?repo_id=webkubectl-webkubectl)
 
-![terminal](https://raw.githubusercontent.com/webkubectl/web-resources/master/terminal.jpg)
+![webkubectl](https://raw.githubusercontent.com/webkubectl/web-resources/master/webkubectl.gif)
 
 # Advantage
 -  **Support multiple user and multiple Kubernetes clusters**：A deployment of Web Kubectl can be used for a team, all of the team members can use Web Kubectl simultaneously although they are connecting different Kubernetes clusters.
@@ -43,6 +43,8 @@ http://<webkubectl-address>:<port>
 In the opened page you can manage your own kubernetes config files or tokens which are stored in local storage, then choose a session and click connect to use kubectl command in web terminal.
 
 ![index](https://raw.githubusercontent.com/webkubectl/web-resources/master/index.png)
+
+![terminal](https://raw.githubusercontent.com/webkubectl/web-resources/master/terminal.jpg)
 
 ## Use API
 #### Get token by Kubernetes API server address and token
