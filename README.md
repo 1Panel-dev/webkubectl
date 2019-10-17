@@ -6,7 +6,7 @@
 ![Total visitor](https://visitor-count-badge.herokuapp.com/total.svg?repo_id=webkubectl-webkubectl)
 ![Visitors in today](https://visitor-count-badge.herokuapp.com/today.svg?repo_id=webkubectl-webkubectl)
 
-![terminal](https://raw.githubusercontent.com/webkubectl/web-resources/master/terminal.png)
+![terminal](https://raw.githubusercontent.com/webkubectl/web-resources/master/terminal.jpg)
 
 # Advantage
 -  **Support multiple user and multiple Kubernetes clusters**：A deployment of Web Kubectl can be used for a team, all of the team members can use Web Kubectl simultaneously although they are connecting different Kubernetes clusters.
