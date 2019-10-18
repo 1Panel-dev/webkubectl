@@ -20,8 +20,7 @@ else
     echo `kubectl config use-context kubernetes` > /dev/null 2>&1
 fi
 
-
-chmod 666 .kube/config
+chown nobody:nogroup .kube/config
 
 if [ "${WELCOME_BANNER}" ]; then
     echo ${WELCOME_BANNER}
