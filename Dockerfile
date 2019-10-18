@@ -23,7 +23,7 @@ RUN rm -f /bin/sh && ln -s /bin/bash /bin/sh
 ENV KUBECTL_VERSION v1.16.1
 COPY --from=gotty-build /gotty /usr/bin/
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends curl ca-certificates jq iproute2 vim-tiny less bash-completion unzip sysstat acl net-tools lrzsz iputils-ping telnet dnsutils wget vim && \
+    apt-get install -y --no-install-recommends curl ca-certificates jq iproute2 less bash-completion unzip sysstat acl net-tools lrzsz iputils-ping telnet dnsutils wget vim && \
     curl -sLf https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/${ARCH}/kubectl > /usr/bin/kubectl && \
     chmod +x /usr/bin/kubectl && \
     chmod +x /usr/bin/gotty && \
