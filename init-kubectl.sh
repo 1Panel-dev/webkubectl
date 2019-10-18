@@ -20,7 +20,7 @@ else
     echo `kubectl config use-context kubernetes` > /dev/null 2>&1
 fi
 
-chown nobody:nogroup .kube/config
+chown -R nobody:nogroup .kube
 
 if [ "${WELCOME_BANNER}" ]; then
     echo ${WELCOME_BANNER}
