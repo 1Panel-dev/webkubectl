@@ -13,7 +13,7 @@
 Web Kubectl enables you to manage kubernetes credentials and run kubectl command in web browser, so that you don't have to install kubectl on your local PC or some other servers, furthermore Web Kubectl can be used for a team.
 
 # Advantage
--  **Support multiple user and multiple Kubernetes clusters**：A deployment of Web Kubectl can be used for a team, all of the team members can use Web Kubectl simultaneously although they are connecting different Kubernetes clusters or different privileges.
+-  **Support multiple user and multiple Kubernetes clusters**：One deployment of Web Kubectl can be used for a team, all of the team members can use Web Kubectl simultaneously although they are connecting different Kubernetes clusters or different privileges.
 -  **Session isolation**：All of the online sessions are isolated, each session has its own namespace and storage which is invisible to the others.
 -  **Support Kubernetes config file and token**：You can provide Kubernetes config file or token to connect Kubernetes cluster via Web Kubectl.
 -  **Easy to use and integrate**：You can simply use the index page for a quick start, or integrate with your application using api.
@@ -106,6 +106,9 @@ http://<webkubectl-address>:<port>/terminal/?token=<token fetched from api>
 -  **Token validation**：The token fetched from api will be invalid immediately after it's used once, and it expires after 5 minutes if not used. 
 -  **Authentication**：By default all resources can be accessed without any authentication, to restrict anonymous access, you can enable the  basic authentication of gotty, see [how to](https://github.com/yudai/gotty#options).
 -  **SSL/TLS**：By default all traffic between the server and clients are NOT encrypted, we recommend you enable SSL/TLS option of gotty, see [how to](https://github.com/yudai/gotty#options). Alternatively you can deploy Web Kubectl behind a proxy and enable SSL/TLS for the proxy, please note that the proxy should support WebSocket protocol.
+
+# Dependencies 
+-  [webkubectl/gotty](https://github.com/webkubectl/gotty)
 
 # Alternatives
 -  [https://github.com/fanux/fist/tree/master/terminal](https://github.com/fanux/fist/tree/master/terminal): Another web terminal to run kubectl.
