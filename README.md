@@ -2,7 +2,7 @@
 
 ![License](https://img.shields.io/badge/License-Apache%202.0-red)
 ![Dockerized](https://img.shields.io/badge/Dockerized-yes-brightgreen)
-![Version](https://img.shields.io/badge/Version-v1.0-yellow)
+![Version](https://img.shields.io/badge/Version-v1.3-yellow)
 ![Total visitor](https://visitor-count-badge.herokuapp.com/total.svg?repo_id=webkubectl-webkubectl)
 ![Visitors in today](https://visitor-count-badge.herokuapp.com/today.svg?repo_id=webkubectl-webkubectl)
 
