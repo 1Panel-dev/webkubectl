@@ -11,4 +11,4 @@ if [ ${KUBECTL_INSECURE_SKIP_TLS_VERIFY} == "true" ];then
 fi
 
 
-gotty --port 8080 --permit-write --permit-arguments /start-session.sh
+gotty --port 8080 --permit-write --permit-arguments ${GOTTY_OPTIONS} /start-session.sh
