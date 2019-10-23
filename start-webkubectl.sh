@@ -1,6 +1,7 @@
 #!/bin/bash
 
-echo KUBECTL_INSECURE_SKIP_TLS_VERIFY=${KUBECTL_INSECURE_SKIP_TLS_VERIFY}
+echo "Environment variables:"
+env
 
 echo "export TERM=xterm" >> /root/.bashrc
 echo "source /usr/share/bash-completion/bash_completion" >> /root/.bashrc
