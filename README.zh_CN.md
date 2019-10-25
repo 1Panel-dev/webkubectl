@@ -99,14 +99,14 @@ $ {"success":true,"token":"mkolj4hgbutfgy1thgp1","message":""}
 | token | string | 打开终端时使用的Token |
 | message | string | 错误信息 |
 
-#### 使用终端Token
+#### 使用API响应中的Token打开终端
 
 ```sh
-http://<webkubectl-address>:<port>/terminal/?token=<调用API获取的终端Token>
+http://<webkubectl-address>:<port>/terminal/?token=<API响应中的Token>
 ```
 
 # 安全 
--  **终端Token验证**：从API提取的终端Token使用一次后将立即失效，如果一直不使用，则在5分钟后过期。
+-  **终端Token验证**：从API响应中获取的终端Token使用一次后将立即失效，如果一直不使用，则在5分钟后过期。
 -  **Authentication**：默认情况下，无需进行任何身份验证即可访问所有资源，若要限制匿名访问，可以启用getty的基本身份验证，请参见[操作方法](https://github.com/yudai/gotty#options)。
 -  **SSL/TLS**：默认情况下，服务器与客户端之间的所有流量均未加密，我们建议您启用getty的SSL / TLS选项，请参见[操作方法](https://github.com/yudai/gotty#options)。或者，您可以在代理后面部署Web Kubectl并为该代理启用SSL / TLS，请注意，您的代理需要支持WebSocket协议。
 
