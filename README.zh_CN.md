@@ -110,10 +110,6 @@ http://<webkubectl-address>:<port>/terminal/?token=<调用API获取的终端Toke
 -  **Authentication**：默认情况下，无需进行任何身份验证即可访问所有资源，若要限制匿名访问，可以启用getty的基本身份验证，请参见[操作方法](https://github.com/yudai/gotty#options)。
 -  **SSL/TLS**：默认情况下，服务器与客户端之间的所有流量均未加密，我们建议您启用getty的SSL / TLS选项，请参见[操作方法](https://github.com/yudai/gotty#options)。或者，您可以在代理后面部署Web Kubectl并为该代理启用SSL / TLS，请注意，您的代理需要支持WebSocket协议。
 
-# Alternatives
--  [https://github.com/fanux/fist/tree/master/terminal](https://github.com/fanux/fist/tree/master/terminal): 另一个可在Web终端运行kubectl的项目。
--  [https://github.com/rancher](https://github.com/rancher): 在Rancher的集群视图中，可以启动基于Web的kubectl，但是我们没有找到源代码。 
-
 # 许可
 
 Copyright (c) 2014-2019 FIT2CLOUD 飞致云<br>
@@ -121,6 +117,11 @@ Copyright (c) 2014-2019 FIT2CLOUD 飞致云<br>
 [https://www.fit2cloud.com](https://www.fit2cloud.com)<br>
 
 Web Kubectl is licensed under the Apache License, Version 2.0.
+
+___
+# 其他类似的项目
+-  [https://github.com/fanux/fist/tree/master/terminal](https://github.com/fanux/fist/tree/master/terminal): 另一个可在Web终端运行kubectl的项目。
+-  [https://github.com/rancher](https://github.com/rancher): 在Rancher的集群视图中，可以启动基于Web的kubectl，但是我们没有找到源代码。 
 
 # 广告
 

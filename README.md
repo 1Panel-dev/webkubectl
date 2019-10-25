@@ -112,10 +112,6 @@ http://<webkubectl-address>:<port>/terminal/?token=<token fetched from api>
 # Dependencies 
 -  [webkubectl/gotty](https://github.com/webkubectl/gotty)
 
-# Alternatives
--  [https://github.com/fanux/fist/tree/master/terminal](https://github.com/fanux/fist/tree/master/terminal): Another web terminal to run kubectl.
--  [https://github.com/rancher](https://github.com/rancher): In the cluster view of Rancher, a web based kubectl can be launched, but we didn't find the source code. 
-
 # License
 
 Copyright (c) 2014-2019 FIT2CLOUD 飞致云<br>
@@ -123,6 +119,11 @@ Copyright (c) 2014-2019 FIT2CLOUD 飞致云<br>
 [https://www.fit2cloud.com](https://www.fit2cloud.com)<br>
 
 Web Kubectl is licensed under the Apache License, Version 2.0.
+
+---
+# Alternatives
+-  [https://github.com/fanux/fist/tree/master/terminal](https://github.com/fanux/fist/tree/master/terminal): Another web terminal to run kubectl.
+-  [https://github.com/rancher](https://github.com/rancher): In the cluster view of Rancher, a web based kubectl can be launched, but we didn't find the source code. 
 
 # Advertisement
 
