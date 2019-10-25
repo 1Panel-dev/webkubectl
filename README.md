@@ -1,4 +1,4 @@
-<u>[中文 README.md](https://github.com/webkubectl/webkubectl/blob/master/README.zh_CN.md)</u>
+__[中文 README.md](https://github.com/webkubectl/webkubectl/blob/master/README.zh_CN.md)__
 
 # ![](https://raw.githubusercontent.com/webkubectl/gotty/master/resources/favicon.png) Web Kubectl - Run kubectl command in web browser
 
