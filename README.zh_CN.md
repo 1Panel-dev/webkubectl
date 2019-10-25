@@ -1,4 +1,4 @@
-[英文 README.md](https://github.com/webkubectl/webkubectl/blob/master/README.md)
+<u>[英文 README.md](https://github.com/webkubectl/webkubectl/blob/master/README.md)</u>
 
 # ![](https://raw.githubusercontent.com/webkubectl/gotty/master/resources/favicon.png) Web Kubectl - 在Web浏览器中运行kubectl命令
 
@@ -124,4 +124,8 @@ Web Kubectl is licensed under the Apache License, Version 2.0.
 
 # 广告
 
-## [KubeOperator](https://kubeoperator.io/): KubeOperator 是一个开源项目，在离线网络环境下，通过可视化 Web UI 在 VMware、Openstack 或者物理机上部署和管理生产级别的 Kubernetes 集群。
+### [KubeOperator](https://kubeoperator.io/)
+
+KubeOperator 是一个开源项目，在离线网络环境下，通过可视化 Web UI 在 VMware、Openstack 或者物理机上部署和管理生产级别的 Kubernetes 集群。
+
+[https://kubeoperator.io](https://kubeoperator.io)
