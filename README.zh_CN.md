@@ -119,7 +119,7 @@ Copyright (c) 2014-2019 FIT2CLOUD 飞致云<br>
 Web Kubectl is licensed under the Apache License, Version 2.0.
 
 ___
-# 其他类似的项目
+# 类似项目
 -  [https://github.com/fanux/fist/tree/master/terminal](https://github.com/fanux/fist/tree/master/terminal): 另一个可在Web终端运行kubectl的项目。
 -  [https://github.com/rancher](https://github.com/rancher): 在Rancher的集群视图中，可以启动基于Web的kubectl，但是我们没有找到源代码。 
 
