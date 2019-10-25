@@ -128,6 +128,6 @@ Web Kubectl is licensed under the Apache License, Version 2.0.
 # Advertisement
 
 > ### [KubeOperator](https://kubeoperator.io/)
-> KubeOperator is an open source project, a web based application enable you to deploy and manage production ready Kubernetes clusters on VMware, Openstack, virtual machine and physical machine without internet connectivity.<br>
+> KubeOperator is an open source project, a web based application enable you to deploy and manage production ready Kubernetes clusters on VMware, Openstack, virtual machines and physical machines in LAN network without internet connectivity.<br>
 > [https://kubeoperator.io](https://kubeoperator.io)<br>
 > [https://github.com/kubeoperator/kubeoperator](https://github.com/kubeoperator/kubeoperator)
