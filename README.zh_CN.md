@@ -15,14 +15,14 @@ Web Kubectl可以管理您本地的kubernetes凭据，并在Web浏览器中运�
 
 # 优势
 -  **支持多用户和多个Kubernetes集群**：一个Web Kubectl部署可用于一个团队，尽管团队各个成员都在同时连接不同的Kubernetes集群、使用不同的Kubernetes权限。
--  **会话隔离**：所有的在线会话都是隔离的，每个会话都有自己的名称空间和存储空间，对其他存储空间不可见。
+-  **会话隔离**：所有的在线会话都是隔离的，每个会话都有自己的命名空间和存储空间，对其他存储空间不可见。
 -  **支持Kubernetes config文件和token**：您可以提供Kubernetes config文件或token以通过Web Kubectl连接Kubernetes集群。
 -  **易于使用和集成**：使用Web Kubectl首页可以快速入门，或者使用API与您的应用集成。
 
 # 架构
 Web Kubectl 使用[webkubectl/gotty](https://github.com/webkubectl/gotty)在Web浏览器中运行基于JavaScript的Shell终端。<br>
-当打开一个新会话时，将为该会话创建一个临时Linux名称空间，以确保所有会话都是隔离的，每个会话都有自己的名称空间和存储，同时为当前会话生成.kube / config文件。 <br>
-会话结束后，临时名称空间和存储将被删除。
+当打开一个新会话时，将为该会话创建一个临时Linux命名空间，以确保所有会话都是隔离的，每个会话都有自己的命名空间和存储，同时为当前会话生成.kube/config文件。 <br>
+会话结束后，临时命名空间和存储将被删除。
 
 
 # 安装
