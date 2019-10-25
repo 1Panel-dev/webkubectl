@@ -125,6 +125,6 @@ Web Kubectl is licensed under the Apache License, Version 2.0.
 # 广告
 
 > ### [KubeOperator](https://kubeoperator.io/)
-> KubeOperator 是一个开源项目，在离线网络环境下，通过可视化 Web UI 在 VMware、Openstack 或者物理机上部署和管理生产级别的 Kubernetes 集群。
-> [https://kubeoperator.io](https://kubeoperator.io)
+> KubeOperator 是一个开源项目，在离线网络环境下，通过可视化 Web UI 在 VMware、Openstack 或者物理机上部署和管理生产级别的 Kubernetes 集群。<br>
+> [https://kubeoperator.io](https://kubeoperator.io)<br>
 > [https://github.com/kubeoperator/kubeoperator](https://github.com/kubeoperator/kubeoperator)
