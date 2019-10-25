@@ -1,4 +1,4 @@
-__[英文 README.md](https://github.com/webkubectl/webkubectl/blob/master/README.md)__
+[英文 README.md](https://github.com/webkubectl/webkubectl/blob/master/README.md)
 
 # ![](https://raw.githubusercontent.com/webkubectl/gotty/master/resources/favicon.png) Web Kubectl - 在Web浏览器中运行kubectl命令
 
