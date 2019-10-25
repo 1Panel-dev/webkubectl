@@ -37,7 +37,7 @@ $ docker run --name="webkubectl" -p 8080:8080 -d --privileged webkubectl/webkube
 | :--- | :---  | :---| :---|
 | SESSION_STORAGE_SIZE | string | 10M |  单会话的存储大小限制 |
 | KUBECTL_INSECURE_SKIP_TLS_VERIFY | bool | true | kubectl命令是否跳过tls验证 |
-| GOTTY_OPTIONS | string | --port 8080 --permit-write --permit-arguments | [查看](https://github.com/webkubectl/gotty/blob/master/GOTTY_USAGE.md#options) Gotty Options |
+| GOTTY_OPTIONS | string | --port 8080 --permit-write --permit-arguments | 查看 [Gotty Options](https://github.com/webkubectl/gotty/blob/master/GOTTY_USAGE.md#options) |
 | WELCOME_BANNER | string | Welcome to Web Kubectl, try kubectl --help. |   Web终端打开后的欢迎横幅 |
 
 # 使用
