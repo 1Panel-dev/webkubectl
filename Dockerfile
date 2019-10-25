@@ -29,17 +29,17 @@ RUN apt-get update && \
     chmod +x /usr/bin/gotty && \
     DEBIAN_FRONTEND=noninteractive apt-get autoremove -y && \
     DEBIAN_FRONTEND=noninteractive apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
-    chmod 755 /tmp
+    chmod 755 /tmp && mkdir -p /opt/webkubectl
+
+COPY start-webkubectl.sh /opt/webkubectl
+COPY start-session.sh /opt/webkubectl
+COPY init-kubectl.sh /opt/webkubectl
+RUN chmod -R 700 /opt/webkubectl
+
 
 ENV SESSION_STORAGE_SIZE=10M
 ENV WELCOME_BANNER="Welcome to Web Kubectl, try kubectl --help."
 ENV KUBECTL_INSECURE_SKIP_TLS_VERIFY=true
 ENV GOTTY_OPTIONS="--port 8080 --permit-write --permit-arguments"
 
-COPY start-webkubectl.sh /
-RUN chmod +x /start-webkubectl.sh
-COPY start-session.sh /
-RUN chmod +x /start-session.sh
-COPY init-kubectl.sh /
-RUN chmod +x /init-kubectl.sh
-CMD ["sh","/start-webkubectl.sh"]
+CMD ["sh","/opt/webkubectl/start-webkubectl.sh"]

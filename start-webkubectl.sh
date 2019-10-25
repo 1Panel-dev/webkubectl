@@ -12,4 +12,4 @@ if [ ${KUBECTL_INSECURE_SKIP_TLS_VERIFY} == "true" ];then
 fi
 
 
-gotty ${GOTTY_OPTIONS} /start-session.sh
+gotty ${GOTTY_OPTIONS} /opt/webkubectl/start-session.sh
