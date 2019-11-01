@@ -16,7 +16,7 @@ Web Kubectl可以管理您本地的kubernetes凭据，并在Web浏览器中运�
 # 优势
 -  **支持多用户和多个Kubernetes集群**：一个Web Kubectl部署可用于一个团队，尽管团队各个成员都在同时连接不同的Kubernetes集群、使用不同的Kubernetes权限。
 -  **会话隔离**：所有的在线会话都是隔离的，每个会话都有自己的命名空间和存储空间，对其他存储空间不可见。
--  **支持Kubernetes config文件和token**：您可以提供Kubernetes config文件或token以通过Web Kubectl连接Kubernetes集群。
+-  **支持kubeconfig文件和bearer token**：您可以提供kubeconfig文件或bearer token以通过Web Kubectl连接Kubernetes集群。
 -  **易于使用和集成**：使用Web Kubectl首页可以快速入门，或者使用API与您的应用集成。
 
 # 架构
@@ -47,14 +47,14 @@ $ docker run --name="webkubectl" -p 8080:8080 -d --privileged webkubectl/webkube
 ```sh
 http://<webkubectl-address>:<port>
 ```
-在打开的页面中，您可以管理您自己的kubernetes config文件或token凭据，这些凭据存储在您本地浏览器的Local Storage中。然后选择一个会话，单击“连接”在弹出的Web终端中使用kubectl命令。
+在打开的页面中，您可以管理您自己的kubeconfig文件或bearer token凭据，这些凭据存储在您本地浏览器的Local Storage中。然后选择一个会话，单击“连接”在弹出的Web终端中使用kubectl命令。
 
 ![index](https://raw.githubusercontent.com/webkubectl/web-resources/master/index.jpg)
 
 ![terminal](https://raw.githubusercontent.com/webkubectl/web-resources/master/terminal.jpg)
 
 ## 使用 API
-#### 通过Kubernetes API Server地址和Token获取终端Token
+#### 通过Kubernetes API Server地址和bearer token获取终端Token
 
 ```sh
 $ curl http://<webkubectl-address>:<port>/api/kube-token -X POST -d '{"name":"gks-hk-dev","apiServer":"https://k8s-cluster:6443","token":"token-content"}'
@@ -67,7 +67,7 @@ $ {"success":true,"token":"mkolj4hgbutfgy1thgp1","message":""}
 | :--- | :--- | :---|
 | name | string | 会话名称 |
 | apiServer | string | Kubernetes API Server地址 |
-| token | string | Kubernetes Token |
+| token | string | Kubernetes Bearer Token |
 
 响应结果 <br>
 
@@ -77,7 +77,7 @@ $ {"success":true,"token":"mkolj4hgbutfgy1thgp1","message":""}
 | token | string | 打开终端时使用的Token |
 | message | string | 错误信息 |
 
-#### 通过Kubernetes config文件获取终端Token
+#### 通过kubeconfig文件获取终端Token
 
 ```sh
 $ curl http://<webkubectl-address>:<port>/api/kube-config -X POST -d '{"name":"k8s-cluster-bj1","kubeConfig":"<Kubernetes config file content base64 encoded>"}'
@@ -89,7 +89,7 @@ $ {"success":true,"token":"mkolj4hgbutfgy1thgp1","message":""}
 | 参数名 | 参数类型 | 参数描述|
 | :--- | :--- | :---|
 | name | string | 会话名称 |
-| kubeConfig | string | Base64加密后的Kubernetes config文件内容 |
+| kubeConfig | string | Base64编码后的kubeconfig文件内容 |
 
 响应结果 <br>
 

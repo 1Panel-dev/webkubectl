@@ -16,7 +16,7 @@ Web Kubectl enables you to manage kubernetes credentials and run kubectl command
 # Advantage
 -  **Support multiple user and multiple Kubernetes clusters**：One deployment of Web Kubectl can be used for a team, all of the team members can use Web Kubectl simultaneously although they are connecting different Kubernetes clusters or different privileges.
 -  **Session isolation**：All of the online sessions are isolated, each session has its own namespace and storage which is invisible to the others.
--  **Support Kubernetes config file and token**：You can provide Kubernetes config file or token to connect Kubernetes cluster via Web Kubectl.
+-  **Support kubeconfig file and bearer token**：You can provide kubeconfig file or bearer token to connect Kubernetes cluster via Web Kubectl.
 -  **Easy to use and integrate**：You can simply use the index page for a quick start, or integrate with your application using api.
 
 # Architecture
@@ -46,14 +46,14 @@ Open below url in web browser.
 ```sh
 http://<webkubectl-address>:<port>
 ```
-In the opened page you can manage your own kubernetes config files or tokens which are stored in local storage, then choose a session and click connect to use kubectl command in web terminal.
+In the opened page you can manage your own kubeconfig files or bearer tokens which are stored in local storage, then choose a session and click connect to use kubectl command in web terminal.
 
 ![index](https://raw.githubusercontent.com/webkubectl/web-resources/master/index.jpg)
 
 ![terminal](https://raw.githubusercontent.com/webkubectl/web-resources/master/terminal.jpg)
 
 ## Use API
-#### Get token by Kubernetes API server address and token
+#### Get token by Kubernetes API server address and bearer token
 
 ```sh
 $ curl http://<webkubectl-address>:<port>/api/kube-token -X POST -d '{"name":"gks-hk-dev","apiServer":"https://k8s-cluster:6443","token":"token-content"}'
@@ -66,7 +66,7 @@ Request Json <br>
 | :--- | :--- | :---|
 | name | string | session name |
 | apiServer | string | API server address |
-| token | string | Kubernetes token |
+| token | string | Kubernetes bearer token |
 
 Response Json <br>
 
@@ -76,10 +76,10 @@ Response Json <br>
 | token | string | token used to open terminal |
 | message | string | error message if success is false |
 
-#### Get token by Kubernetes config file
+#### Get token by kubeconfig file
 
 ```sh
-$ curl http://<webkubectl-address>:<port>/api/kube-config -X POST -d '{"name":"k8s-cluster-bj1","kubeConfig":"<Kubernetes config file content base64 encoded>"}'
+$ curl http://<webkubectl-address>:<port>/api/kube-config -X POST -d '{"name":"k8s-cluster-bj1","kubeConfig":"<kubeconfig file content base64 encoded>"}'
 #response
 $ {"success":true,"token":"mkolj4hgbutfgy1thgp1","message":""}
 ```
@@ -88,7 +88,7 @@ Request Json <br>
 | key | Type | Description|
 | :--- | :--- | :---|
 | name | string | session name |
-| kubeConfig | string | Kubernetes config file content base64 encoded |
+| kubeConfig | string | kubeconfig file content base64 encoded |
 
 Response Json <br>
 
