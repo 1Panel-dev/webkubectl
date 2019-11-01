@@ -16,8 +16,22 @@ Web Kubectl enables you to manage kubernetes credentials and run kubectl command
 # Advantage
 -  **Support multiple user and multiple Kubernetes clusters**：One deployment of Web Kubectl can be used for a team, all of the team members can use Web Kubectl simultaneously although they are connecting different Kubernetes clusters or different privileges.
 -  **Session isolation**：All of the online sessions are isolated, each session has its own namespace and storage which is invisible to the others.
--  **Support kubeconfig file and bearer token**：You can provide kubeconfig file or bearer token to connect Kubernetes cluster via Web Kubectl.
+-  **Support kubeconfig file and bearer token**：You can provide kubeconfig file or bearer token to connect Kubernetes cluster through Web Kubectl.
 -  **Easy to use and integrate**：You can simply use the index page for a quick start, or integrate with your application using api.
+-  **Manage Kubernetes clusters in VPC**：Through Web Kubectl you can manage the Kubernetes clusters in VPC which is unreachable from you laptop.
+```sh
+_______________________________________________________________________
+|   Local Network     |          DMZ           |      VPC/Datacenter  |
+|                     |                        |                      |
+|                     |    _______________     |   ----------------   |
+|   ---------------   |    |             |  /~~~~~>| Kubernetes A |   |
+|   | Your Laptop |~~~~~~~>| Web Kubectl | /   |   ----------------   |
+|   ---------------   |    |             | \   |                      |
+|                     |    ---------------  \  |   ----------------   |
+|                     |                      ~~~~~>| Kubernetes B |   |
+|                     |                        |   ----------------   |
+-----------------------------------------------------------------------
+```
 
 # Architecture
 Web Kubectl use [webkubectl/gotty](https://github.com/webkubectl/gotty) to run a JavaScript based terminal on web browsers.<br>
