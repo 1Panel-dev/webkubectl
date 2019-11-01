@@ -4,7 +4,8 @@
 
 ![License](https://img.shields.io/badge/License-Apache%202.0-red)
 ![Dockerized](https://img.shields.io/badge/Dockerized-yes-brightgreen)
-![Version](https://img.shields.io/badge/Version-v1.3-yellow)
+![Version](https://img.shields.io/badge/Version-v1.4-yellow)
+[![Docker Pulls](https://img.shields.io/docker/pulls/webkubectl/webkubectl.svg)](https://hub.docker.com/r/webkubectl/webkubectl)
 ![HitCount](http://hits.dwyl.io/webkubectl/webkubectl.svg)
 
 ![webkubectl](https://raw.githubusercontent.com/webkubectl/web-resources/master/webkubectl.gif)
@@ -28,7 +29,7 @@ _______________________________________________________________________
 |   | Your Laptop |~~~~~~~>| Web Kubectl | /   |   ----------------   |
 |   ---------------   |    |             | \   |                      |
 |                     |    ---------------  \  |   ----------------   |
-|                     |                      ~~~~~>| Kubernetes B |   |
+|                     |                      \~~~~>| Kubernetes B |   |
 |                     |                        |   ----------------   |
 -----------------------------------------------------------------------
 ```
