@@ -24,10 +24,9 @@ ENV KUBECTL_VERSION v1.16.2
 ENV KUBEBOX_VERSION v0.6.1
 COPY --from=gotty-build /gotty /usr/bin/
 RUN apt-get update && \
-    apt-get install -y --no-install-recommends curl ca-certificates jq iproute2 less bash-completion unzip sysstat acl net-tools lrzsz iputils-ping telnet dnsutils wget vim && \
+    apt-get install -y --no-install-recommends curl ca-certificates jq iproute2 less bash-completion unzip sysstat acl net-tools lrzsz iputils-ping telnet dnsutils wget vim python-pip && \
     curl -sLf https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/${ARCH}/kubectl > /usr/bin/kubectl && chmod +x /usr/bin/kubectl && \
     curl -sLf https://github.com/astefanutti/kubebox/releases/download/${KUBEBOX_VERSION}/kubebox-linux > /usr/bin/kubebox && chmod +x /usr/bin/kubebox && \
-    apt-get install python-pip && pip install kube-shell && \
     chmod +x /usr/bin/gotty && \
     DEBIAN_FRONTEND=noninteractive apt-get autoremove -y && \
     DEBIAN_FRONTEND=noninteractive apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
