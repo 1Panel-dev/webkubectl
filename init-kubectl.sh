@@ -26,4 +26,6 @@ if [ "${WELCOME_BANNER}" ]; then
     echo ${WELCOME_BANNER}
 fi
 
+export TMPDIR=/nonexistent
+
 exec su -s /bin/bash nobody
