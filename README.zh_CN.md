@@ -125,12 +125,14 @@ http://<webkubectl-address>:<port>/terminal/?token=<API响应中的Token>
 -  **Authentication**：默认情况下，无需进行任何身份验证即可访问所有资源，若要限制匿名访问，可以启用gotty的基本身份验证，请参见[操作方法](https://github.com/webkubectl/gotty/blob/master/GOTTY_USAGE.md#options)。
 -  **SSL/TLS**：默认情况下，服务器与客户端之间的所有流量均未加密，我们建议您启用gotty的SSL / TLS选项，请参见[操作方法](https://github.com/webkubectl/gotty/blob/master/GOTTY_USAGE.md#options)。或者，您可以在代理后面部署Web Kubectl并为该代理启用SSL / TLS，请注意，您的代理需要支持WebSocket协议。
 
-# 内置的[kubectl插件](https://github.com/topics/kubectl-plugins)
--  [ahmetb/kubectx](https://github.com/ahmetb/kubectx)
+# 扩展
+-  [kubectl插件](https://github.com/topics/kubectl-plugins): [ahmetb/kubectx](https://github.com/ahmetb/kubectx)
+-  [ahmetb/kubectl-aliases](https://github.com/ahmetb/kubectl-aliases)
 
 # 依赖 
 -  [webkubectl/gotty](https://github.com/webkubectl/gotty)
 -  [ahmetb/kubectx](https://github.com/ahmetb/kubectx)
+-  [ahmetb/kubectl-aliases](https://github.com/ahmetb/kubectl-aliases)
 -  [junegunn/fzf](https://github.com/junegunn/fzf)
 
 # 许可

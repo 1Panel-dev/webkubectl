@@ -124,12 +124,14 @@ http://<webkubectl-address>:<port>/terminal/?token=<token fetched from api>
 -  **Authentication**：By default all resources can be accessed without any authentication, to restrict anonymous access, you can enable the  basic authentication of gotty, see [how to](https://github.com/webkubectl/gotty/blob/master/GOTTY_USAGE.md#options).
 -  **SSL/TLS**：By default all traffic between the server and clients are NOT encrypted, we recommend you enable SSL/TLS option of gotty, see [how to](https://github.com/webkubectl/gotty/blob/master/GOTTY_USAGE.md#options). Alternatively you can deploy Web Kubectl behind a proxy and enable SSL/TLS for the proxy, please note that the proxy should support WebSocket protocol.
 
-# Build-in [kubectl-plugins](https://github.com/topics/kubectl-plugins)
--  [ahmetb/kubectx](https://github.com/ahmetb/kubectx)
+# Extensions
+-  [kubectl-plugins](https://github.com/topics/kubectl-plugins): [ahmetb/kubectx](https://github.com/ahmetb/kubectx)
+-  [ahmetb/kubectl-aliases](https://github.com/ahmetb/kubectl-aliases)
 
 # Dependencies 
 -  [webkubectl/gotty](https://github.com/webkubectl/gotty)
 -  [ahmetb/kubectx](https://github.com/ahmetb/kubectx)
+-  [ahmetb/kubectl-aliases](https://github.com/ahmetb/kubectl-aliases)
 -  [junegunn/fzf](https://github.com/junegunn/fzf)
 
 # License

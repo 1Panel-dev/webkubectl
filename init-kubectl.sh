@@ -12,7 +12,7 @@ mkdir -p /nonexistent
 mount -t tmpfs -o size=${SESSION_STORAGE_SIZE} tmpfs /nonexistent
 cd /nonexistent
 cp /root/.bashrc ./
-echo 'source /opt/kubectl_aliases/.kubectl_aliases' >> .bashrc
+echo 'source /opt/kubectl-aliases/.kubectl_aliases' >> .bashrc
 mkdir -p .kube
 
 export HOME=/nonexistent
