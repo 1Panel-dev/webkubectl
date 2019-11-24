@@ -1,6 +1,10 @@
 #!/bin/bash
 set -e
 
+if [ "${WELCOME_BANNER}" ]; then
+    echo ${WELCOME_BANNER}
+fi
+
 arg1=$1
 arg2=$2
 
@@ -37,10 +41,6 @@ if [ ${KUBECTL_INSECURE_SKIP_TLS_VERIFY} == "true" ];then
 fi
 
 chown -R nobody:nogroup .kube
-
-if [ "${WELCOME_BANNER}" ]; then
-    echo ${WELCOME_BANNER}
-fi
 
 export TMPDIR=/nonexistent
 
