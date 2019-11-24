@@ -10,14 +10,30 @@ cd /nonexistent
 cp /root/.bashrc ./
 mkdir -p .kube
 
+export HOME=/nonexistent
 if [ -z "${arg2}" ]; then
     echo $arg1| base64 -d > .kube/config
 else
-    export HOME=/nonexistent
     echo `kubectl config set-credentials webkubectl-user --token=${arg2}` > /dev/null 2>&1
-    echo `kubectl config set-cluster kubernetes --server=${arg1} --insecure-skip-tls-verify=true` > /dev/null 2>&1
+    echo `kubectl config set-cluster kubernetes --server=${arg1}` > /dev/null 2>&1
     echo `kubectl config set-context kubernetes --cluster=kubernetes --user=webkubectl-user` > /dev/null 2>&1
     echo `kubectl config use-context kubernetes` > /dev/null 2>&1
+fi
+
+if [ ${KUBECTL_INSECURE_SKIP_TLS_VERIFY} == "true" ];then
+    {
+        clusters=`kubectl config get-clusters | tail -n +2`
+        for s in ${clusters[@]}; do
+            {
+                echo `kubectl config set-cluster ${s} --insecure-skip-tls-verify=true` > /dev/null 2>&1
+                echo `kubectl config unset clusters.${s}.certificate-authority-data` > /dev/null 2>&1
+            } || {
+                echo err > /dev/null 2>&1
+            }
+        done
+    } || {
+        echo err > /dev/null 2>&1
+    }
 fi
 
 chown -R nobody:nogroup .kube
