@@ -4,7 +4,7 @@
 
 ![License](https://img.shields.io/badge/License-Apache%202.0-red)
 ![Dockerized](https://img.shields.io/badge/Dockerized-yes-brightgreen)
-![Version](https://img.shields.io/badge/Version-v1.5-yellow)
+![Version](https://img.shields.io/badge/Version-v1.6-yellow)
 [![Docker Pulls](https://img.shields.io/docker/pulls/webkubectl/webkubectl.svg)](https://hub.docker.com/r/webkubectl/webkubectl)
 ![HitCount](http://hits.dwyl.io/webkubectl/webkubectl.svg)
 
@@ -124,6 +124,14 @@ http://<webkubectl-address>:<port>/terminal/?token=<API响应中的Token>
 -  **终端Token验证**：从API响应中获取的终端Token使用一次后将立即失效，如果一直不使用，则在5分钟后过期。
 -  **Authentication**：默认情况下，无需进行任何身份验证即可访问所有资源，若要限制匿名访问，可以启用gotty的基本身份验证，请参见[操作方法](https://github.com/webkubectl/gotty/blob/master/GOTTY_USAGE.md#options)。
 -  **SSL/TLS**：默认情况下，服务器与客户端之间的所有流量均未加密，我们建议您启用gotty的SSL / TLS选项，请参见[操作方法](https://github.com/webkubectl/gotty/blob/master/GOTTY_USAGE.md#options)。或者，您可以在代理后面部署Web Kubectl并为该代理启用SSL / TLS，请注意，您的代理需要支持WebSocket协议。
+
+# 内置的[kubectl插件](https://github.com/topics/kubectl-plugins)
+-  [ahmetb/kubectx](https://github.com/ahmetb/kubectx)
+
+# 依赖 
+-  [webkubectl/gotty](https://github.com/webkubectl/gotty)
+-  [ahmetb/kubectx](https://github.com/ahmetb/kubectx)
+-  [junegunn/fzf](https://github.com/junegunn/fzf)
 
 # 许可
 
