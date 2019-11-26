@@ -17,7 +17,7 @@ Web Kubectl helps you to manage kubernetes credentials and run kubectl command i
 # Advantage
 -  **Support multiple user and multiple Kubernetes clusters**：One deployment of Web Kubectl can be used for a team, all of the team members can use Web Kubectl simultaneously although they are connecting different Kubernetes clusters or different privileges.
 -  **Session isolation**：All of the online sessions are isolated, each session has its own namespace and storage which is invisible to the others.
--  **Support kubeconfig file and bearer token**：You can provide kubeconfig file or bearer token to connect Kubernetes cluster through Web Kubectl.
+-  **Support [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) file and [bearer token](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens)**：You can provide kubeconfig file or bearer token to connect Kubernetes cluster through Web Kubectl.
 -  **Easy to use and integrate**：You can simply use the index page for a quick start, or integrate with your application using api.
 -  **Manage Kubernetes clusters in VPC**：Through Web Kubectl you can manage the Kubernetes clusters in VPC which is unreachable from you laptop.
 ```sh

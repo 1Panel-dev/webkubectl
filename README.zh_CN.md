@@ -17,7 +17,7 @@ Web Kubectl可以管理您本地的kubernetes凭据，并在Web浏览器中运�
 # 优势
 -  **支持多用户和多个Kubernetes集群**：一个Web Kubectl部署可用于一个团队，尽管团队各个成员都在同时连接不同的Kubernetes集群、使用不同的Kubernetes权限。
 -  **会话隔离**：所有的在线会话都是隔离的，每个会话都有自己的命名空间和存储空间，对其他存储空间不可见。
--  **支持kubeconfig文件和bearer token**：您可以提供kubeconfig文件或bearer token以通过Web Kubectl连接Kubernetes集群。
+-  **支持[kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/)文件和[bearer token](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens)**：您可以提供kubeconfig文件或bearer token以通过Web Kubectl连接Kubernetes集群。
 -  **易于使用和集成**：使用Web Kubectl首页可以快速入门，或者使用API与您的应用集成。
 -  **管理VPC中的Kubernetes集群**：通过Web Kubectl您可以管理那些在VPC中、您自己的电脑无法直接连接的Kubernetes集群。
 ```sh
