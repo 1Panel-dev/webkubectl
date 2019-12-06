@@ -128,12 +128,14 @@ http://<webkubectl-address>:<port>/terminal/?token=<API响应中的Token>
 # 扩展
 -  [kubectl插件](https://github.com/topics/kubectl-plugins): [ahmetb/kubectx](https://github.com/ahmetb/kubectx)
 -  [ahmetb/kubectl-aliases](https://github.com/ahmetb/kubectl-aliases)
+-  [derailed/k9s](https://github.com/derailed/k9s)
 
 # 依赖 
 -  [webkubectl/gotty](https://github.com/webkubectl/gotty)
 -  [ahmetb/kubectx](https://github.com/ahmetb/kubectx)
 -  [ahmetb/kubectl-aliases](https://github.com/ahmetb/kubectl-aliases)
 -  [junegunn/fzf](https://github.com/junegunn/fzf)
+-  [derailed/k9s](https://github.com/derailed/k9s)
 
 # 许可
 

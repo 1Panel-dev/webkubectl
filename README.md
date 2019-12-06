@@ -127,12 +127,14 @@ http://<webkubectl-address>:<port>/terminal/?token=<token fetched from api>
 # Extensions
 -  [kubectl-plugins](https://github.com/topics/kubectl-plugins): [ahmetb/kubectx](https://github.com/ahmetb/kubectx)
 -  [ahmetb/kubectl-aliases](https://github.com/ahmetb/kubectl-aliases)
+-  [derailed/k9s](https://github.com/derailed/k9s)
 
 # Dependencies 
 -  [webkubectl/gotty](https://github.com/webkubectl/gotty)
 -  [ahmetb/kubectx](https://github.com/ahmetb/kubectx)
 -  [ahmetb/kubectl-aliases](https://github.com/ahmetb/kubectl-aliases)
 -  [junegunn/fzf](https://github.com/junegunn/fzf)
+-  [derailed/k9s](https://github.com/derailed/k9s)
 
 # License
 
