@@ -1,0 +1,25 @@
+body {
+    background-color: #f8f9fa !important;
+}
+
+:focus, button:focus {
+    outline: none !important;
+}
+
+.header-link {
+    font-weight: 600;
+    color: #fff;
+    white-space: nowrap;
+}
+
+.header-link:focus, .header-link:hover {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+}
+
+.header-link > svg {
+    display: inline-block;
+    vertical-align: middle !important;
+    fill: currentColor;
+    overflow: hidden;
+}
