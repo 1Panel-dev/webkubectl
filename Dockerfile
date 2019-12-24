@@ -34,6 +34,7 @@ RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
     chmod -R 755 /tmp && mkdir -p /opt/webkubectl
 
+COPY vimrc.local /etc/vim
 COPY start-webkubectl.sh /opt/webkubectl
 COPY start-session.sh /opt/webkubectl
 COPY init-kubectl.sh /opt/webkubectl
