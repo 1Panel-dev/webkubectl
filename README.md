@@ -130,7 +130,7 @@ http://<webkubectl-address>:<port>/terminal/?token=<token fetched from api>
 -  [derailed/k9s](https://github.com/derailed/k9s)
 
 # Dependencies 
--  [webkubectl/gotty](https://github.com/KubeOperator/webkubectl/gotty)
+-  [webkubectl/gotty](https://github.com/KubeOperator/webkubectl/tree/master/gotty)
 -  [ahmetb/kubectx](https://github.com/ahmetb/kubectx)
 -  [ahmetb/kubectl-aliases](https://github.com/ahmetb/kubectl-aliases)
 -  [junegunn/fzf](https://github.com/junegunn/fzf)
