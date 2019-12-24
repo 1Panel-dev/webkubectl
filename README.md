@@ -1,6 +1,6 @@
 [中文 README.md](https://github.com/KubeOperator/webkubectl/blob/master/README.zh_CN.md)
 
-# ![](https://raw.githubusercontent.com/KubeOperator/webkubectl/gotty/master/resources/favicon.png) Web Kubectl - Run kubectl command in web browser
+# ![](https://raw.githubusercontent.com/KubeOperator/webkubectl/master/gotty/resources/favicon.png) Web Kubectl - Run kubectl command in web browser
 
 ![License](https://img.shields.io/badge/License-Apache%202.0-red)
 ![Dockerized](https://img.shields.io/badge/Dockerized-yes-brightgreen)
@@ -35,7 +35,7 @@ _______________________________________________________________________
 ```
 
 # Architecture
-Web Kubectl use [webkubectl/gotty](https://github.com/KubeOperator/webkubectl/gotty) to run a JavaScript based terminal on web browsers.<br>
+Web Kubectl use [webkubectl/gotty](https://github.com/KubeOperator/webkubectl/tree/master/gotty) to run a JavaScript based terminal on web browsers.<br>
 When opens a new session, a temporary Linux namespace will be created for the session, this make sure all sessions are isolated, each session has its own namespace and storage, meanwhile .kube/config file is generated for current session.<br>
 When session terminated, the provisioned namespace and storage are deleted.
 

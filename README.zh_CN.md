@@ -1,6 +1,6 @@
 [英文 README.md](https://github.com/KubeOperator/webkubectl/blob/master/README.md)
 
-# ![](https://raw.githubusercontent.com/KubeOperator/webkubectl/gotty/master/resources/favicon.png) Web Kubectl - 在Web浏览器中运行kubectl命令
+# ![](https://raw.githubusercontent.com/KubeOperator/webkubectl/master/gotty/resources/favicon.png) Web Kubectl - 在Web浏览器中运行kubectl命令
 
 ![License](https://img.shields.io/badge/License-Apache%202.0-red)
 ![Dockerized](https://img.shields.io/badge/Dockerized-yes-brightgreen)
@@ -35,7 +35,7 @@ _______________________________________________________________________
 ```
 
 # 架构
-Web Kubectl 使用[webkubectl/gotty](https://github.com/KubeOperator/webkubectl/gotty)在Web浏览器中运行基于JavaScript的Shell终端。<br>
+Web Kubectl 使用[webkubectl/gotty](https://github.com/KubeOperator/webkubectl/tree/master/gotty)在Web浏览器中运行基于JavaScript的Shell终端。<br>
 当打开一个新会话时，将为该会话创建一个临时Linux命名空间，以确保所有会话都是隔离的，每个会话都有自己的命名空间和存储，同时为当前会话生成.kube/config文件。 <br>
 会话结束后，临时命名空间和存储将被删除。
 
@@ -131,7 +131,7 @@ http://<webkubectl-address>:<port>/terminal/?token=<API响应中的Token>
 -  [derailed/k9s](https://github.com/derailed/k9s)
 
 # 依赖 
--  [webkubectl/gotty](https://github.com/KubeOperator/webkubectl/gotty)
+-  [webkubectl/gotty](https://github.com/KubeOperator/webkubectl/tree/master/gotty)
 -  [ahmetb/kubectx](https://github.com/ahmetb/kubectx)
 -  [ahmetb/kubectl-aliases](https://github.com/ahmetb/kubectl-aliases)
 -  [junegunn/fzf](https://github.com/junegunn/fzf)
