@@ -8,7 +8,7 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/webkubectl/webkubectl.svg)](https://hub.docker.com/r/webkubectl/webkubectl)
 ![HitCount](http://hits.dwyl.io/webkubectl/webkubectl.svg)
 
-![webkubectl](https://raw.githubusercontent.com/KubeOperator/webkubectl/web-resources/master/webkubectl.gif)
+![webkubectl](https://raw.githubusercontent.com/KubeOperator/webkubectl/master/web-resources/webkubectl.gif)
 
 # 好处
 
