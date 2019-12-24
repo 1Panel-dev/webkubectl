@@ -1,4 +1,4 @@
-[中文 README.md](https://github.com/webkubectl/webkubectl/blob/master/README.zh_CN.md)
+[中文 README.md](https://github.com/KubeOperator/webkubectl/blob/master/README.zh_CN.md)
 
 # ![](https://raw.githubusercontent.com/KubeOperator/webkubectl/gotty/master/resources/favicon.png) Web Kubectl - Run kubectl command in web browser
 
@@ -51,7 +51,7 @@ Advanced environment variables
 | :--- | :---  | :---| :---|
 | SESSION_STORAGE_SIZE | string | 10M |  Storage size limit for single connection |
 | KUBECTL_INSECURE_SKIP_TLS_VERIFY | bool | true | whether to skip tls verify |
-| GOTTY_OPTIONS | string | --port 8080 --permit-write --permit-arguments |   Gotty options, see [more](https://github.com/KubeOperator/webkubectl/gotty/blob/master/GOTTY_USAGE.md#options) |
+| GOTTY_OPTIONS | string | --port 8080 --permit-write --permit-arguments |   Gotty options, see [more](https://github.com/KubeOperator/webkubectl/blob/master/gotty/GOTTY_USAGE.md#options) |
 | WELCOME_BANNER | string | Welcome to Web Kubectl, try kubectl --help. |   Welcome banner after web terminal opened |
 
 # Usage
@@ -121,8 +121,8 @@ http://<webkubectl-address>:<port>/terminal/?token=<token fetched from api>
 
 # Security 
 -  **Token validation**：The token fetched from api will be invalid immediately after it's used once, and it expires after 5 minutes if not used. 
--  **Authentication**：By default all resources can be accessed without any authentication, to restrict anonymous access, you can enable the  basic authentication of gotty, see [how to](https://github.com/KubeOperator/webkubectl/gotty/blob/master/GOTTY_USAGE.md#options).
--  **SSL/TLS**：By default all traffic between the server and clients are NOT encrypted, we recommend you enable SSL/TLS option of gotty, see [how to](https://github.com/KubeOperator/webkubectl/gotty/blob/master/GOTTY_USAGE.md#options). Alternatively you can deploy Web Kubectl behind a proxy and enable SSL/TLS for the proxy, please note that the proxy should support WebSocket protocol.
+-  **Authentication**：By default all resources can be accessed without any authentication, to restrict anonymous access, you can enable the  basic authentication of gotty, see [how to](https://github.com/KubeOperator/webkubectl/blob/master/gotty/GOTTY_USAGE.md#options).
+-  **SSL/TLS**：By default all traffic between the server and clients are NOT encrypted, we recommend you enable SSL/TLS option of gotty, see [how to](https://github.com/KubeOperator/webkubectl/blob/master/gotty/GOTTY_USAGE.md#options). Alternatively you can deploy Web Kubectl behind a proxy and enable SSL/TLS for the proxy, please note that the proxy should support WebSocket protocol.
 
 # Extensions
 -  [kubectl-plugins](https://github.com/topics/kubectl-plugins): [ahmetb/kubectx](https://github.com/ahmetb/kubectx)

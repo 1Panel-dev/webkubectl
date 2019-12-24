@@ -52,7 +52,7 @@ $ docker run --name="webkubectl" -p 8080:8080 -d --privileged webkubectl/webkube
 | :--- | :---  | :---| :---|
 | SESSION_STORAGE_SIZE | string | 10M |  单会话的存储大小限制 |
 | KUBECTL_INSECURE_SKIP_TLS_VERIFY | bool | true | kubectl命令是否跳过tls验证 |
-| GOTTY_OPTIONS | string | --port 8080 --permit-write --permit-arguments | 查看 [Gotty Options](https://github.com/KubeOperator/webkubectl/gotty/blob/master/GOTTY_USAGE.md#options) |
+| GOTTY_OPTIONS | string | --port 8080 --permit-write --permit-arguments | 查看 [Gotty Options](https://github.com/KubeOperator/webkubectl/blob/master/gotty/GOTTY_USAGE.md#options) |
 | WELCOME_BANNER | string | Welcome to Web Kubectl, try kubectl --help. |   Web终端打开后的欢迎横幅 |
 
 # 使用
@@ -122,8 +122,8 @@ http://<webkubectl-address>:<port>/terminal/?token=<API响应中的Token>
 
 # 安全 
 -  **终端Token验证**：从API响应中获取的终端Token使用一次后将立即失效，如果一直不使用，则在5分钟后过期。
--  **Authentication**：默认情况下，无需进行任何身份验证即可访问所有资源，若要限制匿名访问，可以启用gotty的基本身份验证，请参见[操作方法](https://github.com/KubeOperator/webkubectl/gotty/blob/master/GOTTY_USAGE.md#options)。
--  **SSL/TLS**：默认情况下，服务器与客户端之间的所有流量均未加密，我们建议您启用gotty的SSL / TLS选项，请参见[操作方法](https://github.com/KubeOperator/webkubectl/gotty/blob/master/GOTTY_USAGE.md#options)。或者，您可以在代理后面部署Web Kubectl并为该代理启用SSL / TLS，请注意，您的代理需要支持WebSocket协议。
+-  **Authentication**：默认情况下，无需进行任何身份验证即可访问所有资源，若要限制匿名访问，可以启用gotty的基本身份验证，请参见[操作方法](https://github.com/KubeOperator/webkubectl/blob/master/gotty/GOTTY_USAGE.md#options)。
+-  **SSL/TLS**：默认情况下，服务器与客户端之间的所有流量均未加密，我们建议您启用gotty的SSL / TLS选项，请参见[操作方法](https://github.com/KubeOperator/webkubectl/blob/master/gotty/GOTTY_USAGE.md#options)。或者，您可以在代理后面部署Web Kubectl并为该代理启用SSL / TLS，请注意，您的代理需要支持WebSocket协议。
 
 # 扩展
 -  [kubectl插件](https://github.com/topics/kubectl-plugins): [ahmetb/kubectx](https://github.com/ahmetb/kubectx)
