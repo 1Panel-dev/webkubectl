@@ -11,10 +11,10 @@ import (
 
 	"github.com/codegangsta/cli"
 
-	"github.com/webkubectl/gotty/backend/localcommand"
-	"github.com/webkubectl/gotty/pkg/homedir"
-	"github.com/webkubectl/gotty/server"
-	"github.com/webkubectl/gotty/utils"
+	"github.com/KubeOperator/webkubectl/gotty/backend/localcommand"
+	"github.com/KubeOperator/webkubectl/gotty/pkg/homedir"
+	"github.com/KubeOperator/webkubectl/gotty/server"
+	"github.com/KubeOperator/webkubectl/gotty/utils"
 )
 
 func main() {

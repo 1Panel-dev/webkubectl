@@ -4,9 +4,9 @@ ENV CGO_ENABLED=0
 ENV GOOS=linux
 ENV GOARCH=amd64
 
+COPY gotty $GOPATH/src/github.com/KubeOperator/webkubectl/gotty
 RUN apk add --update git make && \
-  go get -d github.com/webkubectl/gotty && \
-  go get -u github.com/golang/dep/cmd/dep && cd $GOPATH/src/github.com/webkubectl/gotty && \
+  go get -u github.com/golang/dep/cmd/dep && cd $GOPATH/src/github.com/KubeOperator/webkubectl/gotty && \
   make gotty && cp gotty / && ls -l /gotty && /gotty -v
 
 

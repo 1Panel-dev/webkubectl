@@ -19,9 +19,9 @@ import (
 	"github.com/gorilla/websocket"
 	"github.com/pkg/errors"
 
-	"github.com/webkubectl/gotty/pkg/homedir"
-	"github.com/webkubectl/gotty/pkg/randomstring"
-	"github.com/webkubectl/gotty/webtty"
+	"github.com/KubeOperator/webkubectl/gotty/pkg/homedir"
+	"github.com/KubeOperator/webkubectl/gotty/pkg/randomstring"
+	"github.com/KubeOperator/webkubectl/gotty/webtty"
 )
 
 // Server provides a webtty HTTP endpoint.

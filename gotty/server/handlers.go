@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"github.com/patrickmn/go-cache"
-	"github.com/webkubectl/gotty/pkg/randomstring"
+	"github.com/KubeOperator/webkubectl/gotty/pkg/randomstring"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -18,7 +18,7 @@ import (
 	"github.com/gorilla/websocket"
 	"github.com/pkg/errors"
 
-	"github.com/webkubectl/gotty/webtty"
+	"github.com/KubeOperator/webkubectl/gotty/webtty"
 )
 
 var tokenCache = cache.New(5*time.Minute, 10*time.Minute)
