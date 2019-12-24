@@ -63,9 +63,9 @@ http://<webkubectl-address>:<port>
 ```
 In the opened page you can manage your own kubeconfig files or bearer tokens which are stored in local storage, then choose a session and click connect to use kubectl command in web terminal.
 
-![index](https://raw.githubusercontent.com/KubeOperator/webkubectl/web-resources/master/index.jpg)
+![index](https://raw.githubusercontent.com/KubeOperator/webkubectl/master/web-resources/index.jpg)
 
-![terminal](https://raw.githubusercontent.com/KubeOperator/webkubectl/web-resources/master/terminal.jpg)
+![terminal](https://raw.githubusercontent.com/KubeOperator/webkubectl/master/web-resources/terminal.jpg)
 
 ## Use API
 #### Get token by Kubernetes API server address and bearer token

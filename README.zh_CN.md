@@ -64,9 +64,9 @@ http://<webkubectl-address>:<port>
 ```
 在打开的页面中，您可以管理您自己的kubeconfig文件或bearer token凭据，这些凭据存储在您本地浏览器的Local Storage中。然后选择一个会话，单击“连接”在弹出的Web终端中使用kubectl命令。
 
-![index](https://raw.githubusercontent.com/KubeOperator/webkubectl/web-resources/master/index.jpg)
+![index](https://raw.githubusercontent.com/KubeOperator/webkubectl/master/web-resources/index.jpg)
 
-![terminal](https://raw.githubusercontent.com/KubeOperator/webkubectl/web-resources/master/terminal.jpg)
+![terminal](https://raw.githubusercontent.com/KubeOperator/webkubectl/master/web-resources/terminal.jpg)
 
 ## 使用 API
 #### 通过Kubernetes API Server地址和bearer token获取终端Token
