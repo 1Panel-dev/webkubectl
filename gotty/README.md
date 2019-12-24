@@ -5,7 +5,7 @@
 ![Golang](https://img.shields.io/badge/golang-1.12-brightgreen)
 ![HitCount](http://hits.dwyl.io/webkubectl/webkubectl.svg)
 
-### This project is used in [https://github.com/KubeOperator/webkubectl](https://github.com/KubeOperator/webkubectl/blob/master/Dockerfile#L8)  to run a JavaScript based terminal on web browsers
+### This project is used in [https://github.com/KubeOperator/webkubectl](https://github.com/KubeOperator/webkubectl/blob/master/Dockerfile#L7)  to run a JavaScript based terminal on web browsers
 
 ### Forked from [https://github.com/yudai/gotty](https://github.com/yudai/gotty), thanks [Iwasaki Yudai](https://github.com/yudai/gotty).
 
