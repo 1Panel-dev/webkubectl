@@ -1,6 +1,6 @@
-[英文 README.md](https://github.com/webkubectl/webkubectl/blob/master/README.md)
+[英文 README.md](https://github.com/KubeOperator/webkubectl/blob/master/README.md)
 
-# ![](https://raw.githubusercontent.com/webkubectl/gotty/master/resources/favicon.png) Web Kubectl - 在Web浏览器中运行kubectl命令
+# ![](https://raw.githubusercontent.com/KubeOperator/webkubectl/gotty/master/resources/favicon.png) Web Kubectl - 在Web浏览器中运行kubectl命令
 
 ![License](https://img.shields.io/badge/License-Apache%202.0-red)
 ![Dockerized](https://img.shields.io/badge/Dockerized-yes-brightgreen)
@@ -8,7 +8,7 @@
 [![Docker Pulls](https://img.shields.io/docker/pulls/webkubectl/webkubectl.svg)](https://hub.docker.com/r/webkubectl/webkubectl)
 ![HitCount](http://hits.dwyl.io/webkubectl/webkubectl.svg)
 
-![webkubectl](https://raw.githubusercontent.com/webkubectl/web-resources/master/webkubectl.gif)
+![webkubectl](https://raw.githubusercontent.com/KubeOperator/webkubectl/web-resources/master/webkubectl.gif)
 
 # 好处
 
@@ -35,7 +35,7 @@ _______________________________________________________________________
 ```
 
 # 架构
-Web Kubectl 使用[webkubectl/gotty](https://github.com/webkubectl/gotty)在Web浏览器中运行基于JavaScript的Shell终端。<br>
+Web Kubectl 使用[webkubectl/gotty](https://github.com/KubeOperator/webkubectl/gotty)在Web浏览器中运行基于JavaScript的Shell终端。<br>
 当打开一个新会话时，将为该会话创建一个临时Linux命名空间，以确保所有会话都是隔离的，每个会话都有自己的命名空间和存储，同时为当前会话生成.kube/config文件。 <br>
 会话结束后，临时命名空间和存储将被删除。
 
@@ -52,7 +52,7 @@ $ docker run --name="webkubectl" -p 8080:8080 -d --privileged webkubectl/webkube
 | :--- | :---  | :---| :---|
 | SESSION_STORAGE_SIZE | string | 10M |  单会话的存储大小限制 |
 | KUBECTL_INSECURE_SKIP_TLS_VERIFY | bool | true | kubectl命令是否跳过tls验证 |
-| GOTTY_OPTIONS | string | --port 8080 --permit-write --permit-arguments | 查看 [Gotty Options](https://github.com/webkubectl/gotty/blob/master/GOTTY_USAGE.md#options) |
+| GOTTY_OPTIONS | string | --port 8080 --permit-write --permit-arguments | 查看 [Gotty Options](https://github.com/KubeOperator/webkubectl/gotty/blob/master/GOTTY_USAGE.md#options) |
 | WELCOME_BANNER | string | Welcome to Web Kubectl, try kubectl --help. |   Web终端打开后的欢迎横幅 |
 
 # 使用
@@ -64,9 +64,9 @@ http://<webkubectl-address>:<port>
 ```
 在打开的页面中，您可以管理您自己的kubeconfig文件或bearer token凭据，这些凭据存储在您本地浏览器的Local Storage中。然后选择一个会话，单击“连接”在弹出的Web终端中使用kubectl命令。
 
-![index](https://raw.githubusercontent.com/webkubectl/web-resources/master/index.jpg)
+![index](https://raw.githubusercontent.com/KubeOperator/webkubectl/web-resources/master/index.jpg)
 
-![terminal](https://raw.githubusercontent.com/webkubectl/web-resources/master/terminal.jpg)
+![terminal](https://raw.githubusercontent.com/KubeOperator/webkubectl/web-resources/master/terminal.jpg)
 
 ## 使用 API
 #### 通过Kubernetes API Server地址和bearer token获取终端Token
@@ -122,8 +122,8 @@ http://<webkubectl-address>:<port>/terminal/?token=<API响应中的Token>
 
 # 安全 
 -  **终端Token验证**：从API响应中获取的终端Token使用一次后将立即失效，如果一直不使用，则在5分钟后过期。
--  **Authentication**：默认情况下，无需进行任何身份验证即可访问所有资源，若要限制匿名访问，可以启用gotty的基本身份验证，请参见[操作方法](https://github.com/webkubectl/gotty/blob/master/GOTTY_USAGE.md#options)。
--  **SSL/TLS**：默认情况下，服务器与客户端之间的所有流量均未加密，我们建议您启用gotty的SSL / TLS选项，请参见[操作方法](https://github.com/webkubectl/gotty/blob/master/GOTTY_USAGE.md#options)。或者，您可以在代理后面部署Web Kubectl并为该代理启用SSL / TLS，请注意，您的代理需要支持WebSocket协议。
+-  **Authentication**：默认情况下，无需进行任何身份验证即可访问所有资源，若要限制匿名访问，可以启用gotty的基本身份验证，请参见[操作方法](https://github.com/KubeOperator/webkubectl/gotty/blob/master/GOTTY_USAGE.md#options)。
+-  **SSL/TLS**：默认情况下，服务器与客户端之间的所有流量均未加密，我们建议您启用gotty的SSL / TLS选项，请参见[操作方法](https://github.com/KubeOperator/webkubectl/gotty/blob/master/GOTTY_USAGE.md#options)。或者，您可以在代理后面部署Web Kubectl并为该代理启用SSL / TLS，请注意，您的代理需要支持WebSocket协议。
 
 # 扩展
 -  [kubectl插件](https://github.com/topics/kubectl-plugins): [ahmetb/kubectx](https://github.com/ahmetb/kubectx)
@@ -131,7 +131,7 @@ http://<webkubectl-address>:<port>/terminal/?token=<API响应中的Token>
 -  [derailed/k9s](https://github.com/derailed/k9s)
 
 # 依赖 
--  [webkubectl/gotty](https://github.com/webkubectl/gotty)
+-  [webkubectl/gotty](https://github.com/KubeOperator/webkubectl/gotty)
 -  [ahmetb/kubectx](https://github.com/ahmetb/kubectx)
 -  [ahmetb/kubectl-aliases](https://github.com/ahmetb/kubectl-aliases)
 -  [junegunn/fzf](https://github.com/junegunn/fzf)
