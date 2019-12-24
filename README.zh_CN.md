@@ -150,7 +150,7 @@ ___
 -  [https://github.com/fanux/fist/tree/master/terminal](https://github.com/fanux/fist/tree/master/terminal): 另一个可在Web终端运行kubectl的项目。
 -  [https://github.com/rancher](https://github.com/rancher): 在Rancher的集群视图中，可以启动基于Web的kubectl，但是我们没有找到源代码。
 -  [https://github.com/du2016/web-terminal-in-go](https://github.com/du2016/web-terminal-in-go): 连接K8S中容器的Web终端。
--  [https://github.com/lf1029698952/kube-webshell](https://github.com/lf1029698952/kube-webshell): 跟上一行一样，也是连接K8S中容器的Web终端。
+-  [https://github.com/lf1029698952/kube-webshell](https://github.com/lf1029698952/kube-webshell): 跟上一行类似，也是连接K8S中容器的Web终端。
 
 # 广告
 

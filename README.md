@@ -149,7 +149,7 @@ Web Kubectl is licensed under the Apache License, Version 2.0.
 -  [https://github.com/fanux/fist/tree/master/terminal](https://github.com/fanux/fist/tree/master/terminal): Another web terminal to run kubectl.
 -  [https://github.com/rancher](https://github.com/rancher): In the cluster view of Rancher, a web based kubectl can be launched, but we didn't find the source code. 
 -  [https://github.com/du2016/web-terminal-in-go](https://github.com/du2016/web-terminal-in-go): Web terminal to connect containers in K8S.
--  [https://github.com/lf1029698952/kube-webshell](https://github.com/lf1029698952/kube-webshell): Same as above, another web terminal to connect containers in K8S.
+-  [https://github.com/lf1029698952/kube-webshell](https://github.com/lf1029698952/kube-webshell): Similar as above, another web terminal to connect containers in K8S.
 
 # Advertisement
 
