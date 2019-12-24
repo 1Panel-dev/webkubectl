@@ -42,7 +42,7 @@ When session terminated, the provisioned namespace and storage are deleted.
 # Installation
 
 ```sh
-$ docker run --name="webkubectl" -p 8080:8080 -d --privileged webkubectl/webkubectl
+$ docker run --name="webkubectl" -p 8080:8080 -d --privileged kubeoperator/webkubectl
 ```
 
 Advanced environment variables
