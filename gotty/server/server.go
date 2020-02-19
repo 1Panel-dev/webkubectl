@@ -59,14 +59,19 @@ func New(factory Factory, options *Options) (*Server, error) {
 		return nil, errors.Wrapf(err, "failed to parse window title format `%s`", options.TitleFormat)
 	}
 
-	var originChekcer func(r *http.Request) bool
+	var originChecker func(r *http.Request) bool
 	if options.WSOrigin != "" {
 		matcher, err := regexp.Compile(options.WSOrigin)
 		if err != nil {
 			return nil, errors.Wrapf(err, "failed to compile regular expression of Websocket Origin: %s", options.WSOrigin)
 		}
-		originChekcer = func(r *http.Request) bool {
+		originChecker = func(r *http.Request) bool {
 			return matcher.MatchString(r.Header.Get("Origin"))
+		}
+	} else {
+		// Don't check origin if ws-origin is not set
+		originChecker = func(r *http.Request) bool {
+			return true
 		}
 	}
 
@@ -78,7 +83,7 @@ func New(factory Factory, options *Options) (*Server, error) {
 			ReadBufferSize:  webtty.MaxBufferSize,
 			WriteBufferSize: webtty.MaxBufferSize,
 			Subprotocols:    webtty.Protocols,
-			CheckOrigin:     originChekcer,
+			CheckOrigin:     originChecker,
 		},
 		terminalTemplate: terminalTemplate,
 		titleTemplate:    titleTemplate,

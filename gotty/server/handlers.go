@@ -75,13 +75,12 @@ func (server *Server) generateHandleWS(ctx context.Context, cancel context.Cance
 		server.upgrader.WriteBufferSize = webtty.MaxBufferSize
 		server.upgrader.EnableCompression = true
 		conn, err := server.upgrader.Upgrade(w, r, nil)
-		conn.SetCompressionLevel(9)
 		if err != nil {
 			closeReason = err.Error()
 			return
 		}
 		defer conn.Close()
-
+		conn.SetCompressionLevel(9)
 		err = server.processWSConn(ctx, conn)
 
 		switch err {
