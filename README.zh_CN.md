@@ -4,15 +4,21 @@
 
 ![License](https://img.shields.io/badge/License-Apache%202.0-red)
 ![Dockerized](https://img.shields.io/badge/Dockerized-yes-brightgreen)
-![Version](https://img.shields.io/badge/Version-v1.9-yellow)
+![Version](https://img.shields.io/badge/Version-v2.0-yellow)
 [![Docker Pulls](https://img.shields.io/docker/pulls/kubeoperator/webkubectl.svg)](https://hub.docker.com/r/kubeoperator/webkubectl)
 ![HitCount](http://hits.dwyl.io/webkubectl/webkubectl.svg)
 
 ![webkubectl](https://raw.githubusercontent.com/KubeOperator/webkubectl/master/web-resources/webkubectl.gif)
 
-# 好处
+# 动机
 
-Web Kubectl可以管理您本地的kubernetes凭据，并在Web浏览器中运行kubectl命令，从而不必在本地PC或其他服务器上安装kubectl，并且Web Kubectl也适用于团队多人同时使用，此外还可以使用API集成到您自己的应用中。
+用kubectl命令行管理多个Kubernetes集群非常复杂，我们不得不在多个context之间频繁的切换，如果在Windows命令行里执行kubectl命令的话就会更繁琐。
+能简单点么？
+是的，可以。
+
+# 目标
+
+Web Kubectl帮助您管理多个集群的kubernetes凭据，并在Web浏览器中运行kubectl命令，从而不必在本地PC或其他服务器上安装kubectl，并且Web Kubectl也适用于团队多人同时使用，此外还可以使用API集成到您自己的应用中。
 
 # 优势
 -  **支持多用户和多个Kubernetes集群**：一个Web Kubectl部署可用于一个团队，尽管团队各个成员都在同时连接不同的Kubernetes集群、使用不同的Kubernetes权限。
@@ -20,6 +26,7 @@ Web Kubectl可以管理您本地的kubernetes凭据，并在Web浏览器中运�
 -  **支持[kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/)文件和[bearer token](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens)**：您可以提供kubeconfig文件或bearer token以通过Web Kubectl连接Kubernetes集群。
 -  **易于使用和集成**：使用Web Kubectl首页可以快速入门，或者使用API与您的应用集成。
 -  **管理VPC中的Kubernetes集群**：通过Web Kubectl您可以管理那些在VPC中、您自己的电脑无法直接连接的Kubernetes集群。
+
 ```sh
 _______________________________________________________________________
 |   Local Network     |          DMZ           |      VPC/Datacenter  |

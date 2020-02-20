@@ -4,15 +4,21 @@
 
 ![License](https://img.shields.io/badge/License-Apache%202.0-red)
 ![Dockerized](https://img.shields.io/badge/Dockerized-yes-brightgreen)
-![Version](https://img.shields.io/badge/Version-v1.9-yellow)
+![Version](https://img.shields.io/badge/Version-v2.0-yellow)
 [![Docker Pulls](https://img.shields.io/docker/pulls/kubeoperator/webkubectl.svg)](https://hub.docker.com/r/kubeoperator/webkubectl)
 ![HitCount](http://hits.dwyl.io/webkubectl/webkubectl.svg)
 
 ![webkubectl](https://raw.githubusercontent.com/KubeOperator/webkubectl/master/web-resources/webkubectl.gif)
 
-# Benefit
+# Motivation
 
-Web Kubectl helps you to manage kubernetes credentials and run kubectl command in web browser, so that you don't have to install kubectl on your local PC or some other servers, furthermore Web Kubectl can be used for a team.
+It's really complex to operate multiple kubernetes clusters with kubectl, we have to switch context all the time, and it's more tedious if using kubectl in Windows cmd.
+Can we make it easy? 
+Yes, we do.
+
+# Goal
+
+Web Kubectl helps you manage kubernetes credentials and run kubectl command in web browser, so that you don't have to install kubectl on your local PC or some other servers, furthermore Web Kubectl can be used for a team.
 
 # Advantage
 -  **Support multiple user and multiple Kubernetes clusters**：One deployment of Web Kubectl can be used for a team, all of the team members can use Web Kubectl simultaneously although they are connecting different Kubernetes clusters or different privileges.
@@ -20,6 +26,7 @@ Web Kubectl helps you to manage kubernetes credentials and run kubectl command i
 -  **Support [kubeconfig](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/) file and [bearer token](https://kubernetes.io/docs/reference/access-authn-authz/authentication/#service-account-tokens)**：You can provide kubeconfig file or bearer token to connect Kubernetes cluster through Web Kubectl.
 -  **Easy to use and integrate**：You can simply use the index page for a quick start, or integrate with your application using api.
 -  **Manage Kubernetes clusters in VPC**：Through Web Kubectl you can manage the Kubernetes clusters in VPC which is unreachable from you laptop.
+
 ```sh
 _______________________________________________________________________
 |   Local Network     |          DMZ           |      VPC/Datacenter  |
@@ -50,7 +57,7 @@ Advanced environment variables
 | ENV | Type | Default Value | Description|
 | :--- | :---  | :---| :---|
 | SESSION_STORAGE_SIZE | string | 10M |  Storage size limit for single connection |
-| KUBECTL_INSECURE_SKIP_TLS_VERIFY | bool | true | whether to skip tls verify |
+| KUBECTL_INSECURE_SKIP_TLS_VERIFY | bool | true | Whether to skip tls verify |
 | GOTTY_OPTIONS | string | --port 8080 --permit-write --permit-arguments |   Gotty options, see [more](https://github.com/KubeOperator/webkubectl/blob/master/gotty/GOTTY_USAGE.md#options) |
 | WELCOME_BANNER | string | Welcome to Web Kubectl, try kubectl --help. |   Welcome banner after web terminal opened |
 
