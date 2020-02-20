@@ -10,15 +10,9 @@
 
 ![webkubectl](https://raw.githubusercontent.com/KubeOperator/webkubectl/master/web-resources/webkubectl.gif)
 
-# 动机
-
-用kubectl命令行管理多个Kubernetes集群非常复杂，我们不得不在多个context之间频繁的切换，如果在Windows命令行里执行kubectl命令的话就会更繁琐。<br>
-能简单点么？<br>
-是的，可以。
-
 # 目标
 
-Web Kubectl帮助您管理多个集群的kubernetes凭据，并在Web浏览器中运行kubectl命令，从而不必在本地PC或其他服务器上安装kubectl，并且Web Kubectl也适用于团队多人同时使用，此外还可以使用API集成到您自己的应用中。
+Web Kubectl帮助您管理kubernetes集群的凭据，并在Web浏览器中运行kubectl命令，从而不必在本地PC或其他服务器上安装kubectl，并且Web Kubectl也适用于团队多人同时使用，此外还可以使用API集成到您自己的应用中。
 
 # 优势
 -  **支持多用户和多个Kubernetes集群**：一个Web Kubectl部署可用于一个团队，尽管团队各个成员都在同时连接不同的Kubernetes集群、使用不同的Kubernetes权限。

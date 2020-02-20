@@ -10,12 +10,6 @@
 
 ![webkubectl](https://raw.githubusercontent.com/KubeOperator/webkubectl/master/web-resources/webkubectl.gif)
 
-# Motivation
-
-It's really complex to operate multiple kubernetes clusters with kubectl, we have to switch context all the time, and it's more tedious if using kubectl in Windows cmd.<br>
-Can we make it easy? <br>
-Yes, we do.
-
 # Goal
 
 Web Kubectl helps you manage kubernetes credentials and run kubectl command in web browser, so that you don't have to install kubectl on your local PC or some other servers, furthermore Web Kubectl can be used for a team.
