@@ -12,8 +12,8 @@
 
 # Motivation
 
-It's really complex to operate multiple kubernetes clusters with kubectl, we have to switch context all the time, and it's more tedious if using kubectl in Windows cmd.
-Can we make it easy? 
+It's really complex to operate multiple kubernetes clusters with kubectl, we have to switch context all the time, and it's more tedious if using kubectl in Windows cmd.<br>
+Can we make it easy? <br>
 Yes, we do.
 
 # Goal

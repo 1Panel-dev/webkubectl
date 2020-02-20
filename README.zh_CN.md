@@ -12,8 +12,8 @@
 
 # 动机
 
-用kubectl命令行管理多个Kubernetes集群非常复杂，我们不得不在多个context之间频繁的切换，如果在Windows命令行里执行kubectl命令的话就会更繁琐。
-能简单点么？
+用kubectl命令行管理多个Kubernetes集群非常复杂，我们不得不在多个context之间频繁的切换，如果在Windows命令行里执行kubectl命令的话就会更繁琐。<br>
+能简单点么？<br>
 是的，可以。
 
 # 目标
