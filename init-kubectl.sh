@@ -13,6 +13,7 @@ mount -t tmpfs -o size=${SESSION_STORAGE_SIZE} tmpfs /nonexistent
 cd /nonexistent
 cp /root/.bashrc ./
 echo 'source /opt/kubectl-aliases/.kubectl_aliases' >> .bashrc
+echo 'PS1="> "' >> .bashrc
 mkdir -p .kube
 
 export HOME=/nonexistent
@@ -44,7 +45,5 @@ fi
 chown -R nobody:nogroup .kube
 
 export TMPDIR=/nonexistent
-
-export PS1=">"
 
 exec su -s /bin/bash nobody
