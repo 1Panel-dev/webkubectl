@@ -45,4 +45,6 @@ chown -R nobody:nogroup .kube
 
 export TMPDIR=/nonexistent
 
+export PS1=">"
+
 exec su -s /bin/bash nobody
