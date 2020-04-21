@@ -5,7 +5,11 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"github.com/pkg/errors"
+	"log"
+	"os"
+	"strconv"
 	"sync"
+	"time"
 )
 
 // WebTTY bridges a PTY slave and its PTY master.
@@ -24,8 +28,9 @@ type WebTTY struct {
 	reconnect   int // in seconds
 	masterPrefs []byte
 
-	bufferSize int
-	writeMutex sync.Mutex
+	bufferSize   int
+	writeMutex   sync.Mutex
+	lastPingTime time.Time
 }
 
 const (
@@ -45,7 +50,8 @@ func New(masterConn Master, slave Slave, options ...Option) (*WebTTY, error) {
 		columns:     0,
 		rows:        0,
 
-		bufferSize: MaxBufferSize,
+		bufferSize:   MaxBufferSize,
+		lastPingTime: time.Now(),
 	}
 
 	for _, option := range options {
@@ -97,6 +103,26 @@ func (wt *WebTTY) Run(ctx context.Context) error {
 				err = wt.handleMasterReadEvent(buffer[:n])
 				if err != nil {
 					return err
+				}
+			}
+		}()
+	}()
+
+	go func() {
+		errs <- func() error {
+			lostPingTimeout := time.Duration(180) * time.Second
+			seconds, _err := strconv.Atoi(os.Getenv("LOST_PING_TIMEOUT_SECONDS"))
+			if _err != nil && seconds > 30 {
+				lostPingTimeout = time.Duration(seconds) * time.Second
+			}
+			for {
+				time.Sleep(time.Duration(30) * time.Second)
+				if err != nil {
+					return nil
+				}
+				if time.Now().After(wt.lastPingTime.Add(lostPingTimeout)) {
+					log.Println("Connection lost ping.")
+					return errors.Wrapf(err, "Connection lost ping.")
 				}
 			}
 		}()
@@ -178,6 +204,7 @@ func (wt *WebTTY) handleMasterReadEvent(data []byte) error {
 
 	case Ping:
 		err := wt.masterWrite([]byte{Pong})
+		wt.lastPingTime = time.Now();
 		if err != nil {
 			return errors.Wrapf(err, "failed to return Pong message to master")
 		}
@@ -206,7 +233,7 @@ func (wt *WebTTY) handleMasterReadEvent(data []byte) error {
 			columns = int(args.Columns)
 		}
 
-		wt.slave.ResizeTerminal(columns, rows)
+		return wt.slave.ResizeTerminal(columns, rows)
 	default:
 		return errors.Errorf("unknown message type `%c`", data[0])
 	}
