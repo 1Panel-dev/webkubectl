@@ -5,7 +5,6 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"github.com/pkg/errors"
-	"log"
 	"os"
 	"strconv"
 	"sync"
@@ -73,7 +72,7 @@ func (wt *WebTTY) Run(ctx context.Context) error {
 		return errors.Wrapf(err, "failed to send initializing message")
 	}
 
-	errs := make(chan error, 2)
+	errs := make(chan error, 3)
 
 	go func() {
 		errs <- func() error {
@@ -118,11 +117,10 @@ func (wt *WebTTY) Run(ctx context.Context) error {
 			for {
 				time.Sleep(time.Duration(30) * time.Second)
 				if err != nil {
-					return nil
+					return err
 				}
 				if time.Now().After(wt.lastPingTime.Add(lostPingTimeout)) {
-					log.Println("Connection lost ping.")
-					return errors.Wrapf(err, "Connection lost ping.")
+					return ErrConnectionLostPing
 				}
 			}
 		}()

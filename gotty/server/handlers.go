@@ -5,8 +5,8 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/patrickmn/go-cache"
 	"github.com/KubeOperator/webkubectl/gotty/pkg/randomstring"
+	"github.com/patrickmn/go-cache"
 	"io/ioutil"
 	"log"
 	"net/http"
@@ -49,8 +49,8 @@ func (server *Server) generateHandleWS(ctx context.Context, cancel context.Cance
 		defer func() {
 			num := counter.done()
 			log.Printf(
-				"Connection closed by %s: %s, connections: %d/%d",
-				closeReason, r.RemoteAddr, num, server.options.MaxConnection,
+				"Connection closed: %s, reason: %s, connections: %d/%d",
+				r.RemoteAddr, closeReason, num, server.options.MaxConnection,
 			)
 
 			if server.options.Once {
@@ -89,7 +89,9 @@ func (server *Server) generateHandleWS(ctx context.Context, cancel context.Cance
 		case webtty.ErrSlaveClosed:
 			closeReason = server.factory.Name()
 		case webtty.ErrMasterClosed:
-			closeReason = "client"
+			closeReason = "client close"
+		case webtty.ErrConnectionLostPing:
+			closeReason = webtty.ErrConnectionLostPing.Error()
 		default:
 			closeReason = fmt.Sprintf("an error: %s", err)
 		}

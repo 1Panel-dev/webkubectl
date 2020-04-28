@@ -10,4 +10,7 @@ var (
 
 	// ErrSlaveClosed is returned when the slave connection is closed.
 	ErrMasterClosed = errors.New("master closed")
+
+	// ErrConnectionLostPing is returned if no ping within a duration
+	ErrConnectionLostPing = errors.New("connection lost ping")
 )
