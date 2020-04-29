@@ -5,6 +5,7 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"github.com/pkg/errors"
+	"log"
 	"os"
 	"strconv"
 	"sync"
@@ -77,6 +78,11 @@ func (wt *WebTTY) Run(ctx context.Context) error {
 	slaveBuffer := make([]byte, wt.bufferSize)
 	go func() {
 		errs <- func() error {
+			defer func() {
+				if e := recover(); e != nil {
+					log.Printf("Panicing %s", e)
+				}
+			}()
 			for {
 				n, err := wt.slave.Read(slaveBuffer)
 				if err != nil {
@@ -92,6 +98,11 @@ func (wt *WebTTY) Run(ctx context.Context) error {
 	masterBuffer := make([]byte, wt.bufferSize)
 	go func() {
 		errs <- func() error {
+			defer func() {
+				if e := recover(); e != nil {
+					log.Printf("Panicing %s", e)
+				}
+			}()
 			for {
 				n, err := wt.masterConn.Read(masterBuffer)
 				if err != nil {
