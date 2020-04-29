@@ -84,6 +84,9 @@ func (wt *WebTTY) Run(ctx context.Context) error {
 				}
 			}()
 			for {
+				if slaveBuffer == nil {
+					return ErrSlaveClosed
+				}
 				n, err := wt.slave.Read(slaveBuffer)
 				if err != nil {
 					return ErrSlaveClosed
@@ -104,6 +107,9 @@ func (wt *WebTTY) Run(ctx context.Context) error {
 				}
 			}()
 			for {
+				if masterBuffer == nil {
+					return ErrMasterClosed
+				}
 				n, err := wt.masterConn.Read(masterBuffer)
 				if err != nil {
 					return ErrMasterClosed
