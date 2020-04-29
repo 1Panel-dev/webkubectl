@@ -5,7 +5,6 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"github.com/pkg/errors"
-	"log"
 	"os"
 	"strconv"
 	"sync"
@@ -80,7 +79,6 @@ func (wt *WebTTY) Run(ctx context.Context) error {
 		errs <- func() error {
 			defer func() {
 				if e := recover(); e != nil {
-					log.Printf("Panicing %s", e)
 				}
 			}()
 			for {
@@ -103,7 +101,6 @@ func (wt *WebTTY) Run(ctx context.Context) error {
 		errs <- func() error {
 			defer func() {
 				if e := recover(); e != nil {
-					log.Printf("Panicing %s", e)
 				}
 			}()
 			for {
