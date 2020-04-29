@@ -74,32 +74,30 @@ func (wt *WebTTY) Run(ctx context.Context) error {
 
 	errs := make(chan error, 3)
 
+	slaveBuffer := make([]byte, wt.bufferSize)
 	go func() {
 		errs <- func() error {
-			buffer := make([]byte, wt.bufferSize)
 			for {
-				n, err := wt.slave.Read(buffer)
+				n, err := wt.slave.Read(slaveBuffer)
 				if err != nil {
 					return ErrSlaveClosed
 				}
-
-				err = wt.handleSlaveReadEvent(buffer[:n])
+				err = wt.handleSlaveReadEvent(slaveBuffer[:n])
 				if err != nil {
 					return err
 				}
 			}
 		}()
 	}()
-
+	masterBuffer := make([]byte, wt.bufferSize)
 	go func() {
 		errs <- func() error {
-			buffer := make([]byte, wt.bufferSize)
 			for {
-				n, err := wt.masterConn.Read(buffer)
+				n, err := wt.masterConn.Read(masterBuffer)
 				if err != nil {
 					return ErrMasterClosed
 				}
-				err = wt.handleMasterReadEvent(buffer[:n])
+				err = wt.handleMasterReadEvent(masterBuffer[:n])
 				if err != nil {
 					return err
 				}
@@ -124,6 +122,11 @@ func (wt *WebTTY) Run(ctx context.Context) error {
 				}
 			}
 		}()
+	}()
+
+	defer func() {
+		slaveBuffer = nil
+		masterBuffer = nil
 	}()
 
 	select {
