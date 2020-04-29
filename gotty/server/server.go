@@ -9,6 +9,7 @@ import (
 	"log"
 	"net"
 	"net/http"
+	"net/http/pprof"
 	"os"
 	"regexp"
 	noesctmpl "text/template"
@@ -209,6 +210,14 @@ func (server *Server) setupHandlers(ctx context.Context, cancel context.CancelFu
 	siteMux.HandleFunc("/api/kube-token", server.handleKubeTokenApi)
 	if len(os.Getenv("TERMINAL_PATH")) < 1 {
 		siteMux.HandleFunc("/", server.handleMain)
+	}
+
+	if pprofEnabled := os.Getenv("PPROF_ENABLED"); pprofEnabled != "" {
+		siteMux.HandleFunc("/debug/pprof/", pprof.Index)
+		siteMux.HandleFunc("/debug/pprof/cmdline", pprof.Cmdline)
+		siteMux.HandleFunc("/debug/pprof/profile", pprof.Profile)
+		siteMux.HandleFunc("/debug/pprof/symbol", pprof.Symbol)
+		siteMux.HandleFunc("/debug/pprof/trace", pprof.Trace)
 	}
 	siteHandler := http.Handler(siteMux)
 
