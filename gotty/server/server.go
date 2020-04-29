@@ -212,7 +212,7 @@ func (server *Server) setupHandlers(ctx context.Context, cancel context.CancelFu
 		siteMux.HandleFunc("/", server.handleMain)
 	}
 
-	if pprofEnabled := os.Getenv("PPROF_ENABLED"); pprofEnabled != "" {
+	if os.Getenv("PPROF_ENABLED") != "" {
 		siteMux.HandleFunc("/debug/pprof/", pprof.Index)
 		siteMux.HandleFunc("/debug/pprof/cmdline", pprof.Cmdline)
 		siteMux.HandleFunc("/debug/pprof/profile", pprof.Profile)
