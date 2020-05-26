@@ -27,6 +27,7 @@ RUN apt-get update && \
     git clone --branch master --depth 1 https://github.com/ahmetb/kubectl-aliases /opt/kubectl-aliases && chmod -R 755 /opt/kubectl-aliases && \
     git clone --branch 0.21.0 --depth 1 https://github.com/junegunn/fzf /opt/fzf && chmod -R 755 /opt/fzf && /opt/fzf/install && ln -s /opt/fzf/bin/fzf /usr/local/bin/fzf && \
     mkdir -p /tmp/k9s && cd /tmp/k9s && wget https://github.com/derailed/k9s/releases/download/v0.19.3/k9s_Linux_x86_64.tar.gz && tar -xvf k9s_Linux_x86_64.tar.gz && chmod +x k9s && mv k9s /usr/bin && \
+    curl -L https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash && \
     chmod +x /usr/bin/gotty && chmod 500 /usr/bin/nohup && \
     DEBIAN_FRONTEND=noninteractive apt-get --purge remove -y git && \
     DEBIAN_FRONTEND=noninteractive apt-get autoremove -y && \
