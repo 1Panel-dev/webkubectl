@@ -6,5 +6,6 @@ env
 echo "export TERM=xterm" >> /root/.bashrc
 echo "source /usr/share/bash-completion/bash_completion" >> /root/.bashrc
 echo 'source <(kubectl completion bash)' >> /root/.bashrc
+echo 'complete -F __start_kubectl k' >> /root/.bashrc
 
 gotty ${GOTTY_OPTIONS} /opt/webkubectl/start-session.sh
