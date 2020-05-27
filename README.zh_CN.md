@@ -4,7 +4,7 @@
 
 ![License](https://img.shields.io/badge/License-Apache%202.0-red)
 ![Dockerized](https://img.shields.io/badge/Dockerized-yes-brightgreen)
-![Version](https://img.shields.io/badge/Version-v2.3-yellow)
+![Version](https://img.shields.io/badge/Version-v2.4.0-yellow)
 [![Docker Pulls](https://img.shields.io/docker/pulls/kubeoperator/webkubectl.svg)](https://hub.docker.com/r/kubeoperator/webkubectl)
 ![HitCount](http://hits.dwyl.io/webkubectl/webkubectl.svg)
 
@@ -130,6 +130,7 @@ http://<webkubectl-address>:<port>/terminal/?token=<API响应中的Token>
 -  [kubectl插件](https://github.com/topics/kubectl-plugins): [ahmetb/kubectx](https://github.com/ahmetb/kubectx)
 -  [ahmetb/kubectl-aliases](https://github.com/ahmetb/kubectl-aliases)
 -  [derailed/k9s](https://github.com/derailed/k9s)
+-  [helm/helm](https://github.com/helm/helm)
 
 # 依赖 
 -  [webkubectl/gotty](https://github.com/KubeOperator/webkubectl/tree/master/gotty)
@@ -137,6 +138,7 @@ http://<webkubectl-address>:<port>/terminal/?token=<API响应中的Token>
 -  [ahmetb/kubectl-aliases](https://github.com/ahmetb/kubectl-aliases)
 -  [junegunn/fzf](https://github.com/junegunn/fzf)
 -  [derailed/k9s](https://github.com/derailed/k9s)
+-  [helm/helm](https://github.com/helm/helm)
 
 # 许可
 
