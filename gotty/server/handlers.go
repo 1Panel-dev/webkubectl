@@ -155,7 +155,10 @@ func (server *Server) processWSConn(ctx context.Context, conn *websocket.Conn) e
 	if err != nil {
 		return errors.Wrapf(err, "failed to create backend")
 	}
-	defer slave.Close()
+	defer func() {
+		slave.Write([]byte("exit\n"))
+		slave.Close()
+	}()
 
 	titleVars := server.titleVariables(
 		[]string{"server", "master", "slave"},
