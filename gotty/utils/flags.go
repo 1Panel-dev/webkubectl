@@ -4,7 +4,7 @@ import (
 	"reflect"
 	"strings"
 
-	"github.com/urfave/cli"
+	"github.com/urfave/cli/v2"
 	"github.com/fatih/structs"
 )
 
@@ -30,24 +30,24 @@ func GenerateFlags(options ...interface{}) (flags []cli.Flag, mappings map[strin
 
 			switch field.Kind() {
 			case reflect.String:
-				flags = append(flags, cli.StringFlag{
+				flags = append(flags, &cli.StringFlag{
 					Name:   flagName,
 					Value:  field.Value().(string),
 					Usage:  flagDescription,
-					EnvVar: envName,
 				})
 			case reflect.Bool:
-				flags = append(flags, cli.BoolFlag{
+				flags = append(flags, &cli.BoolFlag{
 					Name:   flagName,
 					Usage:  flagDescription,
-					EnvVar: envName,
+					EnvVars: []string{envName},
+
 				})
 			case reflect.Int:
-				flags = append(flags, cli.IntFlag{
+				flags = append(flags, &cli.IntFlag{
 					Name:   flagName,
 					Value:  field.Value().(int),
 					Usage:  flagDescription,
-					EnvVar: envName,
+					EnvVars: []string{envName},
 				})
 			}
 		}

@@ -9,7 +9,7 @@ import (
 	"strings"
 	"syscall"
 
-	"github.com/urfave/cli"
+	"github.com/urfave/cli/v2"
 
 	"github.com/KubeOperator/webkubectl/gotty/backend/localcommand"
 	"github.com/KubeOperator/webkubectl/gotty/server"
@@ -40,16 +40,16 @@ func main() {
 
 	app.Flags = append(
 		cliFlags,
-		cli.StringFlag{
+		&cli.StringFlag{
 			Name:   "config",
 			Value:  "~/.gotty",
 			Usage:  "Config file path",
-			EnvVar: "GOTTY_CONFIG",
+			EnvVars: []string{"GOTTY_CONFIG"},
 		},
 	)
 
-	app.Action = func(c *cli.Context) {
-		if len(c.Args()) == 0 {
+	app.Action = func(c *cli.Context) error {
+		if c.Args().Len() == 0 {
 			msg := "Error: No command given."
 			cli.ShowAppHelp(c)
 			exit(fmt.Errorf(msg), 1)
@@ -66,7 +66,7 @@ func main() {
 			exit(err, 6)
 		}
 
-		args := c.Args()
+		args := c.Args().Slice()
 		factory, err := localcommand.NewFactory(args[0], args[1:], backendOptions)
 		if err != nil {
 			exit(err, 3)
@@ -87,7 +87,7 @@ func main() {
 		ctx, cancel := context.WithCancel(context.Background())
 		gCtx, gCancel := context.WithCancel(context.Background())
 		log.Println("Welcome to use webkubectl.")
-		log.Printf("GoTTY is starting with command: %s", strings.Join(args, " "))
+		log.Printf("GoTTY is starting with command: %s", strings.Join(c.Args().Slice(), " "))
 
 		errs := make(chan error, 1)
 		go func() {
@@ -99,7 +99,7 @@ func main() {
 			fmt.Printf("Error: %s\n", err)
 			exit(err, 8)
 		}
-
+		return nil
 	}
 	app.Run(os.Args)
 }
