@@ -1,17 +1,11 @@
 package utils
 
 import (
-	"io/ioutil"
-	"log"
-	"os"
 	"reflect"
 	"strings"
 
-	"github.com/codegangsta/cli"
+	"github.com/urfave/cli"
 	"github.com/fatih/structs"
-	"github.com/yudai/hcl"
-
-	"github.com/KubeOperator/webkubectl/gotty/pkg/homedir"
 )
 
 func GenerateFlags(options ...interface{}) (flags []cli.Flag, mappings map[string]string, err error) {
@@ -99,26 +93,4 @@ func ApplyFlags(
 		}
 		field.Set(val)
 	}
-}
-
-func ApplyConfigFile(filePath string, options ...interface{}) error {
-	filePath = homedir.Expand(filePath)
-	if _, err := os.Stat(filePath); os.IsNotExist(err) {
-		return err
-	}
-
-	fileString := []byte{}
-	log.Printf("Loading config file at: %s", filePath)
-	fileString, err := ioutil.ReadFile(filePath)
-	if err != nil {
-		return err
-	}
-
-	for _, object := range options {
-		if err := hcl.Decode(object, string(fileString)); err != nil {
-			return err
-		}
-	}
-
-	return nil
 }

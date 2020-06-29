@@ -9,10 +9,9 @@ import (
 	"strings"
 	"syscall"
 
-	"github.com/codegangsta/cli"
+	"github.com/urfave/cli"
 
 	"github.com/KubeOperator/webkubectl/gotty/backend/localcommand"
-	"github.com/KubeOperator/webkubectl/gotty/pkg/homedir"
 	"github.com/KubeOperator/webkubectl/gotty/server"
 	"github.com/KubeOperator/webkubectl/gotty/utils"
 )
@@ -56,13 +55,6 @@ func main() {
 			exit(fmt.Errorf(msg), 1)
 		}
 
-		configFile := c.String("config")
-		_, err := os.Stat(homedir.Expand(configFile))
-		if configFile != "~/.gotty" || !os.IsNotExist(err) {
-			if err := utils.ApplyConfigFile(configFile, appOptions, backendOptions); err != nil {
-				exit(err, 2)
-			}
-		}
 
 		utils.ApplyFlags(cliFlags, flagMappings, c, appOptions, backendOptions)
 
