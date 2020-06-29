@@ -3,10 +3,12 @@ FROM golang:1.12-alpine as gotty-build
 ENV CGO_ENABLED=0
 ENV GOOS=linux
 ENV GOARCH=amd64
+ENV GO111MODULE=on
 
-COPY gotty $GOPATH/src/github.com/KubeOperator/webkubectl/gotty
+WORKDIR /tmp
+COPY gotty gotty
 RUN apk add --update git make && \
-  go get -u github.com/golang/dep/cmd/dep && cd $GOPATH/src/github.com/KubeOperator/webkubectl/gotty && \
+  cd gotty && \
   make gotty && cp gotty / && ls -l /gotty && /gotty -v
 
 
