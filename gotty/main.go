@@ -41,9 +41,9 @@ func main() {
 	app.Flags = append(
 		cliFlags,
 		&cli.StringFlag{
-			Name:   "config",
-			Value:  "~/.gotty",
-			Usage:  "Config file path",
+			Name:    "config",
+			Value:   "~/.gotty",
+			Usage:   "Config file path",
 			EnvVars: []string{"GOTTY_CONFIG"},
 		},
 	)
@@ -54,7 +54,6 @@ func main() {
 			cli.ShowAppHelp(c)
 			exit(fmt.Errorf(msg), 1)
 		}
-
 
 		utils.ApplyFlags(cliFlags, flagMappings, c, appOptions, backendOptions)
 
