@@ -126,9 +126,11 @@ func (server *Server) processWSConn(ctx context.Context, conn *websocket.Conn) e
 	params.Del("arg")
 	arg := ""
 	if len(params.Get("token")) > 0 {
-		param := server.cache.Get(params.Get("token"))
+		ttyParameter := server.cache.Get(params.Get("token"))
 		cachedKey := params.Get("token")
-		if param != nil {
+		if ttyParameter != nil {
+			windowTitle = ttyParameter.Title
+			arg = ttyParameter.Arg
 			server.cache.Delete(cachedKey)
 		} else {
 			arg = "ERROR:Invalid Token"
