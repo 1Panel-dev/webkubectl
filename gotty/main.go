@@ -9,11 +9,11 @@ import (
 	"strings"
 	"syscall"
 
-	"github.com/urfave/cli/v2"
-
 	"github.com/KubeOperator/webkubectl/gotty/backend/localcommand"
 	"github.com/KubeOperator/webkubectl/gotty/server"
 	"github.com/KubeOperator/webkubectl/gotty/utils"
+	"github.com/ramr/go-reaper"
+	"github.com/urfave/cli/v2"
 )
 
 func main() {
@@ -87,6 +87,13 @@ func main() {
 		gCtx, gCancel := context.WithCancel(context.Background())
 		log.Println("Welcome to use webkubectl.")
 		log.Printf("GoTTY is starting with command: %s", strings.Join(c.Args().Slice(), " "))
+
+		go reaper.Start(reaper.Config{
+			Pid:              -1,
+			Options:          0,
+			DisablePid1Check: false,
+			Debug:            true,
+		})
 
 		errs := make(chan error, 1)
 		go func() {
