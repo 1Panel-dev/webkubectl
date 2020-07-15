@@ -1,6 +1,7 @@
 package token
 
 import (
+	"fmt"
 	"log"
 	"time"
 
@@ -27,6 +28,7 @@ func (r *MemCache) Get(token string) *TtyParameter {
 	}
 	param, ok := obj.(TtyParameter)
 	if ok {
+		fmt.Printf("get ttyParam: %v \n", param)
 		return &param
 	}
 	log.Printf("get token %s from mem obj is not tty param", token)
@@ -41,5 +43,6 @@ func (r *MemCache) Delete(token string) error {
 
 //Add token to memory
 func (r *MemCache) Add(token string, param *TtyParameter, d time.Duration) error {
+	fmt.Printf("add ttyParam:%v \n", param)
 	return r.cache.Add(token, *param, d)
 }
