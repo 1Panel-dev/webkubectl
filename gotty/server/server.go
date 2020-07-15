@@ -4,6 +4,7 @@ import (
 	"context"
 	"crypto/tls"
 	"crypto/x509"
+	"fmt"
 	"html/template"
 	"io/ioutil"
 	"log"
@@ -80,11 +81,13 @@ func New(factory Factory, options *Options) (*Server, error) {
 	}
 	var cache token.Cache
 	if options.UseRedisTokenCache == "true" {
+		fmt.Println("use redis store token")
 		client := redis.NewClient(&redis.Options{
 			Addr: options.RedisAddr,
 		})
 		cache = token.NewRedisCache(client, "kubeoperator-webkubectl-")
 	} else {
+		fmt.Println("use mem store token")
 		cache = token.NewMemCache()
 	}
 
