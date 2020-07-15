@@ -30,6 +30,8 @@ type Options struct {
 	Height              int              `hcl:"height" flagName:"height" flagDescribe:"Static height of the screen, 0(default) means dynamically resize" default:"0"`
 	WSOrigin            string           `hcl:"ws_origin" flagName:"ws-origin" flagDescribe:"A regular expression that matches origin URLs to be accepted by WebSocket. No cross origin requests are acceptable by default" default:""`
 	Term                string           `hcl:"term" flagName:"term" flagDescribe:"Terminal name to use on the browser, one of xterm or hterm." default:"xterm"`
+	UseRedisTokenCache  bool             `hcl:"use_redis_token_cache" flagName:"use_redis_token_cache" flagDescribe:"if true,will use redis cache token;if false,will use memory cache token." default:"false"`
+	RedisAddr           string           `hcl:"redis_addr" flagName:"redis_addr" flagDescribe:"if use_redis_token_cache, must set redis_addr  ." default:"127.0.0.1:6634"`
 
 	TitleVariables map[string]interface{}
 }
