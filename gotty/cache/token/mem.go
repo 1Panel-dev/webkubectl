@@ -25,9 +25,9 @@ func (r *MemCache) Get(token string) *TtyParameter {
 	if !exit {
 		return nil
 	}
-	param, ok := obj.(*TtyParameter)
+	param, ok := obj.(TtyParameter)
 	if ok {
-		return param
+		return &param
 	}
 	log.Printf("get token %s from mem obj is not tty param", token)
 	return nil
@@ -41,5 +41,5 @@ func (r *MemCache) Delete(token string) error {
 
 //Add token to memory
 func (r *MemCache) Add(token string, param *TtyParameter, d time.Duration) error {
-	return r.cache.Add(token, param, d)
+	return r.cache.Add(token, *param, d)
 }
