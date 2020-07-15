@@ -15,14 +15,16 @@ import (
 	noesctmpl "text/template"
 	"time"
 
+	"github.com/KubeOperator/webkubectl/gotty/cache/token"
+	"github.com/KubeOperator/webkubectl/gotty/pkg/randomstring"
+	"github.com/KubeOperator/webkubectl/gotty/webtty"
 	"github.com/NYTimes/gziphandler"
-	"github.com/elazarl/go-bindata-assetfs"
+	assetfs "github.com/elazarl/go-bindata-assetfs"
+	"github.com/go-redis/redis/v8"
 	"github.com/gorilla/websocket"
 	"github.com/pkg/errors"
 
 	"github.com/KubeOperator/webkubectl/gotty/pkg/homedir"
-	"github.com/KubeOperator/webkubectl/gotty/pkg/randomstring"
-	"github.com/KubeOperator/webkubectl/gotty/webtty"
 )
 
 // Server provides a webtty HTTP endpoint.
@@ -33,6 +35,7 @@ type Server struct {
 	upgrader         *websocket.Upgrader
 	terminalTemplate *template.Template
 	titleTemplate    *noesctmpl.Template
+	cache            token.Cache
 }
 
 // New creates a new instance of Server.
@@ -75,6 +78,15 @@ func New(factory Factory, options *Options) (*Server, error) {
 			return true
 		}
 	}
+	var cache token.Cache
+	if options.UseRedisTokenCache {
+		client := redis.NewClient(&redis.Options{
+			Addr: "localhost:6379",
+		})
+		cache = token.NewRedisCache(client, "kubeoperator-webkubectl-")
+	} else {
+		cache = token.NewMemCache()
+	}
 
 	return &Server{
 		factory: factory,
@@ -88,6 +100,7 @@ func New(factory Factory, options *Options) (*Server, error) {
 		},
 		terminalTemplate: terminalTemplate,
 		titleTemplate:    titleTemplate,
+		cache:            cache,
 	}, nil
 }
 
