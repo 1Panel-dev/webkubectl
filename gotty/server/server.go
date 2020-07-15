@@ -84,6 +84,8 @@ func New(factory Factory, options *Options) (*Server, error) {
 			Addr: "localhost:6379",
 		})
 		cache = token.NewRedisCache(client, "kubeoperator-webkubectl-")
+	} else {
+		cache = token.NewMemCache()
 	}
 
 	return &Server{
