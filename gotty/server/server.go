@@ -79,9 +79,9 @@ func New(factory Factory, options *Options) (*Server, error) {
 		}
 	}
 	var cache token.Cache
-	if options.UseRedisTokenCache {
+	if options.UseRedisTokenCache == "true" {
 		client := redis.NewClient(&redis.Options{
-			Addr: "localhost:6379",
+			Addr: options.RedisAddr,
 		})
 		cache = token.NewRedisCache(client, "kubeoperator-webkubectl-")
 	} else {
