@@ -16,8 +16,3 @@ type KubeTokenRequest struct {
 	ApiServer string `json:"apiServer"`
 	Token     string `json:"token"`
 }
-
-type TtyParameter struct {
-	Title string
-	Arg   string
-}

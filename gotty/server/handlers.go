@@ -5,23 +5,19 @@ import (
 	"context"
 	"encoding/json"
 	"fmt"
-	"github.com/KubeOperator/webkubectl/gotty/pkg/randomstring"
-	"github.com/patrickmn/go-cache"
 	"io/ioutil"
 	"log"
 	"net/http"
 	"net/url"
 	"strings"
 	"sync/atomic"
-	"time"
 
+	cache "github.com/KubeOperator/webkubectl/gotty/cache/token"
+	"github.com/KubeOperator/webkubectl/gotty/pkg/randomstring"
+	"github.com/KubeOperator/webkubectl/gotty/webtty"
 	"github.com/gorilla/websocket"
 	"github.com/pkg/errors"
-
-	"github.com/KubeOperator/webkubectl/gotty/webtty"
 )
-
-var tokenCache = cache.New(5*time.Minute, 10*time.Minute)
 
 func (server *Server) generateHandleWS(ctx context.Context, cancel context.CancelFunc, counter *counter) http.HandlerFunc {
 	once := new(int64)
@@ -130,18 +126,12 @@ func (server *Server) processWSConn(ctx context.Context, conn *websocket.Conn) e
 	params.Del("arg")
 	arg := ""
 	if len(params.Get("token")) > 0 {
-		cachedObject, found := tokenCache.Get(params.Get("token"))
+		ttyParameter := server.cache.Get(params.Get("token"))
 		cachedKey := params.Get("token")
-		if found {
-
-			ttyParameter, ok := cachedObject.(TtyParameter)
-			if ok {
-				windowTitle = ttyParameter.Title
-				arg = ttyParameter.Arg
-			} else {
-				arg = "ERROR:Internal Error"
-			}
-			tokenCache.Delete(cachedKey)
+		if ttyParameter != nil {
+			windowTitle = ttyParameter.Title
+			arg = ttyParameter.Arg
+			server.cache.Delete(cachedKey)
 		} else {
 			arg = "ERROR:Invalid Token"
 		}
@@ -317,11 +307,17 @@ func (server *Server) handleKubeConfigApi(w http.ResponseWriter, r *http.Request
 	}
 	//fmt.Printf("%+v", requst)
 	token := randomstring.Generate(20)
-	ttyParameter := TtyParameter{
+	ttyParameter := cache.TtyParameter{
 		Title: request.Name,
 		Arg:   strings.Replace(request.KubeConfig, " ", "", -1),
 	}
-	tokenCache.Add(token, ttyParameter, cache.DefaultExpiration)
+	if err := server.cache.Add(token, &ttyParameter, cache.DefaultExpiration); err != nil {
+		log.Printf("save token and ttyParam err:%s", err.Error())
+		result.Success = false
+		result.Message = err.Error()
+		json.NewEncoder(w).Encode(result)
+		return
+	}
 	result.Success = true
 	result.Token = token
 	json.NewEncoder(w).Encode(result)
@@ -369,11 +365,17 @@ func (server *Server) handleKubeTokenApi(w http.ResponseWriter, r *http.Request)
 	}
 	//fmt.Printf("%+v", requst)
 	token := randomstring.Generate(20)
-	ttyParameter := TtyParameter{
+	ttyParameter := cache.TtyParameter{
 		Title: request.Name,
 		Arg:   strings.Replace(request.ApiServer, " ", "", -1) + " " + strings.Replace(request.Token, " ", "", -1),
 	}
-	tokenCache.Add(token, ttyParameter, cache.DefaultExpiration)
+	if err := server.cache.Add(token, &ttyParameter, cache.DefaultExpiration); err != nil {
+		log.Printf("save token and ttyParam err:%s", err.Error())
+		result.Success = false
+		result.Message = err.Error()
+		json.NewEncoder(w).Encode(result)
+		return
+	}
 	result.Success = true
 	result.Token = token
 	json.NewEncoder(w).Encode(result)

@@ -14,6 +14,6 @@ AUTHOR:{{if .Author}}
   {{.Email}}{{end}}{{end}}
 
 OPTIONS:
-   {{range .Flags}}{{.}}
+   {{range .VisibleFlags}}{{.}}
    {{end}}
 `
