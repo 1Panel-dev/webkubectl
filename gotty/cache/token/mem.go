@@ -2,13 +2,14 @@ package token
 
 import (
 	"log"
+	"time"
 
-	"github.com/patrickmn/go-cache"
+	cache "github.com/patrickmn/go-cache"
 )
 
 //MemCache use memory store token and TtyParameter
-type MemCache struct{
-	cache cache.Cache
+type MemCache struct {
+	cache *cache.Cache
 }
 
 //NewMemCache new MemCache
@@ -20,15 +21,15 @@ func NewMemCache() *MemCache {
 
 //Get token param from memory
 func (r *MemCache) Get(token string) *TtyParameter {
-	obj,exit := r.cache.Get(token)
-	if !exit{
+	obj, exit := r.cache.Get(token)
+	if !exit {
 		return nil
 	}
-	param,ok := obj.(TtyParameter)
+	param, ok := obj.(*TtyParameter)
 	if ok {
 		return param
 	}
-	log.Printf("get token %s from mem obj is not tty param",token)
+	log.Printf("get token %s from mem obj is not tty param", token)
 	return nil
 }
 
@@ -40,5 +41,5 @@ func (r *MemCache) Delete(token string) error {
 
 //Add token to memory
 func (r *MemCache) Add(token string, param *TtyParameter, d time.Duration) error {
-	return r.cache.Add(token,param,d)
+	return r.cache.Add(token, param, d)
 }

@@ -83,10 +83,7 @@ func New(factory Factory, options *Options) (*Server, error) {
 		client := redis.NewClient(&redis.Options{
 			Addr: "localhost:6379",
 		})
-		cache = &token.RedisCache{
-			client: client,
-			prefix: "kubeoperator-webkubectl-"
-		}
+		cache = token.NewRedisCache(client, "kubeoperator-webkubectl-")
 	}
 
 	return &Server{
@@ -101,7 +98,7 @@ func New(factory Factory, options *Options) (*Server, error) {
 		},
 		terminalTemplate: terminalTemplate,
 		titleTemplate:    titleTemplate,
-		cache: cache,
+		cache:            cache,
 	}, nil
 }
 
