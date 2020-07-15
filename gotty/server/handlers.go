@@ -309,7 +309,13 @@ func (server *Server) handleKubeConfigApi(w http.ResponseWriter, r *http.Request
 		Title: request.Name,
 		Arg:   strings.Replace(request.KubeConfig, " ", "", -1),
 	}
-	server.cache.Add(token, &ttyParameter, cache.DefaultExpiration)
+	if err := server.cache.Add(token, &ttyParameter, cache.DefaultExpiration); err != nil {
+		log.Printf("save token and ttyParam err:%s", err.Error())
+		result.Success = false
+		result.Message = err.Error()
+		json.NewEncoder(w).Encode(result)
+		return
+	}
 	result.Success = true
 	result.Token = token
 	json.NewEncoder(w).Encode(result)
@@ -361,7 +367,13 @@ func (server *Server) handleKubeTokenApi(w http.ResponseWriter, r *http.Request)
 		Title: request.Name,
 		Arg:   strings.Replace(request.ApiServer, " ", "", -1) + " " + strings.Replace(request.Token, " ", "", -1),
 	}
-	server.cache.Add(token, &ttyParameter, cache.DefaultExpiration)
+	if err := server.cache.Add(token, &ttyParameter, cache.DefaultExpiration); err != nil {
+		log.Printf("save token and ttyParam err:%s", err.Error())
+		result.Success = false
+		result.Message = err.Error()
+		json.NewEncoder(w).Encode(result)
+		return
+	}
 	result.Success = true
 	result.Token = token
 	json.NewEncoder(w).Encode(result)
