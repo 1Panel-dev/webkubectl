@@ -80,6 +80,7 @@ func New(factory Factory, options *Options, redisOptions *RedisOptions) (*Server
 		}
 	}
 	var cache token.Cache
+
 	if redisOptions.UseRedisTokenCache == "true" {
 		fmt.Println("use redis store token")
 		client := redis.NewClient(redisOptions.Convert())

@@ -6,7 +6,6 @@ require (
 	github.com/NYTimes/gziphandler v1.1.1
 	github.com/elazarl/go-bindata-assetfs v1.0.0
 	github.com/fatih/structs v1.1.0
-	github.com/go-redis/redis v6.15.8+incompatible
 	github.com/go-redis/redis/v8 v8.0.0-beta.6
 	github.com/gorilla/websocket v1.4.2
 	github.com/kr/pty v1.1.8
