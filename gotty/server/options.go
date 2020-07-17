@@ -1,6 +1,9 @@
 package server
 
 import (
+	"time"
+
+	"github.com/go-redis/redis/v8"
 	"github.com/pkg/errors"
 )
 
@@ -96,4 +99,53 @@ type HtermPrefernces struct {
 	SendEncoding                  string                       `hcl:"send_encoding" json:"send-encoding,omitempty"`
 	ShiftInsertPaste              bool                         `hcl:"shift_insert_paste" json:"shift-insert-paste,omitempty"`
 	UserCss                       string                       `hcl:"user_css" json:"user-css,omitempty"`
+}
+
+//RedisOptions contain whether use redis and redis connection options
+type RedisOptions struct {
+	UseRedisTokenCache string `hcl:"use_redis_token_cache" flagName:"use_redis_token_cache" flagDescribe:"if true,will use redis cache token;if false,will use memory cache token." default:"false"`
+	// host:port address.
+	Addr string `hcl:"redis_addr" flagName:"redis_addr" flagDescribe:"redis conntect host:port address." default:""`
+	// Use the specified Username to authenticate the current connection
+	// with one of the connections defined in the ACL list when connecting
+	// to a Redis 6.0 instance, or greater, that is using the Redis ACL system.
+	Username string `hcl:"redis_user" flagName:"redis_user" flagDescribe:"redis conntect user name." default:""`
+	// Optional password. Must match the password specified in the
+	// requirepass server configuration option (if connecting to a Redis 5.0 instance, or lower),
+	// or the User Password when connecting to a Redis 6.0 instance, or greater,
+	// that is using the Redis ACL system.
+	Password string `hcl:"redis_vpassword" flagName:"redis_password" flagDescribe:"redis conntect user password." default:""`
+
+	// Database to be selected after connecting to the server.
+	DB int `hcl:"redis_db" flagName:"redis_db" flagDescribe:"redis database to be selected after connecting to the server.." default:"0"`
+
+	// Maximum number of socket connections.
+	// Default is 10 connections per every CPU as reported by runtime.NumCPU.
+	PoolSize int `hcl:"redis_pool_size" flagName:"redis_pool_size" flagDescribe:"redis timeout for socket writes." default:"1"`
+	// Minimum number of idle connections which is useful when establishing
+	// new connection is slow.
+	MinIdleConns int `hcl:"redis_min_idle_conns" flagName:"redis_min_idle_conns" flagDescribe:"redis minimum number of idle connections which is useful when establishing." default:"1"`
+	// Connection age at which client retires (closes) the connection.
+	// Default is to not close aged connections.
+	MaxConnAge time.Duration `hcl:"redis_max_conn_age" flagName:"redis_max_conn_age" flagDescribe:"redis connection age at which client retires (closes) the connection" default:"0"`
+}
+
+//Convert RedisOptions to redis-go Options
+func (ro *RedisOptions) Convert() *redis.Options {
+	return &redis.Options{
+		Addr:         ro.Addr,
+		Username:     ro.Username,
+		Password:     ro.Password,
+		DB:           ro.DB,
+		PoolSize:     ro.PoolSize,
+		MinIdleConns: ro.MinIdleConns,
+		MaxConnAge:   ro.MaxConnAge,
+	}
+}
+
+func (ro *RedisOptions) Validate() error {
+	if ro.UseRedisTokenCache == "true" && ro.Addr == "" {
+		return errors.New("User redis cache token ,addr must not null")
+	}
+	return nil
 }

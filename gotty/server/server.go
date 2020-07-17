@@ -4,6 +4,7 @@ import (
 	"context"
 	"crypto/tls"
 	"crypto/x509"
+	"fmt"
 	"html/template"
 	"io/ioutil"
 	"log"
@@ -15,14 +16,16 @@ import (
 	noesctmpl "text/template"
 	"time"
 
+	"github.com/KubeOperator/webkubectl/gotty/cache/token"
+	"github.com/KubeOperator/webkubectl/gotty/pkg/randomstring"
+	"github.com/KubeOperator/webkubectl/gotty/webtty"
 	"github.com/NYTimes/gziphandler"
-	"github.com/elazarl/go-bindata-assetfs"
+	assetfs "github.com/elazarl/go-bindata-assetfs"
+	"github.com/go-redis/redis/v8"
 	"github.com/gorilla/websocket"
 	"github.com/pkg/errors"
 
 	"github.com/KubeOperator/webkubectl/gotty/pkg/homedir"
-	"github.com/KubeOperator/webkubectl/gotty/pkg/randomstring"
-	"github.com/KubeOperator/webkubectl/gotty/webtty"
 )
 
 // Server provides a webtty HTTP endpoint.
@@ -33,11 +36,12 @@ type Server struct {
 	upgrader         *websocket.Upgrader
 	terminalTemplate *template.Template
 	titleTemplate    *noesctmpl.Template
+	cache            token.Cache
 }
 
 // New creates a new instance of Server.
 // Server will use the New() of the factory provided to handle each request.
-func New(factory Factory, options *Options) (*Server, error) {
+func New(factory Factory, options *Options, redisOptions *RedisOptions) (*Server, error) {
 
 	indexData, err := Asset("static/terminal.html")
 	if err != nil {
@@ -75,6 +79,16 @@ func New(factory Factory, options *Options) (*Server, error) {
 			return true
 		}
 	}
+	var cache token.Cache
+
+	if redisOptions.UseRedisTokenCache == "true" {
+		fmt.Println("use redis store token")
+		client := redis.NewClient(redisOptions.Convert())
+		cache = token.NewRedisCache(client, "kubeoperator-webkubectl-")
+	} else {
+		fmt.Println("use mem store token")
+		cache = token.NewMemCache()
+	}
 
 	return &Server{
 		factory: factory,
@@ -88,6 +102,7 @@ func New(factory Factory, options *Options) (*Server, error) {
 		},
 		terminalTemplate: terminalTemplate,
 		titleTemplate:    titleTemplate,
+		cache:            cache,
 	}, nil
 }
 
