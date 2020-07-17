@@ -30,8 +30,11 @@ func main() {
 	if err := utils.ApplyDefaultValues(backendOptions); err != nil {
 		exit(err, 1)
 	}
-
-	cliFlags, flagMappings, err := utils.GenerateFlags(appOptions, backendOptions)
+	redisOptions := &server.RedisOptions{}
+	if err := utils.ApplyDefaultValues(redisOptions); err != nil {
+		exit(err, 1)
+	}
+	cliFlags, flagMappings, err := utils.GenerateFlags(appOptions, backendOptions, redisOptions)
 	if err != nil {
 		exit(err, 3)
 	}
@@ -62,6 +65,10 @@ func main() {
 		if err != nil {
 			exit(err, 6)
 		}
+		err = redisOptions.Validate()
+		if err != nil {
+			exit(err, 6)
+		}
 
 		args := c.Args().Slice()
 		factory, err := localcommand.NewFactory(args[0], args[1:], backendOptions)
@@ -76,7 +83,7 @@ func main() {
 			"hostname": hostname,
 		}
 
-		srv, err := server.New(factory, appOptions)
+		srv, err := server.New(factory, appOptions, redisOptions)
 		if err != nil {
 			exit(err, 3)
 		}

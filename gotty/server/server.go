@@ -41,7 +41,7 @@ type Server struct {
 
 // New creates a new instance of Server.
 // Server will use the New() of the factory provided to handle each request.
-func New(factory Factory, options *Options) (*Server, error) {
+func New(factory Factory, options *Options, redisOptions *RedisOptions) (*Server, error) {
 
 	indexData, err := Asset("static/terminal.html")
 	if err != nil {
@@ -80,11 +80,9 @@ func New(factory Factory, options *Options) (*Server, error) {
 		}
 	}
 	var cache token.Cache
-	if options.UseRedisTokenCache == "true" {
+	if redisOptions.UseRedisTokenCache == "true" {
 		fmt.Println("use redis store token")
-		client := redis.NewClient(&redis.Options{
-			Addr: options.RedisAddr,
-		})
+		client := redis.NewClient(redisOptions.Convert())
 		cache = token.NewRedisCache(client, "kubeoperator-webkubectl-")
 	} else {
 		fmt.Println("use mem store token")
