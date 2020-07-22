@@ -145,7 +145,7 @@ func (ro *RedisOptions) Convert() *redis.Options {
 
 func (ro *RedisOptions) Validate() error {
 	if ro.UseRedisTokenCache == "true" && ro.Addr == "" {
-		return errors.New("User redis cache token ,addr must not null")
+		return errors.New("redis addr must not be null")
 	}
 	return nil
 }

@@ -7,7 +7,7 @@ import (
 	cache "github.com/patrickmn/go-cache"
 )
 
-//MemCache use memory store token and TtyParameter
+//MemCache use memory to store token and TtyParameter
 type MemCache struct {
 	cache *cache.Cache
 }

@@ -4,7 +4,6 @@ import (
 	"context"
 	"crypto/tls"
 	"crypto/x509"
-	"fmt"
 	"html/template"
 	"io/ioutil"
 	"log"
@@ -20,7 +19,7 @@ import (
 	"github.com/KubeOperator/webkubectl/gotty/pkg/randomstring"
 	"github.com/KubeOperator/webkubectl/gotty/webtty"
 	"github.com/NYTimes/gziphandler"
-	assetfs "github.com/elazarl/go-bindata-assetfs"
+	"github.com/elazarl/go-bindata-assetfs"
 	"github.com/go-redis/redis/v8"
 	"github.com/gorilla/websocket"
 	"github.com/pkg/errors"
@@ -82,11 +81,10 @@ func New(factory Factory, options *Options, redisOptions *RedisOptions) (*Server
 	var cache token.Cache
 
 	if redisOptions.UseRedisTokenCache == "true" {
-		fmt.Println("use redis store token")
+		log.Println("use redis store token")
 		client := redis.NewClient(redisOptions.Convert())
 		cache = token.NewRedisCache(client, "kubeoperator-webkubectl-")
 	} else {
-		fmt.Println("use mem store token")
 		cache = token.NewMemCache()
 	}
 

@@ -9,7 +9,7 @@ import (
 	"github.com/go-redis/redis/v8"
 )
 
-//RedisCache use redis store token and TtyParameter
+//RedisCache use redis to store token and TtyParameter
 type RedisCache struct {
 	client *redis.Client
 	prefix string

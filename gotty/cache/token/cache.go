@@ -13,7 +13,7 @@ type TtyParameter struct {
 	Arg   string
 }
 
-//Cache define token cache behive
+//interface that defines token cache behavior
 type Cache interface {
 	Get(token string) *TtyParameter
 	Delete(token string) error
