@@ -19,7 +19,7 @@ type RedisCache struct {
 func NewRedisCache(client *redis.Client, prefix string) *RedisCache {
 	return &RedisCache{
 		client: client,
-		prefix: "",
+		prefix: prefix,
 	}
 }
 
