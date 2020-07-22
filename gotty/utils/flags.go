@@ -31,9 +31,10 @@ func GenerateFlags(options ...interface{}) (flags []cli.Flag, mappings map[strin
 			switch field.Kind() {
 			case reflect.String:
 				flags = append(flags, &cli.StringFlag{
-					Name:  flagName,
-					Value: field.Value().(string),
-					Usage: flagDescription,
+					Name:    flagName,
+					Value:   field.Value().(string),
+					Usage:   flagDescription,
+					EnvVars: []string{envName},
 				})
 			case reflect.Bool:
 				flags = append(flags, &cli.BoolFlag{

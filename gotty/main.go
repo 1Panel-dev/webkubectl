@@ -9,11 +9,10 @@ import (
 	"strings"
 	"syscall"
 
-	"github.com/urfave/cli/v2"
-
 	"github.com/KubeOperator/webkubectl/gotty/backend/localcommand"
 	"github.com/KubeOperator/webkubectl/gotty/server"
 	"github.com/KubeOperator/webkubectl/gotty/utils"
+	"github.com/urfave/cli/v2"
 )
 
 func main() {
@@ -22,7 +21,6 @@ func main() {
 	app.Version = Version + "+" + CommitID
 	app.Usage = "Share your terminal as a web application"
 	app.HideHelp = true
-	cli.AppHelpTemplate = helpTemplate
 
 	appOptions := &server.Options{}
 	if err := utils.ApplyDefaultValues(appOptions); err != nil {
@@ -32,8 +30,11 @@ func main() {
 	if err := utils.ApplyDefaultValues(backendOptions); err != nil {
 		exit(err, 1)
 	}
-
-	cliFlags, flagMappings, err := utils.GenerateFlags(appOptions, backendOptions)
+	redisOptions := &server.RedisOptions{}
+	if err := utils.ApplyDefaultValues(redisOptions); err != nil {
+		exit(err, 1)
+	}
+	cliFlags, flagMappings, err := utils.GenerateFlags(appOptions, backendOptions, redisOptions)
 	if err != nil {
 		exit(err, 3)
 	}
@@ -64,6 +65,10 @@ func main() {
 		if err != nil {
 			exit(err, 6)
 		}
+		err = redisOptions.Validate()
+		if err != nil {
+			exit(err, 6)
+		}
 
 		args := c.Args().Slice()
 		factory, err := localcommand.NewFactory(args[0], args[1:], backendOptions)
@@ -78,7 +83,7 @@ func main() {
 			"hostname": hostname,
 		}
 
-		srv, err := server.New(factory, appOptions)
+		srv, err := server.New(factory, appOptions, redisOptions)
 		if err != nil {
 			exit(err, 3)
 		}
