@@ -3,7 +3,7 @@
 # ![](https://raw.githubusercontent.com/KubeOperator/webkubectl/master/gotty/resources/favicon.png) Web Kubectl - 在Web浏览器中运行kubectl命令
 
 ![License](https://img.shields.io/github/license/KubeOperator/webkubectl)
-![Dockerized](https://img.shields.io/badge/Dockerized-yes-brightgreen)
+![Dockerized](https://img.shields.io/badge/dockerized-yes-brightgreen)
 ![Version](https://img.shields.io/github/v/release/kubeoperator/webkubectl)
 [![Downloads](https://img.shields.io/docker/pulls/kubeoperator/webkubectl.svg)](https://hub.docker.com/r/kubeoperator/webkubectl)
 ![HitCount](http://hits.dwyl.io/webkubectl/webkubectl.svg)
