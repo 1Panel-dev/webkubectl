@@ -5,7 +5,7 @@
 ![License](https://img.shields.io/badge/License-Apache%202.0-red)
 ![Dockerized](https://img.shields.io/badge/Dockerized-yes-brightgreen)
 ![Version](https://img.shields.io/badge/Version-v2.6.0-yellow)
-[![Docker Pulls](https://img.shields.io/docker/pulls/kubeoperator/webkubectl.svg)](https://hub.docker.com/r/kubeoperator/webkubectl)
+[![Downloads](https://img.shields.io/docker/pulls/kubeoperator/webkubectl.svg)](https://hub.docker.com/r/kubeoperator/webkubectl)
 ![HitCount](http://hits.dwyl.io/webkubectl/webkubectl.svg)
 
 ![webkubectl](https://raw.githubusercontent.com/KubeOperator/webkubectl/master/web-resources/webkubectl.gif)
