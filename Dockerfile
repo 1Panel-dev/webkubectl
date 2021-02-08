@@ -20,7 +20,7 @@ USER root
 ARG ARCH=amd64
 
 RUN rm -f /bin/sh && ln -s /bin/bash /bin/sh
-ENV KUBECTL_VERSION v1.18.10
+ENV KUBECTL_VERSION v1.20.2
 COPY --from=gotty-build /gotty /usr/bin/
 RUN apt-get update && \
     apt-get install -y --no-install-recommends curl ca-certificates jq iproute2 less bash-completion unzip sysstat acl net-tools iputils-ping telnet dnsutils wget vim git && \
