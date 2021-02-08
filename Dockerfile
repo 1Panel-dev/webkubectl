@@ -1,4 +1,4 @@
-FROM golang:1.12-alpine as gotty-build
+FROM golang:1.15-alpine as gotty-build
 
 ENV CGO_ENABLED=0
 ENV GOOS=linux
