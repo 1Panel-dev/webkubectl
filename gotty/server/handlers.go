@@ -3,6 +3,7 @@ package server
 import (
 	"bytes"
 	"context"
+	"encoding/base64"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
@@ -305,6 +306,13 @@ func (server *Server) handleKubeConfigApi(w http.ResponseWriter, r *http.Request
 		w.WriteHeader(406)
 		return
 	}
+	if _, base64err := base64.StdEncoding.DecodeString(request.KubeConfig); base64err != nil {
+		result.Message = "Invalid Base64 Content"
+		json.NewEncoder(w).Encode(result)
+		w.WriteHeader(406)
+		return
+	}
+
 	//fmt.Printf("%+v", requst)
 	token := randomstring.Generate(20)
 	ttyParameter := cache.TtyParameter{
