@@ -81,7 +81,7 @@ func New(factory Factory, options *Options, redisOptions *RedisOptions) (*Server
 	var cache token.Cache
 
 	if redisOptions.UseRedisTokenCache == "true" {
-		log.Println("use redis store token")
+		log.Println("Use redis to store token: ", redisOptions.Addr)
 		client := redis.NewClient(redisOptions.Convert())
 		cache = token.NewRedisCache(client, "kubeoperator-webkubectl-")
 	} else {
