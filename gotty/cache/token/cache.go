@@ -4,7 +4,7 @@ import "time"
 
 const (
 	//DefaultExpiration never expire
-	DefaultExpiration = 0
+	DefaultExpiration = 5 * time.Minute
 )
 
 //TtyParameter kubectl tty param

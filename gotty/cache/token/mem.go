@@ -4,7 +4,7 @@ import (
 	"log"
 	"time"
 
-	cache "github.com/patrickmn/go-cache"
+	"github.com/patrickmn/go-cache"
 )
 
 //MemCache use memory to store token and TtyParameter
@@ -15,7 +15,7 @@ type MemCache struct {
 //NewMemCache new MemCache
 func NewMemCache() *MemCache {
 	return &MemCache{
-		cache: cache.New(5*time.Minute, 10*time.Minute),
+		cache: cache.New(DefaultExpiration, 10*time.Minute),
 	}
 }
 
