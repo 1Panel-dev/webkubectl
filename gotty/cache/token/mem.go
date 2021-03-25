@@ -15,7 +15,7 @@ type MemCache struct {
 //NewMemCache new MemCache
 func NewMemCache() *MemCache {
 	return &MemCache{
-		cache: cache.New(DefaultExpiration, 10*time.Minute),
+		cache: cache.New(5*time.Minute, 10*time.Minute),
 	}
 }
 

@@ -2,11 +2,6 @@ package token
 
 import "time"
 
-const (
-	//DefaultExpiration never expire
-	DefaultExpiration = 5 * 60 * time.Second
-)
-
 //TtyParameter kubectl tty param
 type TtyParameter struct {
 	Title string
