@@ -40,7 +40,7 @@ COPY vimrc.local /etc/vim
 COPY start-webkubectl.sh /opt/webkubectl
 COPY start-session.sh /opt/webkubectl
 COPY init-kubectl.sh /opt/webkubectl
-RUN chmod -R 700 /opt/webkubectl
+RUN chmod -R 700 /opt/webkubectl /usr/bin/gotty
 
 
 ENV SESSION_STORAGE_SIZE=10M
