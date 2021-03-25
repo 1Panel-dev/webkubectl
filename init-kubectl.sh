@@ -46,4 +46,14 @@ chown -R nobody:nogroup .kube
 
 export TMPDIR=/nonexistent
 
+envs=`env`
+for env in ${envs[@]}; do
+    if [[ $env == GOTTY* ]];
+    then
+        unset ${env%%=*}
+    fi
+done
+
+unset WELCOME_BANNER PPROF_ENABLED KUBECTL_INSECURE_SKIP_TLS_VERIFY SESSION_STORAGE_SIZE KUBECTL_VERSION
+
 exec su -s /bin/bash nobody
