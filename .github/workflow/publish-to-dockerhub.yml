@@ -1,0 +1,49 @@
+name: Publish
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  build-and-push-amd64:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - name: build docker image
+        run: docker build -t kubeoperator/webkubectl:${{ github.ref }}-amd64 .
+      - name: log in dockerhub
+        run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
+      - name: push image to dockerhub
+        run: docker push kubeoperator/webkubectl:${{ github.ref }}-amd64
+  build-and-push-arm64:
+    runs-on: ubuntu-18.04
+    steps:
+      - uses: actions/checkout@v2
+      - uses: uraimo/run-on-arch-action@v2.0.5
+        name: build docker image
+        with:
+          arch: armv7
+          distro: ubuntu18.04
+          shell: /bin/bash
+          run: |
+            sed -i "s/amd64/arm64/g" Dockerfile
+            sed -i "s/x86_64/arm64/g" Dockerfile
+            docker build -t kubeoperator/webkubectl:${{ github.ref }}-arm64 .
+            docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
+            docker push kubeoperator/webkubectl:${{ github.ref }}-arm64
+  create-and-push-manifest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: log in dockerhub
+        run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_PASSWORD }}
+      - name: create manifest
+        run: |
+          docker manifest create --insecure kubeoperator/webkubectl:${{ github.ref }} kubeoperator/webkubectl:${{ github.ref }}-amd64 kubeoperator/webkubectl:${{ github.ref }}-arm64
+          docker manifest annotate kubeoperator/webkubectl:${{ github.ref }} kubeoperator/webkubectl:${{ github.ref }}-amd64 --os linux --arch amd64
+          docker manifest annotate kubeoperator/webkubectl:${{ github.ref }} kubeoperator/webkubectl:${{ github.ref }}-arm64 --os linux --arch arm64
+          docker manifest create --insecure kubeoperator/webkubectl:latest kubeoperator/webkubectl:${{ github.ref }}-amd64 kubeoperator/webkubectl:${{ github.ref }}-arm64
+      - name: push manifest
+        run: |
+          docker manifest push --insecure kubeoperator/webkubectl:${{ github.ref }}
+          docker manifest push --insecure kubeoperator/webkubectl:latest
