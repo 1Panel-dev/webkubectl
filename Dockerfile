@@ -21,13 +21,14 @@ ARG ARCH=amd64
 RUN rm -f /bin/sh && ln -s /bin/bash /bin/sh
 ENV KUBECTL_VERSION v1.20.2
 COPY --from=gotty-build /gotty /usr/bin/
-RUN apt-get update && \
+RUN echo "ARCH: " $ARCH && apt-get update && \
     apt-get install -y --no-install-recommends curl ca-certificates jq iproute2 less bash-completion unzip sysstat acl net-tools iputils-ping telnet dnsutils wget vim git && \
     curl -sLf https://storage.googleapis.com/kubernetes-release/release/${KUBECTL_VERSION}/bin/linux/${ARCH}/kubectl > /usr/bin/kubectl && chmod +x /usr/bin/kubectl && \
     git clone --branch v0.8.0 https://github.com/ahmetb/kubectx /opt/kubectx && chmod -R 755 /opt/kubectx && ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx && ln -s /opt/kubectx/kubens /usr/local/bin/kubens && \
     git clone --branch master --depth 1 https://github.com/ahmetb/kubectl-aliases /opt/kubectl-aliases && chmod -R 755 /opt/kubectl-aliases && \
     git clone --branch 0.21.0 --depth 1 https://github.com/junegunn/fzf /opt/fzf && chmod -R 755 /opt/fzf && /opt/fzf/install && ln -s /opt/fzf/bin/fzf /usr/local/bin/fzf && \
-    curl -sS https://webinstall.dev/k9s | bash && \
+    if [[ $ARCH == arm* ]]; then K9S_ARCH=arm64; else K9S_ARCH=x86_64; fi && echo $K9S_ARCH && \
+    mkdir -p /tmp/k9s && cd /tmp/k9s && wget https://github.com/derailed/k9s/releases/download/v0.24.2/k9s_Linux_${K9S_ARCH}.tar.gz && tar -xvf k9s_Linux_${K9S_ARCH}.tar.gz && chmod +x k9s && mv k9s /usr/bin && \
     curl -L https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash && \
     chmod +x /usr/bin/gotty && chmod 500 /usr/bin/nohup && \
     DEBIAN_FRONTEND=noninteractive apt-get --purge remove -y git && \
