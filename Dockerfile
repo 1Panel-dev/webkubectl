@@ -2,7 +2,6 @@ FROM golang:1.15-alpine as gotty-build
 
 ENV CGO_ENABLED=0
 ENV GOOS=linux
-ENV GOARCH=amd64
 ENV GO111MODULE=on
 
 WORKDIR /tmp
@@ -28,7 +27,7 @@ RUN apt-get update && \
     git clone --branch v0.8.0 https://github.com/ahmetb/kubectx /opt/kubectx && chmod -R 755 /opt/kubectx && ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx && ln -s /opt/kubectx/kubens /usr/local/bin/kubens && \
     git clone --branch master --depth 1 https://github.com/ahmetb/kubectl-aliases /opt/kubectl-aliases && chmod -R 755 /opt/kubectl-aliases && \
     git clone --branch 0.21.0 --depth 1 https://github.com/junegunn/fzf /opt/fzf && chmod -R 755 /opt/fzf && /opt/fzf/install && ln -s /opt/fzf/bin/fzf /usr/local/bin/fzf && \
-    mkdir -p /tmp/k9s && cd /tmp/k9s && wget https://github.com/derailed/k9s/releases/download/v0.24.2/k9s_Linux_x86_64.tar.gz && tar -xvf k9s_Linux_x86_64.tar.gz && chmod +x k9s && mv k9s /usr/bin && \
+    curl -sS https://webinstall.dev/k9s | bash \
     curl -L https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash && \
     chmod +x /usr/bin/gotty && chmod 500 /usr/bin/nohup && \
     DEBIAN_FRONTEND=noninteractive apt-get --purge remove -y git && \
