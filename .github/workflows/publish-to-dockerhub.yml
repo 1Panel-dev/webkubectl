@@ -6,7 +6,7 @@ on:
       - '*'
 
 jobs:
-  buildx:
+  build-and-push-to-dockerhub:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
