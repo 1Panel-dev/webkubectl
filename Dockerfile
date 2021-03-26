@@ -16,6 +16,8 @@ FROM ubuntu:18.04
 
 USER root
 
+ARG ARCH
+
 RUN rm -f /bin/sh && ln -s /bin/bash /bin/sh
 ENV KUBECTL_VERSION v1.20.2
 COPY --from=gotty-build /gotty /usr/bin/
