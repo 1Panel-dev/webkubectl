@@ -25,7 +25,7 @@ RUN ARCH=$(uname -m) && case $ARCH in aarch64) ARCH="arm64";; x86_64) ARCH="amd6
     git clone --branch master --depth 1 https://github.com/ahmetb/kubectl-aliases /opt/kubectl-aliases && chmod -R 755 /opt/kubectl-aliases && \
     git clone --branch 0.21.0 --depth 1 https://github.com/junegunn/fzf /opt/fzf && chmod -R 755 /opt/fzf && /opt/fzf/install && ln -s /opt/fzf/bin/fzf /usr/local/bin/fzf && \
     if [[ $ARCH == arm* ]]; then K9S_ARCH=arm64; else K9S_ARCH=x86_64; fi && echo $K9S_ARCH && \
-    mkdir -p /tmp/k9s && cd /tmp/k9s && wget https://github.com/derailed/k9s/releases/download/v0.24.2/k9s_Linux_${K9S_ARCH}.tar.gz && tar -xvf k9s_Linux_${K9S_ARCH}.tar.gz && chmod +x k9s && mv k9s /usr/bin && \
+    mkdir -p /tmp/k9s && cd /tmp/k9s && wget https://github.com/derailed/k9s/releases/download/v0.24.7/k9s_Linux_${K9S_ARCH}.tar.gz && tar -xvf k9s_Linux_${K9S_ARCH}.tar.gz && chmod +x k9s && mv k9s /usr/bin && \
     curl -L https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash && \
     chmod +x /usr/bin/gotty && chmod 555 /bin/busybox && \
     apk del git && rm -rf /tmp/* /var/tmp/* /var/cache/apk/* && \
