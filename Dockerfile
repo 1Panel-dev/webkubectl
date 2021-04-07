@@ -19,7 +19,7 @@ USER root
 COPY --from=gotty-build /gotty /usr/bin/
 RUN ARCH=$(uname -m) && case $ARCH in aarch64) ARCH="arm64";; x86_64) ARCH="amd64";; esac && echo "ARCH: " $ARCH && \
     echo > /etc/apk/repositories && echo -e "https://dl-cdn.alpinelinux.org/alpine/latest-stable/main\nhttps://dl-cdn.alpinelinux.org/alpine/latest-stable/community" >> /etc/apk/repositories && \
-    apk add --update --no-cache bash bash-completion curl git wget openssl iputils busybox-extras vim ncurses && sed -i "s/nobody:\//nobody:\/nonexistent/g" /etc/passwd && \
+    apk update && apk upgrade && apk add --update --no-cache bash bash-completion curl git wget openssl iputils busybox-extras vim ncurses && sed -i "s/nobody:\//nobody:\/nonexistent/g" /etc/passwd && \
     curl -sLf https://storage.googleapis.com/kubernetes-release/release/v1.20.5/bin/linux/${ARCH}/kubectl > /usr/bin/kubectl && chmod +x /usr/bin/kubectl && \
     git clone --branch v0.8.0 https://github.com/ahmetb/kubectx /opt/kubectx && chmod -R 755 /opt/kubectx && ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx && ln -s /opt/kubectx/kubens /usr/local/bin/kubens && \
     git clone --branch master --depth 1 https://github.com/ahmetb/kubectl-aliases /opt/kubectl-aliases && chmod -R 755 /opt/kubectl-aliases && \
