@@ -28,7 +28,7 @@ RUN ARCH=$(uname -m) && case $ARCH in aarch64) ARCH="arm64";; x86_64) ARCH="amd6
     mkdir -p /tmp/k9s && cd /tmp/k9s && wget https://github.com/derailed/k9s/releases/download/v0.24.7/k9s_Linux_${K9S_ARCH}.tar.gz && tar -xvf k9s_Linux_${K9S_ARCH}.tar.gz && chmod +x k9s && mv k9s /usr/bin && \
     curl -L https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash && \
     chmod +x /usr/bin/gotty && chmod 555 /bin/busybox && \
-    apk del git && rm -rf /tmp/* /var/tmp/* /var/cache/apk/* && \
+    apk del git curl && rm -rf /tmp/* /var/tmp/* /var/cache/apk/* && \
     chmod -R 755 /tmp && mkdir -p /opt/webkubectl
 
 COPY vimrc.local /etc/vim
