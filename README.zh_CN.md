@@ -2,6 +2,7 @@
 
 # ![](https://raw.githubusercontent.com/KubeOperator/webkubectl/master/gotty/resources/favicon.png) Web Kubectl - 在Web浏览器中运行kubectl命令
 
+[![Go Report Card](https://goreportcard.com/badge/github.com/kubeoperator/webkubectl)](https://goreportcard.com/report/github.com/kubeoperator/webkubectl)
 ![License](https://img.shields.io/github/license/KubeOperator/webkubectl)
 ![Dockerized](https://img.shields.io/badge/dockerized-yes-brightgreen)
 ![Version](https://img.shields.io/github/v/release/kubeoperator/webkubectl)
