@@ -2,7 +2,7 @@
 
 # ![](https://raw.githubusercontent.com/KubeOperator/webkubectl/master/gotty/resources/favicon.png) Web Kubectl - Run kubectl command in web browser
 
-[![Downloads](https://img.shields.io/docker/pulls/kubeoperator/webkubectl?label=downloads&style=plastic)](https://hub.docker.com/r/kubeoperator/webkubectl)
+[![Downloads](https://img.shields.io/docker/pulls/kubeoperator/webkubectl?label=downloads)](https://hub.docker.com/r/kubeoperator/webkubectl)
 [![Go Report Card](https://goreportcard.com/badge/github.com/kubeoperator/webkubectl)](https://goreportcard.com/report/github.com/kubeoperator/webkubectl)
 ![License](https://img.shields.io/github/license/KubeOperator/webkubectl)
 ![Dockerized](https://img.shields.io/badge/dockerized-yes-brightgreen)
