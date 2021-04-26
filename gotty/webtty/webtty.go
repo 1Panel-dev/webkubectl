@@ -219,7 +219,7 @@ func (wt *WebTTY) handleMasterReadEvent(data []byte) error {
 
 	case Ping:
 		err := wt.masterWrite([]byte{Pong})
-		wt.lastPingTime = time.Now();
+		wt.lastPingTime = time.Now()
 		if err != nil {
 			return errors.Wrapf(err, "failed to return Pong message to master")
 		}

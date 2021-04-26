@@ -120,6 +120,9 @@ func TestWriteFromConn(t *testing.T) {
 	// ping
 	message = []byte("1\n") // line buffered canonical mode
 	n, err = connOutPipeWriter.Write(message)
+	if err != nil {
+		t.Fatalf("Unexpected error from Write(): %s", err)
+	}
 	if n != len(message) {
 		t.Fatalf("Write() accepted `%d` for message `%s`", n, message)
 	}

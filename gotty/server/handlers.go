@@ -153,7 +153,7 @@ func (server *Server) processWSConn(ctx context.Context, conn *websocket.Conn) e
 		[]string{"server", "master", "slave"},
 		map[string]map[string]interface{}{
 			"server": server.options.TitleVariables,
-			"master": map[string]interface{}{
+			"master": {
 				"remote_addr": conn.RemoteAddr(),
 			},
 			"slave": slave.WindowTitleVariables(),
@@ -204,7 +204,7 @@ func (server *Server) handleIndex(w http.ResponseWriter, r *http.Request) {
 		[]string{"server", "master"},
 		map[string]map[string]interface{}{
 			"server": server.options.TitleVariables,
-			"master": map[string]interface{}{
+			"master": {
 				"remote_addr": r.RemoteAddr,
 			},
 		},
