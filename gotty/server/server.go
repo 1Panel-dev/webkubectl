@@ -106,10 +106,10 @@ func New(factory Factory, options *Options, redisOptions *RedisOptions) (*Server
 
 // Run starts the main process of the Server.
 // The cancelation of ctx will shutdown the server immediately with aborting
-// existing connections. Use WithGracefullContext() to support gracefull shutdown.
+// existing connections. Use WithGracefulContext() to support graceful shutdown.
 func (server *Server) Run(ctx context.Context, options ...RunOption) error {
 	cctx, cancel := context.WithCancel(ctx)
-	opts := &RunOptions{gracefullCtx: context.Background()}
+	opts := &RunOptions{gracefulCtx: context.Background()}
 	for _, opt := range options {
 		opt(opts)
 	}
@@ -178,7 +178,7 @@ func (server *Server) Run(ctx context.Context, options ...RunOption) error {
 
 	go func() {
 		select {
-		case <-opts.gracefullCtx.Done():
+		case <-opts.gracefulCtx.Done():
 			srv.Shutdown(context.Background())
 		case <-cctx.Done():
 		}
@@ -186,7 +186,7 @@ func (server *Server) Run(ctx context.Context, options ...RunOption) error {
 
 	select {
 	case err = <-srvErr:
-		if err == http.ErrServerClosed { // by gracefull ctx
+		if err == http.ErrServerClosed { // by graceful ctx
 			err = nil
 		} else {
 			cancel()

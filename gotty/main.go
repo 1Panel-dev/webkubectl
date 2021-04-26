@@ -95,7 +95,7 @@ func main() {
 
 		errs := make(chan error, 1)
 		go func() {
-			errs <- srv.Run(ctx, server.WithGracefullContext(gCtx))
+			errs <- srv.Run(ctx, server.WithGracefulContext(gCtx))
 		}()
 		err = waitSignals(errs, cancel, gCancel)
 
@@ -115,7 +115,7 @@ func exit(err error, code int) {
 	os.Exit(code)
 }
 
-func waitSignals(errs chan error, cancel context.CancelFunc, gracefullCancel context.CancelFunc) error {
+func waitSignals(errs chan error, cancel context.CancelFunc, gracefulCancel context.CancelFunc) error {
 	sigChan := make(chan os.Signal, 1)
 	signal.Notify(
 		sigChan,
@@ -130,7 +130,7 @@ func waitSignals(errs chan error, cancel context.CancelFunc, gracefullCancel con
 	case s := <-sigChan:
 		switch s {
 		case syscall.SIGINT:
-			gracefullCancel()
+			gracefulCancel()
 			fmt.Println("C-C to force close")
 			select {
 			case err := <-errs:
