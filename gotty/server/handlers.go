@@ -237,11 +237,13 @@ func (server *Server) handleMain(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		panic("index not found") // must be in bindata
 	}
+	indexData = bytes.Replace(indexData, []byte("#app.Version"), []byte(os.Getenv("app.Version")), -1)
 	if len(os.Getenv("HIDE_INDEX_FOOTER")) > 0 {
 		w.Write(bytes.Replace(indexData, []byte("footer-show"), []byte(""), -1))
 	} else {
 		w.Write(indexData)
 	}
+
 }
 
 func (server *Server) handleAuthToken(w http.ResponseWriter, r *http.Request) {

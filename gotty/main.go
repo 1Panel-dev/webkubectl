@@ -18,7 +18,8 @@ import (
 func main() {
 	app := cli.NewApp()
 	app.Name = "gotty"
-	app.Version = Version + "+" + CommitID
+	app.Version = Version
+	os.Setenv("app.Version", app.Version)
 	app.Usage = "Share your terminal as a web application"
 	app.HideHelp = true
 

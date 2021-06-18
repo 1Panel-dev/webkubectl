@@ -46,3 +46,8 @@ a, a:link, a:visited {
 .footer-show {
     display: block !important;
 }
+
+.version {
+    float: right;
+    padding-right: 10px;
+}
