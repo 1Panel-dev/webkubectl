@@ -6,7 +6,7 @@ import (
 	"encoding/base64"
 	"encoding/json"
 	"fmt"
-	"io/ioutil"
+	"io"
 	"log"
 	"net/http"
 	"net/url"
@@ -289,7 +289,7 @@ func (server *Server) handleKubeConfigApi(w http.ResponseWriter, r *http.Request
 		w.WriteHeader(405)
 		return
 	}
-	body, err := ioutil.ReadAll(r.Body)
+	body, err := io.ReadAll(r.Body)
 	if err != nil {
 		fmt.Printf("read body err, %v\n", err)
 		result.Message = "Invalid Request Body"
@@ -347,7 +347,7 @@ func (server *Server) handleKubeTokenApi(w http.ResponseWriter, r *http.Request)
 		w.WriteHeader(405)
 		return
 	}
-	body, err := ioutil.ReadAll(r.Body)
+	body, err := io.ReadAll(r.Body)
 	if err != nil {
 		fmt.Printf("read body err, %v\n", err)
 		result.Message = "Invalid Request Body"
