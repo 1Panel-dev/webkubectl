@@ -10,6 +10,7 @@ import (
 	"log"
 	"net/http"
 	"net/url"
+	"os"
 	"strings"
 	"sync/atomic"
 	"time"
@@ -236,8 +237,11 @@ func (server *Server) handleMain(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		panic("index not found") // must be in bindata
 	}
-
-	w.Write(indexData)
+	if len(os.Getenv("HIDE_INDEX_FOOTER")) > 0 {
+		w.Write(bytes.Replace(indexData, []byte("footer-show"), []byte(""), -1))
+	} else {
+		w.Write(indexData)
+	}
 }
 
 func (server *Server) handleAuthToken(w http.ResponseWriter, r *http.Request) {
