@@ -11,8 +11,7 @@ RUN apk add --update git make && \
   make gotty && cp gotty / && ls -l /gotty && /gotty -v
 
 
-
-FROM alpine:latest
+FROM alpine:3.15.4
 
 USER root
 
