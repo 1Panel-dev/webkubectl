@@ -1,9 +1,11 @@
 package server
 
 import (
+	"bufio"
 	"context"
 	"crypto/tls"
 	"crypto/x509"
+	"encoding/base64"
 	"html/template"
 	"log"
 	"net"
@@ -235,7 +237,34 @@ func (server *Server) setupHandlers(ctx context.Context, cancel context.CancelFu
 
 	if server.options.EnableBasicAuth {
 		log.Printf("Using Basic Authentication")
-		siteHandler = server.wrapBasicAuth(siteHandler, server.options.Credential)
+		basicCredentialMap := make(map[string]string)
+		if server.options.Credential != "" {
+			basicCredentialMap[base64.StdEncoding.EncodeToString([]byte(server.options.Credential))] = server.options.Credential
+		}
+		if server.options.CredentialFile != "" {
+			file, err := os.Open(server.options.CredentialFile)
+			if err != nil {
+				log.Printf("Ubable to open credential file " + server.options.CredentialFile)
+				panic(err)
+			}
+			fileInfo, _ := file.Stat()
+			if fileInfo.Size() > 10*1024*1024 {
+				panic("Credential file size exceeds 10M, too big to open.")
+			}
+			scanner := bufio.NewScanner(file)
+			for scanner.Scan() {
+				line := scanner.Text()
+				if len(line) > 1024 {
+					log.Printf("Too long to read, ignore this line.")
+					log.Printf(line)
+					continue
+				}
+				if line != "" {
+					basicCredentialMap[base64.StdEncoding.EncodeToString([]byte(line))] = line
+				}
+			}
+		}
+		siteHandler = server.wrapBasicAuth(siteHandler, basicCredentialMap)
 	}
 
 	withGz := gziphandler.GzipHandler(server.wrapHeaders(siteHandler))

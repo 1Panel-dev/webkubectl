@@ -59,7 +59,7 @@ func main() {
 
 		utils.ApplyFlags(cliFlags, flagMappings, c, appOptions, backendOptions, redisOptions)
 
-		appOptions.EnableBasicAuth = c.IsSet("credential")
+		appOptions.EnableBasicAuth = c.IsSet("credential") || c.IsSet("credential-file")
 		appOptions.EnableTLSClientAuth = c.IsSet("tls-ca-crt")
 
 		err = appOptions.Validate()
