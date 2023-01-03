@@ -143,7 +143,7 @@ http://<webkubectl-address>:<port>/terminal/?token=<token fetched from api>
 
 # License
 
-Copyright (c) 2014-2022 FIT2CLOUD 飞致云<br>
+Copyright (c) 2014-2023 FIT2CLOUD 飞致云<br>
 
 [https://www.fit2cloud.com](https://www.fit2cloud.com)<br>
 
