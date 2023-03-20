@@ -4,7 +4,6 @@
 
 [![Downloads](https://img.shields.io/docker/pulls/kubeoperator/webkubectl?label=downloads)](https://hub.docker.com/r/kubeoperator/webkubectl)
 [![Go Report Card](https://goreportcard.com/badge/github.com/kubeoperator/webkubectl)](https://goreportcard.com/report/github.com/kubeoperator/webkubectl)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/kubeoperator/webkubectl/build-and-push-to-dockerhub)](https://github.com/KubeOperator/webkubectl/actions/workflows/publish-to-dockerhub.yml)
 ![License](https://img.shields.io/github/license/KubeOperator/webkubectl)
 ![Dockerized](https://img.shields.io/badge/dockerized-yes-brightgreen)
 ![Version](https://img.shields.io/github/v/release/kubeoperator/webkubectl)
@@ -46,7 +45,7 @@ Web Kubectl 使用[webkubectl/gotty](https://github.com/KubeOperator/webkubectl/
 # 安装
 
 ```sh
-$ docker run --name="webkubectl" -p 8080:8080 -d --privileged kubeoperator/webkubectl
+$ docker run --name="webkubectl" -p 8080:8080 -d --privileged ghcr.io/kubeoperator/webkubectl
 ```
 
 高级环境变量
