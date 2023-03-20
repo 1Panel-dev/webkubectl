@@ -1,4 +1,4 @@
-name: build-and-push-to-dockerhub
+name: build-and-push-to-ghcr
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - '*'
 
 jobs:
-  build-and-push-to-dockerhub:
+  build-and-push-to-ghcr:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
