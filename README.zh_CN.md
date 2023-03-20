@@ -45,7 +45,7 @@ Web Kubectl 使用[webkubectl/gotty](https://github.com/KubeOperator/webkubectl/
 # 安装
 
 ```sh
-$ docker run --name="webkubectl" -p 8080:8080 -d --privileged ghcr.io/kubeoperator/webkubectl
+$ docker run --name="webkubectl" -p 8080:8080 -d --privileged ghcr.io/kubeoperator/webkubectl:latest
 ```
 
 高级环境变量
