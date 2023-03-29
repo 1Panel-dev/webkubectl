@@ -9,7 +9,7 @@
 ![Version](https://img.shields.io/github/v/release/kubeoperator/webkubectl)
 ![Visitors](https://page-views.glitch.me/badge?page_id=kubeoperator.webkubectl)
 
-![webkubectl](https://raw.githubusercontent.com/KubeOperator/webkubectl/master/web-resources/webkubectl.gif)
+![webkubectl](web-resources/webkubectl.gif)
 
 # 目标
 
@@ -45,7 +45,7 @@ Web Kubectl 使用[webkubectl/gotty](https://github.com/KubeOperator/webkubectl/
 # 安装
 
 ```sh
-$ docker run --name="webkubectl" -p 8080:8080 -d --privileged ghcr.io/kubeoperator/webkubectl:latest
+$ docker run --name="webkubectl" -p 8080:8080 -d --privileged kubeoperator/webkubectl
 ```
 
 高级环境变量

@@ -9,7 +9,7 @@
 ![Version](https://img.shields.io/github/v/release/kubeoperator/webkubectl)
 ![Visitors](https://page-views.glitch.me/badge?page_id=kubeoperator.webkubectl)
 
-![webkubectl](https://raw.githubusercontent.com/KubeOperator/webkubectl/master/web-resources/webkubectl.gif)
+![webkubectl](web-resources/webkubectl.gif)
 
 # Goal
 
@@ -44,7 +44,7 @@ When session terminated, the provisioned namespace and storage are deleted.
 # Installation
 
 ```sh
-$ docker run --name="webkubectl" -p 8080:8080 -d --privileged ghcr.io/kubeoperator/webkubectl:latest
+$ docker run --name="webkubectl" -p 8080:8080 -d --privileged kubeoperator/webkubectl
 ```
 
 Advanced environment variables
