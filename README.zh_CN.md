@@ -7,7 +7,6 @@
 ![License](https://img.shields.io/github/license/KubeOperator/webkubectl)
 ![Dockerized](https://img.shields.io/badge/dockerized-yes-brightgreen)
 ![Version](https://img.shields.io/github/v/release/kubeoperator/webkubectl)
-![Visitors](https://page-views.glitch.me/badge?page_id=kubeoperator.webkubectl)
 
 ![webkubectl](web-resources/webkubectl.gif)
 
