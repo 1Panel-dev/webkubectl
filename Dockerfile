@@ -18,7 +18,7 @@ USER root
 COPY --from=gotty-build /gotty /usr/bin/
 RUN ARCH=$(uname -m) && case $ARCH in aarch64) ARCH="arm64";; x86_64) ARCH="amd64";; esac && echo "ARCH: " $ARCH && \
     apk update && apk upgrade && apk add --update --no-cache bash bash-completion curl git wget openssl iputils busybox-extras vim && sed -i "s/nobody:\//nobody:\/nonexistent/g" /etc/passwd && \
-    curl -sLf https://storage.googleapis.com/kubernetes-release/release/v1.26.3/bin/linux/${ARCH}/kubectl > /usr/bin/kubectl && chmod +x /usr/bin/kubectl && \
+    curl -sLf https://storage.googleapis.com/kubernetes-release/release/v1.30.3/bin/linux/${ARCH}/kubectl > /usr/bin/kubectl && chmod +x /usr/bin/kubectl && \
     git clone --branch master --depth 1 https://github.com/ahmetb/kubectl-aliases /opt/kubectl-aliases && chmod -R 755 /opt/kubectl-aliases && \
     git clone --branch 0.35.1 --depth 1 https://github.com/junegunn/fzf /opt/fzf && chmod -R 755 /opt/fzf && /opt/fzf/install && ln -s /opt/fzf/bin/fzf /usr/local/bin/fzf && \
     cd /tmp/ && wget https://github.com/derailed/k9s/releases/download/v0.27.3/k9s_Linux_${ARCH}.tar.gz && tar -xvf k9s_Linux_${ARCH}.tar.gz && chmod +x k9s && mv k9s /usr/bin && \
