@@ -128,12 +128,16 @@ func (server *Server) processWSConn(ctx context.Context, conn *websocket.Conn) e
 	params := query.Query()
 	params.Del("arg")
 	arg := ""
+
+	podname := params.Get("podname")
+	namespace := params.Get("namespace")
+	
 	if len(params.Get("token")) > 0 {
 		ttyParameter := server.cache.Get(params.Get("token"))
 		cachedKey := params.Get("token")
 		if ttyParameter != nil {
 			windowTitle = ttyParameter.Title
-			arg = ttyParameter.Arg
+			arg = ttyParameter.Arg + " " + podname + " " + namespace
 			server.cache.Delete(cachedKey)
 		} else {
 			arg = "ERROR:Invalid Token"
@@ -142,7 +146,6 @@ func (server *Server) processWSConn(ctx context.Context, conn *websocket.Conn) e
 		arg = "ERROR:No Token Provided"
 	}
 	params.Add("arg", arg)
-	//log.Println("arg: " + arg)
 	var slave Slave
 	slave, err = server.factory.New(params)
 	if err != nil {
@@ -326,6 +329,7 @@ func (server *Server) handleKubeConfigApi(w http.ResponseWriter, r *http.Request
 		Title: request.Name,
 		Arg:   strings.Replace(request.KubeConfig, " ", "", -1),
 	}
+
 	if err := server.cache.Add(token, &ttyParameter, time.Duration(server.options.TokenExpiresDuration)*time.Second); err != nil {
 		log.Printf("save token and ttyParam err:%s", err.Error())
 		result.Success = false
