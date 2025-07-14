@@ -130,6 +130,7 @@ func (server *Server) processWSConn(ctx context.Context, conn *websocket.Conn) e
 	arg := ""
 
 	podname := params.Get("podname")
+	deployname := params.Get("deployname")
 	namespace := params.Get("namespace")
 	
 	if len(params.Get("token")) > 0 {
@@ -137,7 +138,14 @@ func (server *Server) processWSConn(ctx context.Context, conn *websocket.Conn) e
 		cachedKey := params.Get("token")
 		if ttyParameter != nil {
 			windowTitle = ttyParameter.Title
-			arg = ttyParameter.Arg + " " + podname + " " + namespace
+			// If podname is not empty, use it in args
+			if len(podname) > 0 {
+				arg = ttyParameter.Arg + " " + podname + " " + namespace
+			} else if len(deployname) > 0 {
+				arg = ttyParameter.Arg + " " + deployname + " " + namespace + " " + "true"
+			} else {
+				panic("podname or deployname must be provided")
+			}
 			server.cache.Delete(cachedKey)
 		} else {
 			arg = "ERROR:Invalid Token"
